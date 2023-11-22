@@ -30,7 +30,7 @@ year: 'numeric'
 })
 //TIME
 global.waktu = `${date}`
-global.namabot = '© 𝗙𝗲𝗹𝗶𝗰𝗶𝗮 𝗠𝘂𝗹𝘁𝗶-𝗗𝗲𝘃𝗶𝗰𝗲'
+global.namabot = '© 𝗙𝗲𝗹𝗶𝗰𝗶𝗮 𝗠𝗗'
 global.v = '-'   
 global.botdate = `⎔ 𝗗𝗔𝗧𝗘: ${week} ${date}\n⎔ 𝗧𝗜𝗠𝗘: ${wktuwib}`
 global.bottime = `𝗧 𝗜 𝗠 𝗘: ${wktuwib}`
@@ -39,39 +39,37 @@ global.packname = `🖍️ 𝗦𝘁𝗶𝗰𝗸𝗲𝗿𝘀 𝗖𝗿𝗲𝗮𝘁
 global.author = ``
 
 /* ===========Hiasan=========== */
-let htjava = pickRandom(["乂", "❏", "⫹⫺", "⎔", "✦", "⭔", "⬟"])
-let pmenus = pickRandom(["乂", "◈", "➭", "ଓ", "⟆•", "⳻", "•", "↬", "◈", "⭑", "ᯬ", "◉", "᭻", "»", "〆", "々", "✗", "♪"])
-global.eror = "_Lagi error bang_"
-global.lopr = "🅟"
-global.lolm = "Ⓛ"
-global.dmenut = htjava + "───『"
-global.dmenub = "│" + pmenus
-global.dmenub2 = "│" + pmenus
-global.dmenuf = "╰━━━━━━━━┈─◂"
-global.cmenut = htjava + "───『"
-global.cmenuh = "』───" + htjava
-global.cmenub = "│" + pmenus
-global.cmenuf = "╰━━━━━━━━┈─◂"
-global.cmenua = "\n⌕ ❙❘❙❙❘❙❚❙❘❙❙❚❙❘❙❘❙❚❙❘❙❙❚❙❘❙❙❘❙❚❙❘ ⌕\n     "
-global.dashmenu = "✧────···[ *Dashboard* ]···────✧"
-global.pmenus = pickRandom(["乂", "◈", "➭", "ଓ", "⟆•", "⳻", "•", "↬", "◈", "⭑", "ᯬ", "◉", "᭻", "»", "〆", "々", "✗", "♪"])
-global.htjava = pickRandom(["乂", "❏", "⫹⫺", "⎔", "✦", "⭔", "⬟"])
-global.htki = '––––––『' // Hiasan Titile (KIRI)
-global.htka = '』––––––' // Hiasan Title  (KANAN)
-global.emojis = pickRandom(["👑", "🎗", "️🗿", "🕹", "️💡", "🪄", "🎈", "🎊", "🔖", "📍", "❤", "‍🔥", "💤", "💭", "🕚", "💬", "🚩", "🎐", "🍃", "🌿", "🥀", "✨", "⚡", "☂️"])
+global.eror = '*E R R O R*'
+global.lopr = '🅟'
+global.lolm = '🅛'
+global.dmenut = '⎔═════⎔'
+global.dmenub = '╟• '
+global.dmenub2 = '║'
+global.dmenuf = '⎔═════════⎔'
+global.cmenut = '⎔═════⎔'
+global.cmenuh = '⎔═════⎔'
+global.cmenub = '╟• '
+global.cmenuf = '⎔══════════⎔\n'
+global.cmenua = '\n     '
+global.dashmenu = '⎔════⎔ *DASHBOARD* ⎔════⎔'
+global.pmenus = '⎔'
+global.htjava = '⛶'
+global.htki = '─ ─ ─ ─  ─ ｢' // Hiasan Titile (KIRI)
+global.htka = '｣ ─ ─ ─ ─ ─' // Hiasan Title  (KANAN)
+global.emojis = pickRandom(["👑", "🎗", "🕹", "️💡", "🪄", "🎈", "🎊", "🔖", "📍", "❤", "‍🔥", "💤", "💭", "🕚", "💬", "🚩", "🎐", "🍃", "🌿", "🥀", "✨", "⚡", "☂️"])
 
 //--------[WATERMARK]
-global.wm = 'ʀᴇʏᴢ ʜᴀʏᴀɴᴀsɪ 汉 」' //Main WM
-global.wm2 = '꒷︶꒷꒥꒷ ‧₊˚ ꒰ฅ˘バージニティハンター˘ฅ ꒱ ‧₊˚꒷︶꒷꒥꒷'
-global.wm3 = '⫹⫺ ᴋᴏɴᴇᴋᴏ ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ'
-global.md = 'ᴋᴏɴᴇᴋᴏ ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ‌'
+global.wm = '© 𝗖𝗿𝗲𝗮𝘁𝗲𝗱 𝗕𝘆 𝗞𝗲𝗶𝘇𝗵𝗮'
+global.wm2 = '⌬ 𝗙𝗲𝗹𝗶𝗰𝗶𝗮-𝗠𝗗 '
+global.wm3 = '⌬ 𝗙𝗲𝗹𝗶𝗰𝗶𝗮 𝗠𝘂𝗹𝘁𝗶-𝗗𝗲𝘃𝗶𝗰𝗲'
+global.md = '𝗙𝗲𝗹𝗶𝗰𝗶𝗮 𝗠𝘂𝗹𝘁𝗶-𝗗𝗲𝘃𝗶𝗰𝗲'
 //-----[OWNER]
 global.nomorown = '6281249122429'
 global.owner = [
 ['6281249122429'], // global owner 0
 ['6281249122429'], // global owner 1
 ['6281249122429'], // global owner 2
-['6281249122429', 'ᴛʜᴇ ʀᴇʏᴢ', true] // global owner 3
+['6281249122429', '𝗞𝗲𝗶𝘇𝗵𝗮', true] // global owner 3
 ]
 global.mods = [] // siapa partner mu? 
 global.prems = ['6281249122429','6281249122429'] //premium unlimited
@@ -85,9 +83,9 @@ can: 'https://pnggilajacn.my.id',
 xteam: 'https://api.xteam.xyz', 
 nrtm: 'https://fg-nrtm.ddns.net',
 bg: 'http://bochil.ddns.net',
-lol : 'https://api.lolhuman.xyz' , 
+lol: 'https://api.lolhuman.xyz' , 
 fgmods: 'https://api-fgmods.ddns.net',
-violetics : 'https://violetics.pw',
+violetics: 'https://violetics.pw',
 zenz: 'https://zenzapi.xyz',
 xzn: 'https://skizo.tech',
 ibeng: 'https://api.ibeng.tech', 
@@ -123,37 +121,37 @@ global.ibeng = 'QeyZTULyQg'
 
 //-----------------[ GLOBAL LOADING ]---------------//
 
-global.wait = ' *「▰▰▰▱▱▱▱▱▱▱」ʟ ᴏ ᴀ ᴅ ɪ ɴ ɢ...* '
+global.wait = '*Memproses Permintaan...*'
 
 ///==================/thumbnail 
-global.thumb = 'https://telegra.ph/file/03948b208767b8a24db30.jpg' //Main Thumbnail
-global.thumb2 = 'https://telegra.ph/file/03948b208767b8a24db30.jpg'
-global.thumbbc = 'https://telegra.ph/file/03948b208767b8a24db30.jpg' //For broadcast
-global.giflogo = 'https://telegra.ph/file/a46ab7fa39338b1f54d5a.mp4'
+global.thumb = 'https://telegra.ph/file/6372ee7f40d93db1da497.jpg' //Main Thumbnail
+global.thumb2 = 'https://telegra.ph/file/6372ee7f40d93db1da497.jpg'
+global.thumbbc = 'https://telegra.ph/file/6372ee7f40d93db1da497.jpg' //For broadcast
+global.giflogo = 'https://telegra.ph/file/63854b2a01477c9b2cb01.mp4'
 global.thumblvlup = 'https://telegra.ph/file/a3e66e0fa840b08236c75.jpg'
 global.footer = '꒷︶꒷꒥꒷ ‧₊˚ ꒰ ฅ˘ᴋᴏɴᴇᴋᴏ ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ˘ฅ ꒱ ‧₊˚꒷︶꒷꒥꒷'
 /*============== SOCIAL ==============*/
-global.sig = 'https://instagram.com/reymwmwk112'
-global.sgh = 'https://github.com/Reybot1238'
-global.sgc = 'https://chat.whatsapp.com/Em4vPwiN7151mO3lDpkdrm'
-global.sdc = 'https://discord.gg/fu2BQ5RZ'
-global.snh = 'https://nhentai.net/g/HaramTod🗿'
-global.sfb = 'https://www.facebook.com/Rey koncol'
-global.syt = 'https://youtube.com/@Litz445'
+global.sig = 'https://instagram.com'
+global.sgh = 'https://github.com'
+global.sgc = 'https://chat.whatsapp.com/HanfYszpKzbGcCGgWdHLTa'
+global.sdc = 'https://discord.gg'
+global.snh = 'https://nhentai.net'
+global.sfb = 'https://www.facebook.com'
+global.syt = 'https://youtube.com'
 //====== Url Template Buttons ======//
-global.dtu = 'ᴅᴏɴᴀᴛᴇ'
-global.urlnya = "https://pnggilajacn.my.id/contacts"
+global.dtu = '𝗗𝗼𝗻𝗮𝘀𝗶'
+global.urlnya = "wa.me/6281249122429"
 //========== callButtons ==========//
-global.dtc = 'ᴄᴀʟʟ ᴏᴡɴᴇʀ'
-global.phn = '+62 831-8166-6350'
+global.dtc = '𝗛𝘂𝗯𝘂𝗻𝗴𝗶 𝗣𝗲𝗺𝗶𝗹𝗶𝗸'
+global.phn = '+62 812-4912-2429'
 global.ephemeral = '86400'
 global.monitor = "u2209032-5096e7f10915ab963640d415"
-global.multiplier = 69
+global.multiplier = 25
 /*=========== FAKE SIZE ===========*/
 global.fsizedoc = '999'
 global.fpagedoc = '999'
-global.htjava = '⫹⫺' 
-global.fgig = '▢ mupar'
+global.htjava = '⎔' 
+global.fgig = '⎔ 𝗞𝗲𝗶𝘇𝗵𝗮'
 global.docs = [
     'application/pdf',
     'application/msword',
@@ -167,24 +165,19 @@ global.docs = [
     'application/json'
 ];
 // =============={[(END)]}=================
-global.ppbot = [ 'https://telegra.ph/file/03948b208767b8a24db30.jpg','https://cdnb.artstation.com/p/assets/images/images/065/283/211/large/aoi-ogata-sereule-10.jpg','https://cdnb.artstation.com/p/assets/images/images/065/283/211/large/aoi-ogata-sereule-10.jpg','https://cdnb.artstation.com/p/assets/images/images/065/049/227/large/aoi-ogata-fcd-1.jpg','https://cdnb.artstation.com/p/assets/images/images/063/225/261/large/aoi-ogata-htgyvj.jpg','https://cdnb.artstation.com/p/assets/images/images/062/235/023/large/aoi-ogata-tvfyg.jpg']
+global.ppbot = 'https://telegra.ph/file/6372ee7f40d93db1da497.jpg'
 // ================={[(THUMBNAIL)]}===========
-    global.hwaifu= ['https://telegra.ph/file/76dac6b1c51affd5b249e.jpg','https://cdnb.artstation.com/p/assets/images/images/065/283/211/large/aoi-ogata-sereule-10.jpg','https://cdnb.artstation.com/p/assets/images/images/065/283/211/large/aoi-ogata-sereule-10.jpg','https://cdnb.artstation.com/p/assets/images/images/065/049/227/large/aoi-ogata-fcd-1.jpg','https://cdnb.artstation.com/p/assets/images/images/063/225/261/large/aoi-ogata-htgyvj.jpg','https://cdnb.artstation.com/p/assets/images/images/062/235/023/large/aoi-ogata-tvfyg.jpg'    
-       ]
+    global.hwaifu= 'https://telegra.ph/file/6372ee7f40d93db1da497.jpg'
 //===[THUMBNAIL MENU]===
 
-    global.thumbnailUrl= [
-'https://telegra.ph/file/03948b208767b8a24db30.jpg','https://telegra.ph/file/03948b208767b8a24db30.jpg','https:https://telegra.ph/file/03948b208767b8a24db30.jpg'
-]
-global.Pallmenu = [
-'https://telegra.ph/file/0f49959e6bac62ddc1f95.jpg','https://telegra.ph/file/2cbb0b176e9c6836a9005.jpg','https://telegra.ph/file/8fa8b92e322eb2c312e67.jpg'
-]
+    global.thumbnailUrl= 'https://telegra.ph/file/6372ee7f40d93db1da497.jpg'
+global.Pallmenu = 'https://telegra.ph/file/6372ee7f40d93db1da497.jpg'
 global.AraChu2 = [
-  "https://telegra.ph/file/6ea904e8dc440e57dc2c2.jpg",
-  "https://telegra.ph/file/6ea904e8dc440e57dc2c2.jpg",
-  "https://telegra.ph/file/6ea904e8dc440e57dc2c2.jpg",
-  "https://telegra.ph/file/6ea904e8dc440e57dc2c2.jpg",
-  "https://telegra.ph/file/6ea904e8dc440e57dc2c2.jpg"
+  "https://telegra.ph/file/6372ee7f40d93db1da497.jpg",
+  "https://telegra.ph/file/6372ee7f40d93db1da497.jpg",
+  "https://telegra.ph/file/6372ee7f40d93db1da497.jpg",
+  "https://telegra.ph/file/6372ee7f40d93db1da497.jpg",
+  "https://telegra.ph/file/6372ee7f40d93db1da497.jpg"
 ]
 global.fla = pickRandom(ImgLogoFlam())
 
