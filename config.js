@@ -117,7 +117,7 @@ global.lol = 'haikalgans'
 global.rose = 'Rs-Zeltoria'
 global.xzn = 'konekocyz'
 global.fgmods = 'fg-dylux'
-global.ibeng = 'QeyZTULyQg'
+global.ibeng = 'UvjqppFxma'
 
 //-----------------[ GLOBAL LOADING ]---------------//
 

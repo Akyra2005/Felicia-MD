@@ -1213,7 +1213,7 @@ export async function handler(chatUpdate) {
                     m.exp += xp
                 if (!isPrems && plugin.limit && global.db.data.users[m.sender].limit < plugin.limit * 1) {
                     this.sendMessage(m.chat, {
-                        text: `[❗] *Limit Anda Habis, Beberapa Command Tidak Bisa Di Akses*`,
+                        text: `*Anda Mencapai Batas Penggunaan*`,
                         mentions: [m.sender]
                     }, {
                         quoted: m
@@ -1222,7 +1222,7 @@ export async function handler(chatUpdate) {
                 }
                 if (plugin.level > _user.level) {
                     this.sendMessage(m.chat, {
-                        text: `[💬] Diperlukan level *${plugin.level}* untuk menggunakan perintah ini. Level kamu *${_user.level}🎋*\n*${plugin.level}* level is required to use this command. Your level is *${_user.level}🎋*`,
+                        text: `Diperlukan Level *${plugin.level}* Untuk Menggunakan Perintah Ini, Level Kamu *${_user.level}*`,
                         mentions: [m.sender]
                     }, {
                         quoted: m
@@ -1282,7 +1282,7 @@ export async function handler(chatUpdate) {
                         }
                     }
                     if (m.limit)
-                        m.reply(+m.limit + " Limit terpakai ✔️")
+                        m.reply(+m.limit + " Limits Used")
                 }
                 break
             }
@@ -1385,7 +1385,7 @@ const welthum = "https://telegra.ph/file/432e68f42c68903f023f5.png"
 
 const byethum = "https://telegra.ph/file/b7c28d36f46c25af7bb5e.png"
 
-                    const lapor = `\n\n${emoji.mail} *ᴘᴇsᴀɴ:* ᴊᴀɴɢᴀɴ ʟᴜᴘᴀ sᴜʙsᴄʀɪʙᴇ ʏᴛ @Litzz445 ᴀɢᴀʀ ᴛɪᴅᴀᴋ ᴋᴇʀɪɴɢɢᴀʟᴀɴ ɪɴғᴏʀᴍᴀsɪ ᴜᴘᴅᴀᴛᴇ ᴛᴀɴ sᴇᴘᴜᴛᴀʀ ɪɴғᴏʀᴍᴀsɪ sᴄʀɪᴘᴛ ʙᴏᴛ ᴡʜᴀᴛsᴀᴘᴘ ᴛʜᴀɴᴋ ʏᴏᴜ`;
+                    const lapor = `*?*`;
 
  const welimg = isAddAction ? welran : byeran            
 
@@ -1413,7 +1413,7 @@ await this.sendMessage(id, {
             }
             break;
         case "promote":
-            const promoteText = (chat.sPromote || this.spromote || conn.spromote || `${emoji.promote} @user *telah diangkat menjadi Admin*`).replace("@user", "@" + participants[0].split("@")[0]);
+            const promoteText = (chat.sPromote || this.spromote || conn.spromote || `${emoji.promote} @user *Telah Diangkat Menjadi Admin*`).replace("@user", "@" + participants[0].split("@")[0]);
             if (chat.detect) {
                 this.sendMessage(id, {
                     text: promoteText.trim(),
@@ -1424,7 +1424,7 @@ await this.sendMessage(id, {
             }
             break;
         case "demote":
-            const demoteText = (chat.sDemote || this.sdemote || conn.sdemote || `${emoji.demote} @user *tidak lagi menjadi Admin*`).replace("@user", "@" + participants[0].split("@")[0]);
+            const demoteText = (chat.sDemote || this.sdemote || conn.sdemote || `${emoji.demote} @user *Tidak Lagi Menjadi Admin*`).replace("@user", "@" + participants[0].split("@")[0]);
             if (chat.detect) {
                 this.sendMessage(id, {
                     text: demoteText.trim(),
@@ -1512,7 +1512,7 @@ export async function deleteUpdate(message) {
         if (chat.antiDelete)
             return
         this.sendMessage(msg.key.remoteJid, {
-            text: `❗ Terdeteksi @${participant.split`@`[0]} telah menghapus pesan.\nUntuk mematikan fitur ini, ketik\n*.off antidelete*\n\nUntuk menghapus pesan yang dikirim BOT, reply pesan dengan perintah\n*.delete*`,
+            text: `*❗ Terdeteksi @${participant.split`@`[0]} Telah Menghapus Pesan.*`,
             mentions: [participant]
         }, {
             quoted: msg
@@ -1556,7 +1556,7 @@ export async function presenceUpdate(presenceUpdate) {
     if (user?.afk && status === "composing" && user.afk > -1) {
         if (user.banned) {
             user.afk = -1;
-            user.afkReason = "User Banned Afk";
+            user.afkReason = "User Banned AFK";
             return;
         }
 
@@ -1580,7 +1580,7 @@ export async function presenceUpdate(presenceUpdate) {
 dfail
  */
 global.dfail = (type, m, conn) => {
-    const userTag = `👋😹 ᴡᴏɪ*@${m.sender.split("@")[0]}*, `
+    const userTag = `*@${m.sender.split("@")[0]}* `
     const emoji = {
         general: '❌',
         owner: '❌',
@@ -1597,28 +1597,28 @@ global.dfail = (type, m, conn) => {
     }
 
     const msg = {
-        owner: `*${emoji.owner} ᴘᴇʀʜᴀᴛɪᴀɴ ᴏᴡɴᴇʀ*\n
-${userTag} ᴘᴇʀɪɴᴛᴀʜ ɪɴɪ ʜᴀɴʏᴀ ᴅᴀᴘᴀᴛ ᴅɪɢᴜɴᴀᴋᴀɴ ᴏʟᴇʜ *ᴏᴡɴᴇʀ ʙᴏᴛ* !`,
-        moderator: `*${emoji.moderator} ᴘᴇʀʜᴀᴛɪᴀɴ ᴍᴏᴅᴇʀᴀᴛᴏʀ*\n
-${userTag} ᴘᴇʀɪɴᴛᴀʜ ɪɴɪ ʜᴀɴʏᴀ ᴅᴀᴘᴀᴛ ᴅɪɢᴜɴᴀᴋᴀɴ ᴏʟᴇʜ *ᴍᴏᴅᴇʀᴀᴛᴏʀ* !`,
-        premium: `*${emoji.premium} ᴘᴇʀʜᴀᴛɪᴀɴ ᴘʀᴇᴍɪᴜᴍ*\n
-${userTag} ᴘᴇʀɪɴᴛᴀʜ ɪɴɪ ʜᴀɴʏᴀ ᴜɴᴛᴜᴋ ᴍᴇᴍʙᴇʀ *ᴘʀᴇᴍɪᴜᴍ* !`,
-        group: `*${emoji.group} ᴘᴇʀʜᴀᴛɪᴀɴ ɢʀᴜᴘ*\n
-${userTag} ᴘᴇʀɪɴᴛᴀʜ ɪɴɪ ʜᴀɴʏᴀ ᴅᴀᴘᴀᴛ ᴅɪɢᴜɴᴀᴋᴀɴ ᴅɪ ɢʀᴜᴘ !`,
-        private: `*${emoji.private} ᴘᴇʀʜᴀᴛɪᴀɴ ᴘʀɪᴠᴀᴛᴇ*\n
-${userTag} ᴘᴇʀɪɴᴛᴀʜ ɪɴɪ ʜᴀɴʏᴀ ᴅᴀᴘᴀᴛ ᴅɪɢᴜɴᴀᴋᴀɴ ᴅɪ ᴄʜᴀᴛ ᴘʀɪʙᴀᴅɪ !`,
-        admin: `*${emoji.admin} ᴘᴇʀʜᴀᴛɪᴀɴ ᴀᴅᴍɪɴ*\n
-${userTag} ᴘᴇʀɪɴᴛᴀʜ ɪɴɪ ʜᴀɴʏᴀ ᴜɴᴛᴜᴋ *ᴀᴅᴍɪɴ* ɢʀᴜᴘ !`,
-        botAdmin: `*${emoji.botAdmin} ᴘᴇʀʜᴀᴛɪᴀɴ ʙᴏᴛ ᴀᴅᴍɪɴ*\n
-${userTag} ᴊᴀᴅɪᴋᴀɴ ʙᴏᴛ sᴇʙᴀɢᴀɪ *ᴀᴅᴍɪɴ* ᴜɴᴛᴜᴋ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ ᴘᴇʀɪɴᴛᴀʜ ɪɴɪ !`,
-        unreg: `*${emoji.unreg} ᴘᴇʀʜᴀᴛɪᴀɴ ᴅᴀꜰᴛᴀʀ*\n
-${userTag} sɪʟᴀʜᴋᴀɴ ᴅᴀғᴛᴀʀ ᴜɴᴛᴜᴋ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ ғɪᴛᴜʀ ɪɴɪ ᴅᴇɴɢᴀɴ ᴄᴀʀᴀ ᴍᴇɴɢᴇᴛɪᴋ:\n\n*.ᴅᴀғᴛᴀʀ ɴᴀᴍᴀ.ᴜᴍᴜʀ*\n\nᴄᴏɴᴛᴏʜ: *.ᴅᴀғᴛᴀʀ  ${m.name}.18* !`,
-        nsfw: `*${emoji.nsfw} ᴘᴇʀʜᴀᴛɪᴀɴ ɴꜱꜰᴡ*\n
-${userTag} ɴsғᴡ ᴛɪᴅᴀᴋ ᴀᴋᴛɪғ, sɪʟᴀʜᴋᴀɴ ʜᴜʙᴜɴɢɪ ᴛᴇᴀᴍ ʙᴏᴛ ᴅɪsᴄᴜssɪᴏɴ ᴜɴᴛᴜᴋ ᴍᴇɴɢᴀᴋᴛɪғᴋᴀɴ ғɪᴛᴜʀ ɪɴɪ !`,
-        rpg: `*${emoji.rpg} ᴘᴇʀʜᴀᴛɪᴀɴ ʀᴘɢ*\n
-${userTag} ʀᴘɢ ᴛɪᴅᴀᴋ ᴀᴋᴛɪғ, sɪʟᴀʜᴋᴀɴ ʜᴜʙᴜɴɢɪ ᴛᴇᴀᴍ ʙᴏᴛ ᴅɪsᴄᴜssɪᴏɴ ᴜɴᴛᴜᴋ ᴍᴇɴɢᴀᴋᴛɪғᴋᴀɴ ғɪᴛᴜʀ ɪɴɪ !`,
-        restrict: `*${emoji.restrict} ᴘᴇʀʜᴀᴛɪᴀɴ ᴛɪᴅᴀᴋ ᴀᴋᴛɪꜰ*\n
-${userTag} ғɪᴛᴜʀ ɪɴɪ ᴅɪ *ɴᴏɴᴀᴋᴛɪғᴋᴀɴ* !`,
+        owner: `*${emoji.owner} Especially for Owners*\n
+${userTag} Perintah Ini Hanya Dapat Digunakan *Pengembang*`,
+        moderator: `*${emoji.moderator} Especially for Moderators*\n
+${userTag} Perintah Ini Hanya Dapat Digunakan *Moderator*`,
+        premium: `*${emoji.premium} Especially for Premium*\n
+${userTag} Perintah Ini Hanya Dapat Digunakan Pengguna *Premium* !`,
+        group: `*${emoji.group} Especially for groups*\n
+${userTag} Perintah Ini Hanya Dapat Digunakan *Digrup*`,
+        private: `*${emoji.private} Especially for Personal*\n
+${userTag} Perintah Ini Hanya Dapat Digunakan *Dipribadi*`,
+        admin: `*${emoji.admin} Especially for Admins*\n
+${userTag} Perintah Ini Hanya Dapat Digynakan *Admin*`,
+        botAdmin: `*${emoji.botAdmin} Requires Admin Access*\n
+${userTag} Bot Harus Menjadi *Admin*`,
+        unreg: `*${emoji.unreg} Registered Users Only*\n
+${userTag} Harus Terdaftar Terlebih Dahulu\n\nFormat:\n*.daftar Keizha.18*\nContoh:\n*.daftar ${m.name}.18*`,
+        nsfw: `*${emoji.nsfw} Requires NSFW Permission*\n
+${userTag} Harus Mengaktifkan*NSFW* Terlebih Dahulu`,
+        rpg: `*${emoji.rpg} RPG Disabled*\n
+${userTag} RPG Ini Dinonaktifkan, Silahkan Hubungi *Pengembang*`,
+        restrict: `*${emoji.restrict} Feature Disabled*\n
+${userTag} Fitur Ini Dinonaktifkan, Silahkan Hubungi *Pengembang*`,
     } [type]
     if (msg) return conn.sendMessage(m.chat, {
         text: msg,
