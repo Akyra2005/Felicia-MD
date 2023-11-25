@@ -1,5 +1,5 @@
 services:
-  - name: Felicia-MD
+  - name: big-hall
     type: worker
     env:
       NODE_ENV: "production"
