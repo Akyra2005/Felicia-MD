@@ -76,7 +76,6 @@ function isCrashedBySignal() {
       fs.unwatchFile(args[0]);
       start('main.js');
     });
-  });
 
   p.on('error', (err) => {
     console.error(chalk.red(`❌ Error: ${err}`));
