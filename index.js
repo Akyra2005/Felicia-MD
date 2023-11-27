@@ -157,7 +157,7 @@ process.on('unhandledRejection', () => {
 });
 
 process.on('exit', (code) => {
-  console.error(chalk.red(`🛑 Exited with code: ${code}`));
+  console.error(chalk.red(`Exited with code: ${code}`));
   console.error(chalk.red(`❌ Script will restart...`));
   start('main.js');
 });
