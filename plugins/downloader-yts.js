@@ -8,34 +8,34 @@ let handler = async (m, {
     conn,
     text
 }) => {
-    if (!text) throw "✳️ What do you want me to search for on YouTube?"
+    if (!text) throw "Format: *.yts Kata Kunci*"
     let results = await yts(text)
     let tes = results.all
     let teks = results.all.map(v => {
         switch (v.type) {
             case "video":
                 return `
-📹 *Type:* ${v.type}
-🆔 *VideoId:* ${v.videoId}
-🔗 *URL:* ${v.url}
-📺 *Title:* ${v.title}
-📝 *Description:* ${v.description}
-🖼️ *Image:* ${v.image}
-🖼️ *Thumbnail:* ${v.thumbnail}
-⏱️ *Seconds:* ${v.seconds}
-⏰ *Timestamp:* ${v.timestamp}
-⏲️ *Duration Timestamp:* ${v.duration.timestamp}
-⌛ *Duration Seconds:* ${v.duration.seconds}
-⌚ *Ago:* ${v.ago}
-👀 *Views:* ${formatNumber(v.views)}
-👤 *Author Name:* ${v.author.name}
-🔗 *Author URL:* ${v.author.url}
+Tipe: *${v.type}*
+Identitas Video: *${v.videoId}*
+Tautan: *${v.url}*
+Judul: *${v.title}*
+Deskripsi: *${v.description}*
+Gambar: *${v.image}*
+Gambar Mini: *${v.thumbnail}*
+Detik: *${v.seconds}*
+Stempel Waktu: *${v.timestamp}*
+Durasi Stempel Waktu: *${v.duration.timestamp}*
+Durasi Detik: *${v.duration.seconds}*
+Lalu: *${v.ago}*
+Penonton: *${formatNumber(v.views)}*
+Nama Pengarang: *${v.author.name}*
+Tautan Pengarang: *${v.author.url}*
    `.trim()
             case "canal":
                 return `
-🔖 *${v.name}* (${v.url})
-⚡ ${v.subCountLabel} (${v.subCount}) Suscribe
-📽️ ${v.videoCount} videos
+*${v.name}* (${v.url})
+*${v.subCountLabel} (${v.subCount})* Subscriber
+*${v.videoCount}*Video
 `.trim()
         }
     }).filter(v => v).join("\n\n________________________\n\n")
@@ -54,7 +54,7 @@ let handler = async (m, {
                         mediaUrl: tes[0].url,
                         renderLargerThumbnail: true,
                         showAdAttribution: true,
-                        sourceId: "WudySoft",
+                        sourceId: "Keizha",
                         sourceType: "PDF",
                         previewType: "PDF",
                         sourceUrl: tes[0].url,
@@ -72,6 +72,8 @@ let handler = async (m, {
 handler.help = ["", "earch"].map(v => "yts" + v + " <pencarian>")
 handler.tags = ["tools"]
 handler.command = /^y(outubesearch|ts(earch)?)$/i
+handler.register = true
+handler.limit = true
 export default handler
 
 function formatNumber(num) {

@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 
 let handler = async (m, { conn, usedPrefix, text }) => {
-    if (!text) throw `Contoh Penggunaan:\n😹 *.simi halo*\n\nDan dengan Trigger:\n😹 *.simi <|halo*`;
+    if (!text) throw `hah?`;
 
     let [trigger, message] = text.split("|").map(v => v.trim());
     let apiEndpoint = trigger ? "http://api.brainshop.ai/get?bid=153868&key=rcKonOgrUFmn5usX&uid=1&msg=" + encodeURIComponent(message) : "https://api.simsimi.net/v2/?text=" + text + "&lc=id";
@@ -22,8 +22,8 @@ let handler = async (m, { conn, usedPrefix, text }) => {
     } : {});
 };
 
-handler.command = ["simi"];
+handler.command = ["felicia"];
 handler.tags = ["fun"];
-handler.help = ["simi <pesan>"];
+handler.help = ["felicia <pesan>"];
 
 export default handler;

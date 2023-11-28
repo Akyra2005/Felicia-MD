@@ -64,7 +64,7 @@ case 'cekwibu':
 case 'cekpasarkas':
 case 'cekkul': {
 const cek2 = cek1[Math.floor(Math.random() * cek1.length)]
-conn.sendMessage(m.chat, { text: 'Pertanyaan : *' + command + '*\nNama : ' + `@${m.sender.split('@')[0]}` + '\nJawaban : ' + cek2 + '%', mentions: [m.sender] }, { quoted: m })
+conn.sendMessage(m.chat, { text: 'Pertanyaan: *' + command + '*\nNama: ' + `@${m.sender.split('@')[0]}` + '\nJawaban: ' + cek2 + '%', mentions: [m.sender] }, { quoted: m })
       break;
     }
   }

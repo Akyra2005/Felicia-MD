@@ -22,21 +22,21 @@ let handler = async (m, {
         let prev = formatArrayWithNumbers(result.detail.roundedAlertsImage)
         const output = `*${result.articles.title || 'Tidak diketahui'}*
 
-*Update:*\n${result.detail.date || 'Tidak diketahui'}
+*Memperbarui:*\n${result.detail.date || 'Tidak diketahui'}
 
-*Desc:*\n${result.articles.desc || 'Tidak diketahui'}
+*Deskripsi:*\n${result.articles.desc || 'Tidak diketahui'}
 
-*Faq:*\n${faq || 'Tidak diketahui'}
+*Pertanyaan Umum:*\n${faq || 'Tidak diketahui'}
 
-*Link:*\n${result.articles.link || 'Tidak diketahui'}
+*Tautan:*\n${result.articles.link || 'Tidak diketahui'}
 
-*Content:*\n${result.detail.content || 'Tidak diketahui'}
+*Konten:*\n${result.detail.content || 'Tidak diketahui'}
 
-*Image:*\n${prev || 'Tidak diketahui'}
+*Gambar:*\n${prev || 'Tidak diketahui'}
 
-*Sharing:*\n${result.detail.socialSharing || 'Tidak diketahui'}
+*Membagikan:*\n${result.detail.socialSharing || 'Tidak diketahui'}
 
-*Reactions:*\n${reac || 'Tidak diketahui'}\n`
+*Reaksi:*\n${reac || 'Tidak diketahui'}\n`
 
         let icon = await (await conn.getFile(result.detail.ogImage)).data
         let msg = await generateWAMessageFromContent(m.chat, {

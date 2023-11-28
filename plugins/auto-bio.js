@@ -4,7 +4,7 @@ export async function all(m) {
 	if (new Date() * 1 - setting.status > 1000) {
 		let _uptime = process.uptime() * 1000
 		let uptime = clockString(_uptime);
-		let bio = `🕒 ʙᴏᴛ ʜᴀs ʙᴇᴇɴ ᴀᴄᴛɪᴠᴇ ᴅᴜʀɪɴɢ ${uptime} | 🔎 ᴍᴏᴅᴇ: ${global.opts['self'] ? 'Private' : setting.self ? 'Private' : global.opts['gconly'] ? 'ʜᴀɴʏᴀ ɢʀᴏᴜᴘ' : 'ᴘᴜʙʟɪᴄ'} | 📱ᴠᴇʀsɪᴏɴ 9.0 | 🦊 sᴄʀɪᴘᴛ ʙʏ ʀᴇʏᴢ ʜᴀʏᴀɴᴀsɪ`
+		let bio = `Felicia-MD | V52 | Bot Telah Aktif Selama ${uptime} | Mode ${global.opts['Self'] ? 'Private' : setting.self ? 'Private' : global.opts['GConly'] ? 'Hanya Grup' : 'Public'}`
 
 		await this.updateProfileStatus(bio).catch(_ => _)
 		setting.status = new Date() * 1

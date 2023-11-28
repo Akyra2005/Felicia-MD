@@ -2,14 +2,14 @@ import { File } from "megajs"
 
 let handler = async (m, { conn, args, usedPrefix, text, command }) => {
     try {
-        if (!text) return m.reply(`Contoh:\n${usedPrefix + command} https://mega.nz/file/0FUA2bzb#vSu3Ud9Ft_HDz6zPvfIg_y62vE1qF8EmoYT3kY16zxo`);
+        if (!text) return m.reply(`Format: *${usedPrefix + command} Tautan*`);
         
         const file = File.fromURL(text);
         await file.loadAttributes();
         
-        if (file.size >= 300000000) return m.reply('Error: ukuran file terlalu besar (Ukuran Max: 300MB)');
+        if (file.size >= 300000000) return m.reply('*Maksimal Ukuran File 300MB*');
         
-        m.reply(`*_Mohon tunggu beberapa menit..._*\n${file.name} sedang diunduh...`);
+        m.reply(`*Memproses Permintaan...*`);
         
         const data = await file.downloadBuffer();
         
@@ -29,14 +29,16 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
         } else if (/png/.test(file.name)) {
             await conn.sendMessage(m.chat, { document: data, mimetype: "image/png", filename: `${file.name}.png` }, { quoted: m });
         } else {
-            return m.reply('Error: Format file tidak didukung');
+            return m.reply('*Format File Tidak Didukung*');
         }
     } catch (error) {
-        return m.reply(`Error: ${error.message}`);
+        return m.reply(`*E R R O R*`);
     }
 }
 
 handler.help = ["mega"]
 handler.tags = ["downloader"]
 handler.command = /^(mega)$/i
+handler.register = true
+handler.limit = true
 export default handler

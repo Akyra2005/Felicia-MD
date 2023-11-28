@@ -10,23 +10,24 @@ export async function before(m) {
         throw `
 Level ${user.level} 📊
 *${user.exp - min} / ${xp}*
-Kurang *${max - user.exp}* lagi! ✨
+Kurang *${max - user.exp}* ✨ EXP Lagi
 `.trim()
     }
     let before = user.level * 1
     while (canLevelUp(user.level, user.exp, global.multiplier)) user.level++
     if (before !== user.level) {
-        let teks = `Selamat ${this.getName(m.sender)} naik 🧬level\n.             ${user.role}`
-        let str = `${this.getName(m.sender)} naik 🧬level\n.             ${user.role}
+        let teks = `Selamat *${this.getName(m.sender)}* Telah Naik Level\n.             ${user.role}`
+        let str = `*${this.getName(m.sender)}* Naik Level\n.             ${user.role}
 
-*🎉 C O N G R A T S 🎉*
-*${before}* ➔ *${user.level}* [ *${user.role}* ]
+*CONGRATULATIONS*
+*${before}* ➔ *${user.level}*
 
-• 🧬Level Sebelumnya : ${before}
-• 🧬Level Baru : ${user.level}
-• Pada Jam : ${new Date().toLocaleString('id-ID')}
+- Role: *${user.role}*
+- Sebelum: *Lv. ${before}*
+- Setelah Naik: *Lv. ${user.level}*
+- Pada Pukul: *${new Date().toLocaleString('id-ID')}*
 
-*Note:* _Semakin sering berinteraksi dengan bot Semakin Tinggi level kamu_
+Note:\n*Semakin Sering Berinteraksi Dengan Bot Semakin Tinggi Level Kamu*
 `.trim()
             
             try {

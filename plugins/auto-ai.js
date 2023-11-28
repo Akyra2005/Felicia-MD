@@ -20,7 +20,7 @@ export async function before(m) {
             }
         }
     } catch {
-        await this.reply(m.chat, 'Error occurred.', m);
+        await this.reply(m.chat, '*E R R O R*.', m);
     }
 }
 

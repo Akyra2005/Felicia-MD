@@ -5,22 +5,24 @@ import { apivisit } from './kanghit.js'
 let handler = async (m, { conn, text }) => {
 	if (text.match(/(https:\/\/sfile.mobi\/)/gi)) {
 		let res = await sfileDl(text)
-		if (!res) throw 'Error :/'
-		await m.reply(Object.keys(res).map(v => `*• ${v.capitalize()}:* ${res[v]}`).join('\n') + '\n\n_Sending file..._')
+		if (!res) throw '*E R R O R*'
+		await m.reply(Object.keys(res).map(v => `*• ${v.capitalize()}:* ${res[v]}`).join('\n') + '\n\n*Mengirimkan File*')
 		conn.sendMessage(m.chat, { document: { url: res.download }, fileName: res.filename, mimetype: res.mimetype }, { quoted: m })
 		await apivisit
 	} else if (text) {
 		let [query, page] = text.split`|`
 		let res = await sfileSearch(query, page)
-		if (!res.length) throw `Query "${text}" not found :/`
-		res = res.map((v) => `*Title:* ${v.title}\n*Size:* ${v.size}\n*Link:* ${v.link}`).join`\n\n`
+		if (!res.length) throw `Kata Kunci *"${text}"* Tidak Ditemukan`
+		res = res.map((v) => `*PENGUNDUHAN SFILE*\n\nJudul: *${v.title}*\nUkuran: *${v.size}*\nTautan: *${v.link}*`).join`\n\n`
 		m.reply(res)
 		await apivisit
-	} else throw 'Input Query / Sfile Url!'
+	} else throw 'Format: *.sfile Kata Kunci/URL'
 }
 handler.help = handler.alias = ['sfile'].map(v => v + ' <query / url>')
 handler.tags = ['downloader']
 handler.command = /^(sfile)$/i
+handler.register = true
+handler.limit = true
 export default handler
 
 async function sfileSearch(query, page = 1) {

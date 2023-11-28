@@ -6,7 +6,7 @@ const handler = async (m, { conn, usedPrefix, text, command }) => {
 
   if (!args[0]) {
     const voices = await voiceV1();
-    const message = voices.length === 0 ? '❓ Daftar suara kosong.' : `🔊 *Daftar Suara:*\n${voices.map((voice, index) => `*${index + 1}.* ${voice.name}`).join('\n')}`;
+    const message = voices.length === 0 ? '*Daftar Suara Kosong*' : `Format: *.voice Nomor Daftar Nomor Suara*\nContoh: *.voice 2 2*\n\n*Daftar Suara:*\n${voices.map((voice, index) => `*${index + 1}.* ${voice.name}`).join('\n')}`;
     return await m.reply(message);
   }
 
@@ -15,10 +15,10 @@ const handler = async (m, { conn, usedPrefix, text, command }) => {
     const voices = await voiceV1();
     if (linkIndex >= 0 && linkIndex < voices.length) {
       const listVoices = await ListVoice(voices[linkIndex].link);
-      const message = listVoices.length === 0 ? '❓ Daftar suara kosong.' : `🔊 *Daftar Suara dari Link ${linkIndex + 1}:*\n${listVoices.map((voice, index) => `*${index + 1}.* ${voice.name}`).join('\n')}`;
+      const message = listVoices.length === 0 ? '*Daftar Suara Kosong*' : `Format: *.voice Nomor Daftar Nomor Suara*\nContoh: *.voice 2 2*\n\n*Daftar Suara Dari Link ${linkIndex + 1}:*\n${listVoices.map((voice, index) => `*${index + 1}.* ${voice.name}`).join('\n')}`;
       return await m.reply(message);
     } else {
-      return await m.reply('❌ Indeks link tidak valid. Harap pilih indeks link yang valid.\nContoh penggunaan: *voice 1*');
+      return await m.reply('Format: *.voice Nomor Daftar Nomor Suara*\nContoh: *.voice 2 2*');
     }
   }
 
@@ -30,16 +30,16 @@ const handler = async (m, { conn, usedPrefix, text, command }) => {
       if (voiceIndex >= 0 && voiceIndex < listVoices.length) {
         return await conn.sendFile(m.chat, listVoices[voiceIndex].link, '', m, null, adReply);
       } else {
-        return await m.reply('❌ Indeks suara tidak valid. Harap pilih indeks suara yang valid.\nContoh penggunaan: *voice 1 1*');
+        return await m.reply('Format: *.voice Nomor Daftar Nomor Suara*\nContoh: *.voice 2 2*');
       }
     } else {
-      return await m.reply('❌ Indeks link tidak valid. Harap pilih indeks link yang valid.\nContoh penggunaan: *voice 1 1*');
+      return await m.reply('Format: *.voice Nomor Daftar Nomor Suara*\nContoh: *.voice 2 2*');
     }
   }
 
   if (args.length === 1 && args[0].toLowerCase() === 'v2') {
     const voices = await voiceV2();
-    const message = voices.length === 0 ? '❓ Daftar suara kosong.' : `🔊 *Daftar Suara dari voiceV2():*\n${voices.map((voice, index) => `*${index + 1}.* ${voice.text}`).join('\n')}`;
+    const message = voices.length === 0 ? '*Daftar Suara Kosong*' : `Format: *.voice Nomor Daftar Nomor Suara*\nContoh: *.voice 2 2*\n\n*Daftar Suara Dari Voice V2:*\n${voices.map((voice, index) => `*${index + 1}.* ${voice.text}`).join('\n')}`;
     return await m.reply(message);
   }
 
@@ -49,7 +49,7 @@ const handler = async (m, { conn, usedPrefix, text, command }) => {
     if (voiceIndex >= 0 && voiceIndex < voices.length) {
       return await conn.sendFile(m.chat, voices[voiceIndex].link, '', m, null, adReply);
     } else {
-      return await m.reply('❌ Indeks suara tidak valid. Harap pilih indeks suara yang valid.\nContoh penggunaan: *voice v2 1*');
+      return await m.reply('Format: *.voice Nomor Daftar Nomor Suara*\nContoh: *.voice 2 2*');
     }
   }
 
@@ -71,16 +71,17 @@ const handler = async (m, { conn, usedPrefix, text, command }) => {
     if (soundLink) {
       return await conn.sendFile(m.chat, soundLink, args[1] + '.mp3', '', fakes, null, adReply);
     } else {
-      return await m.reply('❌ Suara v3 tidak valid. Harap pilih suara yang valid.\nContoh penggunaan: *voice v3 ara*');
+      return await m.reply('Format: *.voice Versi Nama Suara*\nContoh: *.voice v3 ara*');
     }
   }
 
-  return await m.reply('❌ Perintah tidak valid. Harap gunakan format yang benar.\nContoh penggunaan: *voice v1*, *voice 1*, *voice 1 1*, *voice v2*, *voice v2 1*, *voice v3 ara*');
+  return await m.reply('Format: *.voice Nomor Daftar/Versi Nomor Suara/Nama Suara*\nContoh: *.voice 2/v3 2/ara*');
 };
 
 handler.help = ['voice'];
 handler.command = ['voice'];
 handler.tags = ['music'];
+handler.register = true
 export default handler;
 
 // Remaining functions unchanged
@@ -104,7 +105,7 @@ async function voiceV1() {
                 link
             }) => name !== '' && link !== undefined);
     } catch (error) {
-        console.error('Error fetching and parsing data:', error);
+        console.error('*E R R O R:* ', error);
         return [];
     }
 }
@@ -127,7 +128,7 @@ async function voiceV2() {
             .get()
             .flat();
     } catch (error) {
-        console.error('Error fetching and parsing data:', error);
+        console.error('*E R R O R:* ', error);
         return [];
     }
 }
@@ -151,7 +152,7 @@ async function ListVoice(url) {
                 quality
             }) => name !== '' && link !== undefined && quality !== '');
     } catch (error) {
-        console.error('Error fetching and parsing data:', error);
+        console.error('*E R R O R:* ', error);
         return [];
     }
 }

@@ -7,7 +7,7 @@ export async function before(m) {
 
   if (chat.autoReply && !isBaileys) {
     if (mtype === 'groupInviteMessage' || text.startsWith('https://chat') || text.startsWith('Buka tautan ini')) {
-      this.reply(m.chat, `✨ *Undang Bot ke Grup* ✨\n💎 7 Hari / Rp 5,000\n💎 30 Hari / Rp 15,000`, m, { mentions: [sender] });
+      this.reply(m.chat, `*UNDANGAN KEGRUP*\n7 Hari = Rp 5,000\n30 Hari = Rp 18,000\nPermanen = Rp 20,000`, m, { mentions: [sender] });
       await this.reply(sender + '@s.whatsapp.net', `Ada yang mau nyulik nih :v \n\nDari: @${sender.split("@")[0]} \n\nPesan: ${text}`, m, { mentions: [sender] });
     }
     
@@ -18,22 +18,13 @@ if (mtype === 'reactionMessage') {
     reactCaption = `🎭 *Terdeteksi* @${name} ${action} ${message}`;
 }
 
-const messages = {
-    reactionMessage: reactCaption,
-    paymentMessage: `💸 *Terdeteksi* @${name} Lagi Meminta Uang`,
-    productMessage: `📦 *Terdeteksi* @${name} Lagi Promosi`,
-    orderMessage: `🛒 *Terdeteksi* @${name} Lagi Meng Order`,
-    pollCreationMessage: `📊 *Terdeteksi* @${name} Lagi Polling`,
-    contactMessage: `📞 *Terdeteksi* @${name} Lagi Promosi Kontak`,
-};
-
 if (mtype in messages) {
     const caption = messages[mtype];
     const mentions = this.parseMention(caption);
     await this.reply(m.chat, caption, m, { mentions });
 }
 
-    const triggerWords = ['aktif', 'wey', 'we', 'hai', 'oi', 'oy', 'p', 'bot'];
+    const triggerWords = ['ooijb', 'kokk', 'ggvg', 'vcgg', 'ffgyy', 'hhg', 'jhh', 'hhjh'];
     const lowerText = text.toLowerCase();
     if (triggerWords.some(word => lowerText === word)) { // Check if m.text exactly matches any word in the triggerWords array
       const apsih = ["Kenapa", "Ada apa", "Naon meng", "Iya, bot disini", "Luwak white coffee passwordnya", "Hmmm, kenapa", "Apasih", "Okey bot sudah aktif", "2, 3 tutup botol", "Bot aktif"];

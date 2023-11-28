@@ -7,16 +7,16 @@ let handler = async (m, {
     command
 }) => {
 
-    if (!text) return m.reply("Input query")
+    if (!text) return m.reply("Format: *.gcwa Kata Kunci*")
     await m.reply(wait)
     try {
         let res = await scrapeData(text)
         let teks = transformData(res).map((item, index) => {
-            return `🔍 *[ RESULT ${index + 1} ]*
+            return `*Hasil Ke - ${index + 1}*
 
-📰 *Title:* ${item.currentTitle} ( ${item.previousTitle} )
-🔗 *Url:* ${item.currentLink}`
-        }).filter(v => v).join("\n\n________________________\n\n")
+Judul: *${item.currentTitle} ( ${item.previousTitle} )*
+URL: *${item.currentLink}*`
+        }).filter(v => v).join("\n\n_______________________________________\n\n")
         await m.reply(teks)
     } catch (e) {
         await m.reply(eror)
@@ -25,6 +25,7 @@ let handler = async (m, {
 handler.help = ["gcwa"].map(v => v + " <apa>")
 handler.command = ["gcwa"]
 handler.tags = ["random"]
+handler.register = true
 export default handler
 
 function transformData(data) {

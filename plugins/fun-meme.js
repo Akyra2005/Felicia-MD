@@ -1,9 +1,9 @@
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn }) => {
-  m.reply('Tunggu sebentar...');
+  m.reply('*Memproses Permintaan...*');
 
-  let apiUrl = 'https://skizo.tech/api/randommeme?apikey=konekocyz';
+  let apiUrl = 'https://skizo.tech/api/randommeme?apikey=charlotte';
   
   let res = await fetch(apiUrl);
   let json = await res.json();
@@ -14,7 +14,7 @@ let handler = async (m, { conn }) => {
     
     await conn.sendFile(m.chat, mediaUrl, '', caption, m);
   } else {
-    throw 'Gagal memuat meme acak';
+    throw '*E R R O R*';
   }
 };
 

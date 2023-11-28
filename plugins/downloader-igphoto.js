@@ -3,11 +3,11 @@
 import axios from 'axios';
 
 const handler = async (m, { conn, command, text, usedPrefix }) => {
-  if (!text) throw `Gunakan: ${usedPrefix}${command} <url>`;
+  if (!text) throw `Format: *${usedPrefix}${command} Tautan*`;
   const req = await igeh(text);
   const { url_list } = req;
   const sender = m.sender.split('@')[0];
-  const message = `Foto berhasil diunduh, request dari ${sender}`;
+  const message = `*Sukses*`;
   
   if (url_list.length > 1) {
     const media = [];
@@ -38,7 +38,8 @@ const handler = async (m, { conn, command, text, usedPrefix }) => {
 handler.help = ['igphoto'].map(v => v + ' <url>');
 handler.tags = ['downloader'];
 handler.command = /^(ig(photo(s)?|p)?|igf(oto)?)$/i;
-
+handler.register = true
+handler.limit = true
 export default handler;
 
 async function igeh(url) {

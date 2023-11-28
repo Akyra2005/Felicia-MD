@@ -15,10 +15,10 @@ export async function before(m) {
             }
       } else if (text.startsWith('off')) {
         this.autogpt.status = false;
-        await this.reply(m.chat, `*Chatgpt OFF*`, m);
+        await this.reply(m.chat, `*Chat-GPT OFF*`, m);
       }
     } catch {
-      await this.reply(m.chat, 'Error occurred.', m);
+      await this.reply(m.chat, '*E R R O R*.', m);
     }
   }
 }
@@ -49,7 +49,7 @@ async function gptGo(query) {
     const inputString = await response.text();
     const chunks = inputString.split("data:");
     let result = "";
-    const doneKeyword = "[DONE]";
+    const doneKeyword = "*Sukses*";
 
     for (let i = 1; i < chunks.length; i++) {
         const chunk = chunks[i].trim();

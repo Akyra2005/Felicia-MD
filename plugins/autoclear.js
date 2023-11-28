@@ -36,9 +36,9 @@ export async function before(m) {
                     const deletedGroupCount = chatIdsToDelete.length;
                     for (const id of chatIdsToDelete) {
                         await this.chatModify({ delete: true, lastMessages: [{ key: m.key, messageTimestamp: m.messageTimestamp }] }, id);
-                        console.log(`Grup dihapus: ${id}`);
+                        console.log(`Grup Dihapus: *${id}*`);
                     }
-                    console.log(`Pembersihan berhasil. Jumlah grup yang dihapus: ${deletedGroupCount}`);
+                    console.log(`Pembersihan Berhasil, Jumlah Grup Yang Dihapus: *${deletedGroupCount}*`);
                     delete this.autoclear[id];
                 }, 57000)
             ];

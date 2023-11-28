@@ -1,5 +1,5 @@
 let handler = async (m, { text, command, usedPrefix }) => {
-    if (!text) throw `Use example ${usedPrefix}${command} i'm alien?`
+    if (!text) throw `Format: *${usedPrefix}${command} Pertanyaan*`
     m.reply(`"${[
         'Mungkin suatu hari',
         'Tidak juga',

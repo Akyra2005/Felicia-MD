@@ -2,23 +2,23 @@ import fetch from 'node-fetch'
 
 let handler = async(m, { conn, text }) => {
 
-if (!text) throw `*MASUKAN NAMA LAGU*`
+if (!text) throw `Format: *.spotify Kata Kunci*`
 
 try {
 
-let res = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=${lolkeysapi}&query=${text}`)
+let res = await fetch(`https://api.lolhuman.xyz/api/spotifysearch?apikey=haikalgans&query=${text}`)
 
 let json = await res.json()
 
 let { link } = json.result[0]
 
-let res2 = await fetch(`https://api.lolhuman.xyz/api/spotify?apikey=${lolkeysapi}&url=${link}`)
+let res2 = await fetch(`https://api.lolhuman.xyz/api/spotify?apikey=haikalgans&url=${link}`)
 
 let json2 = await res2.json()
 
 let { thumbnail, title, artists } = json2.result
 
-let spotifyi = `❒═════❬ 𝐒𝐏𝐎𝐓𝐈𝐅𝐘 ❭═════╾❒\n┬\n├‣✨ *TITLE:* ${title}\n┴\n┬\n├‣🗣️ *ARTIST:* ${artists}\n┴\n┬\n├‣🌐 *𝚄𝚁𝙻*: ${link}\n┴\n┬\n├‣💚 *SEARCH URL:* ${json2.result.link}\n┴`
+let spotifyi = `*PENGUNDUHAN SPOTIFY*\n\nJudul: *${title}*\nArtis: *${artists}*\nURL: *${link}*\nPencarian URL: *${json2.result.link}*\n`
 
 conn.sendFile(m.chat, thumbnail, 'error.jpg', spotifyi, m)
 
@@ -28,12 +28,13 @@ if (!aa) return conn.sendFile(m.chat, json2.result.link, 'error.mp3', null, m, f
 
 } catch {
 
-throw '* 𝙴𝚁𝚁𝙾𝚁*'
+throw '*E R R O R*'
 
 }}
 
 handler.command = /^(spotify)$/i
 handler.help = ['spotify'].map(v => v + ' <query>')
-
+handler.register = true
+handler.limit = true
 handler.tags = ['downloader']
 export default handler

@@ -6,7 +6,7 @@ import { youtubedl, youtubedlv2 } from '@bochilteam/scraper'
 
 var handler = async (m, { conn, command, args, text, usedPrefix }) => {
 
-if (!text) throw `*⚠️ INGRESE EL NOMBRE DE UNA CANCIÓN*\n\n❕ EJEMPLO\n*${usedPrefix + command}* Another love`
+if (!text) throw `Format: *.play Kata Kunci*`
 conn.sendReact(m.chat, "☑️", m.key)
 try {
 const yt_play = await search(args.join(" "))
@@ -15,17 +15,14 @@ if (command === 'play') {
 additionalText = 'AUDIO'
 } else if (command === 'play2') {
 additionalText = 'VIDEO'}
-let texto1 = `*∘ 📩 ᴅᴇsᴄʀɪᴘᴛɪᴏɴ*
-${yt_play[0].title}
-*∘ ⏰ ᴅᴜʀᴀsɪ* 
-${secondString(yt_play[0].duration.seconds)}
-*∘ 👤 ᴀᴜᴛʜᴏʀ*
-${yt_play[0].author.name}
-*∘ 📍 sᴜᴍʙᴇʀ*
-${yt_play[0].author.url}
-*∘ 📎 ʟɪɴᴋɴʏᴀ*
-${yt_play[0].url}
-*⌚ ᴛᴜɴɢɢᴜ ᴀᴜᴅɪᴏ sᴇᴅᴀɴɢ ᴅɪ ᴋɪʀɪᴍ...*`.trim()
+let texto1 = `*PENGUNDUHAN AUDIO*\n
+Judul: *${yt_play[0].title}*
+Durasi: *${secondString(yt_play[0].duration.seconds)}*
+Pengarang: *${yt_play[0].author.name}*
+Sumber: *${yt_play[0].author.url}*
+Tautan: *${yt_play[0].url}*
+
+*Audio Sedang Dikirimkan...*`.trim()
 await conn.sendMessage(m.chat, {
 text: texto1,
 contextInfo: {
@@ -85,7 +82,7 @@ renderLargerThumbnail: true
 try {
 let lolhuman = await fetch(`https://api.lolhuman.xyz/api/ytaudio2?apikey=${lolkey}&url=${yt_play[0].url}`)    
 let lolh = await lolhuman.json()
-let n = lolh.result.title || 'error'
+let n = lolh.result.title || '*E R R O R*'
 await conn.sendMessage(m.chat, { audio: { url: lolh.result.link}, mimetype: 'audio/mpeg', contextInfo: {
 externalAdReply: {
 title: n,
@@ -122,29 +119,30 @@ const yt = await youtubedl(v).catch(async _ => await youtubedlv2(v))
 const dl_url = await yt.video[q].download()
 const ttl = await yt.title
 const size = await yt.video[q].fileSizeH
-await await conn.sendMessage(m.chat, { video: { url: dl_url }, fileName: `${ttl}.mp4`, mimetype: 'video/mp4', caption: `*📑 TÍTULO*: ${ttl}\n*📍 PESO:* ${size}`, thumbnail: await fetch(yt.thumbnail) }, { quoted: m })
+await await conn.sendMessage(m.chat, { video: { url: dl_url }, fileName: `${ttl}.mp4`, mimetype: 'video/mp4', caption: `Judul: *${ttl}*\nUkuran: *${size}*`, thumbnail: await fetch(yt.thumbnail) }, { quoted: m })
 } catch {   
 try {  
 let mediaa = await ytMp4(yt_play[0].url)
-await conn.sendMessage(m.chat, { video: { url: mediaa.result }, fileName: `error.mp4`, caption: `_CuriosityBot-MD_`, thumbnail: mediaa.thumb, mimetype: 'video/mp4' }, { quoted: m })     
+await conn.sendMessage(m.chat, { video: { url: mediaa.result }, fileName: `error.mp4`, caption: `*Felicia-MD*`, thumbnail: mediaa.thumb, mimetype: 'video/mp4' }, { quoted: m })     
 } catch {  
 try {
 let lolhuman = await fetch(`https://api.lolhuman.xyz/api/ytvideo2?apikey=${lolkey}&url=${yt_play[0].url}`)    
 let lolh = await lolhuman.json()
-let n = lolh.result.title || 'error'
+let n = lolh.result.title || '*E R R O R*'
 let n2 = lolh.result.link
 let n3 = lolh.result.size
 let n4 = lolh.result.thumbnail
-await conn.sendMessage(m.chat, { video: { url: n2 }, fileName: `${n}.mp4`, mimetype: 'video/mp4', caption: `▢ 𝚃𝙸𝚃𝚄𝙻𝙾: ${n}\n▢ 𝙿𝙴𝚂𝙾 𝙳𝙴𝙻 𝚅𝙸𝙳𝙴𝙾: ${n3}`, thumbnail: await fetch(n4) }, { quoted: m })
+await conn.sendMessage(m.chat, { video: { url: n2 }, fileName: `${n}.mp4`, mimetype: 'video/mp4', caption: `Judul: *${n}*\nUkuran: *${n3}*`, thumbnail: await fetch(n4) }, { quoted: m })
 } catch {
-await conn.reply(m.chat, '*⚠️ GAK ADA*', m)}}}    
+await conn.reply(m.chat, '*Tidak Ditemukan*', m)}}}    
 }} catch {
-throw "*⚠️ ERROR*"}
+throw "*E R R O R*"}
 }
 handler.help = ['play', 'play2']
 handler.tags = ['downloader']
 handler.command = /^play2?$/i
-
+handler.register = true
+handler.limit = true
 export default handler
 
 async function search(query, options = {}) {

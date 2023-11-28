@@ -6,7 +6,7 @@ import axios from 'axios'
 import cheerio from 'cheerio'
 
 let handler = async(m, { conn, text, args, command, usedPrefix}) => {
-if (!text) throw 'Mana Kak Linknya?'
+if (!text) throw 'Format: *tiktokimg Tautan*'
 
 let url = `https://dlpanda.com/id?url=${text}&token=G7eRpMaa`
 

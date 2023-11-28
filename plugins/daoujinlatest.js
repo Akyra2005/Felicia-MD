@@ -8,5 +8,6 @@ let handler = async(m, { conn, text }) => {
 handler.help = ['doujinlatest']
 handler.tags = ['anime']
 handler.command = /^(doujinlatest)$/i
+handler.register = true
 handler.limit = true
 export default handler

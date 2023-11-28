@@ -17,7 +17,7 @@ let img = await q.download?.()
 if (!img) return
 stiker = await sticker(img, false, packname, author)
 } else if (/video/g.test(mime)) {
-if (/video/g.test(mime)) if ((q.msg || q).seconds > 8) return await this.reply(m.chat, '*VIDEO TIDAK BOLEH LEBIH DARI 7 DETIK*', m)
+if (/video/g.test(mime)) if ((q.msg || q).seconds > 8) return await this.reply(m.chat, '*Maksimal Durasi Video 7 Detik*', m)
 let img = await q.download()
 if (!img) return
 stiker = await sticker(img, false, packname, author)

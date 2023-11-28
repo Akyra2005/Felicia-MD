@@ -7,4 +7,5 @@ m.reply(f)
 handler.help = ['cerpen']
 handler.tags = ['cerpen']
 handler.command = /^(cerpen)$/i;
+handler.register = true
 export default handler;

@@ -3,16 +3,15 @@ const features = ["antiBot", "antiFoto", "antiVideo", "antiAudio", "antiCall", "
 const activeFeatures = ["antiDelete", "detect", "getmsg", "lastAnime", "latestNews", "welcome"];
 const result = features.map((f, i) => {
   const isActive = activeFeatures.includes(f) ? !global.db.data.chats[m.chat][f] : global.db.data.chats[m.chat][f];
-  return `*${(i + 1).toString().padEnd(2)}.* ${f.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()).padEnd(18)} ${isActive ? "✅ On" : "❌ Off"}`;
+  return `${isActive ? "🟢" : "🔴"}  —  *${(i + 1).toString().padEnd(2)}.* ${f.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()).padEnd(18)}`;
 }).join('\n');
 
-const  featureStatus = `*# Feature*            *Mode*\n${"-".repeat(33)}\n${result}`;
-  const listEnab = `🛠️ *DAFTAR FITUR*
+const  featureStatus = `${result}`;
+  const listEnab = `*HUKUM GRUP*\n\n🟢 = Aktif\n🔴 = Nonaktif\n\n*Daftar Fitur:*
 
 ${featureStatus}
 
-*📝 CARA MENGGUNAKAN:*
-→ ${usedPrefix + command} [nomor]`;
+Format: *${usedPrefix + command} Nomor*\nContoh: *${usedPrefix + command} 27*`;
 
   let isEnable = !/false|disable|(turn)?off|0/i.test(command);
   let chat = global.db.data.chats[m.chat];
@@ -26,34 +25,34 @@ ${featureStatus}
   let type = features[index];
 
   if (!m.isGroup && !isOwner) {
-    conn.reply(m.chat, "Maaf, fitur ini hanya bisa digunakan di dalam grup oleh pemilik bot.", m);
+    conn.reply(m.chat, "*Fitur Khusus Untuk Pengembang (Owner)*", m);
     throw false;
   }
 
   if (m.isGroup && !isAdmin) {
-    conn.reply(m.chat, "Maaf, fitur ini hanya bisa digunakan oleh admin grup.", m);
+    conn.reply(m.chat, "*Fitur Khusus Untuk Admin Grup*", m);
     throw false;
   }
 if (["antiDelete", "detect", "getmsg", "lastAnime", "latestNews", "welcome"].includes(type)) {
   chat[type] = !isEnable;
-  conn.reply(m.chat, `Feature *${type.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}* mode *${isEnable ? 'ON ✅' : 'OFF ❌'}*`, m);
+  conn.reply(m.chat, `Fitur *${type.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}* Mode *${isEnable ? 'Aktif' : 'Nonaktif'}*`, m);
   } else {
   if (["autoChat"].includes(type)) {
   conn.autochat = conn.autochat ? conn.autochat : {}
   conn.autochat.status = isEnable;
-  conn.reply(m.chat, `Feature *${type.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}* mode *${isEnable ? 'ON ✅' : 'OFF ❌'}*`, m);
+  conn.reply(m.chat, `Fitur *${type.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}* Mode *${isEnable ? 'Aktif' : 'Nonaktif'}*`, m);
   } else if (["autoGpt"].includes(type)) {
   conn.autogpt = conn.autogpt ? conn.autogpt : {}
   conn.autogpt.status = isEnable;
-  conn.reply(m.chat, `Feature *${type.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}* mode *${isEnable ? 'ON ✅' : 'OFF ❌'}*`, m);
+  conn.reply(m.chat, `Fitur *${type.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}* Mode *${isEnable ? 'Aktif' : 'Nonaktif'}*`, m);
   } else {
   chat[type] = isEnable;
-  conn.reply(m.chat, `Feature *${type.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}* mode *${isEnable ? 'ON ✅' : 'OFF ❌'}*`, m);
+  conn.reply(m.chat, `Fitur *${type.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}* Mode *${isEnable ? 'Aktif' : 'Nonaktif'}*`, m);
   }
   }
 };
 handler.help = ["en", "dis"].map(v => v + "able <nomor>");
 handler.tags = ["group", "owner"];
 handler.command = /^((en|dis)able|(tru|fals)e|(turn)?o(n|ff)|[01])$/i;
-
+handler.register = true
 export default handler;

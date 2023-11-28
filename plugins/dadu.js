@@ -1,6 +1,6 @@
 import { createSticker } from "wa-sticker-formatter"
 let handler = async (m, { conn }) => {
-await m.reply(wait)
+await m.reply(`*Sedang Mengocok...*`)
 let diceImage = rollDice()
 let stiker = await createSticker(diceImage, { pack: packname, author: m.name })
             await conn.sendFile(m.chat, stiker, "dadu.webp", "", m)

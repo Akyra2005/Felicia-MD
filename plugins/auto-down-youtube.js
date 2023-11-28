@@ -21,16 +21,16 @@ await m.reply(wait);
         const size = await yt.video[q].fileSizeH
         
 
-        if (size.split("MB")[0] >= limit) return m.reply(` ≡  *Youtube Downloader*\n\n▢ *⚖️Size* : ${size}\n▢ *🎞️quality* : ${q}\n\n▢ _The file exceeds the download limit_ *+${limit} MB*`)
+        if (size.split("MB")[0] >= limit) return m.reply(`*PENGUNDUHAN YOUTUBE*\n\nUkuran: *${size}*\nKualitas: *${q}*\n\nFile Melebihi Batas Unduhan *+${limit} MB*`)
         let captvid = `
- ≡  *Youtube Downloader*
+*PENGUNDUHAN YOUTUBE*
   
-▢ *📌Títle* : ${title}
-▢ *📟 Ext* : mp4
-▢ *🎞️Quality* : ${q}
-▢ *⚖️Size* : ${size}
+Judul: *${title}*
+Format: *mp4*
+Kualitas: *${q}*
+Ukuran: *${size}*
 `.trim()
-let dls = "Downloading audio succes"
+let dls = "*Mengunduh Audio Berhasil*"
 let doc = {
                 video: {
                     url: dl_url

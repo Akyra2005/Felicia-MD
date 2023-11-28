@@ -11,7 +11,7 @@ export async function before(m, { usedPrefix, isAdmin, isBotAdmin, isOwner }) {
     const isAutoJoin = isJoin.exec(m.text)
 
     if (chat.autoJoin && isAutoJoin) {
-        await this.reply(m.chat, `*Group link join detect!*`, m)
+        await this.reply(m.chat, `*Tautan Grup Bergabung Terdeteksi*`, m)
             }
     return !0
 }

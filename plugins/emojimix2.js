@@ -9,12 +9,14 @@ for (let res of anu.results) {
 let stiker = await sticker(false, res.url, global.packname, global.author)
 conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
 }
-} else throw `Ex: ${usedPrefix+command} ${decodeURI('%F0%9F%92%80')}+${decodeURI('%F0%9F%92%80')}`
+} else throw `Contoh: *${usedPrefix+command} ${decodeURI('%F0%9F%92%80')}+${decodeURI('%F0%9F%92%80')}*`
 
 }
 handler.help = ['emojimix2'].map(v => v + ' emot1|emot2>')
 handler.tags = ['misc']
 handler.command = /^(emojimix2)$/i
+handler.register = true
+handler.limit = true
 export default handler
 
 const fetchJson = (url, options) => new Promise(async (resolve, reject) => {

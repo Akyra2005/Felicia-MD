@@ -16,10 +16,10 @@ await m.reply(wait);
 try {
                 const videoX = await Tiktok(matches[0]);
                 
-    let XctCap = `${spas}*[ T I K T O K ]*
+    let XctCap = `${spas}*PENGUNDUHAN TIKTOK*
 
 ${getUserProfileInfo(videoX)}
-\n${spas}*[ V1 ]*`
+\n${spas}*Versi 1.0*`
                 await conn.sendFile(m.chat, videoX.download.nowm || giflogo , "", XctCap, m)
             } catch (e) {
                 try {
@@ -30,42 +30,42 @@ ${getUserProfileInfo(videoX)}
     console.log(`Downloaded ${p.progress}% (${p.downloaded}/${p.total} bytes)`);
   },
 });
-    let PrevCap = `${spas}*[ T I K T O K ]*
+    let PrevCap = `${spas}*PENGUNDUHAN TIKTOK*
 
 ${getVideoInfo(video)}
-\n${spas}*[ V2 ]*`
+\n${spas}*Versi 2.0*`
                 await conn.sendFile(m.chat, buffer || giflogo , "", PrevCap, m)
             } catch (e) {
                 try {
                 let Fg = await fg.tiktok(matches[0])
                 
-    let FgCap = `${spas}*[ T I K T O K ]*
+    let FgCap = `${spas}*PENGUNDUHAN TIKTOK*
 
-*Nickname:* ${Fg.nickname}
-*Unique ID:* ${Fg.unique_id}
-*Download Count:* ${Fg.download_count}
-*Duration:* ${Fg.duration}
-*Description:* ${Fg.description}\n${spas}*[ V3 ]*`
+Nama Panggilan: *${Fg.nickname}*
+Identitas Unik: *${Fg.unique_id}*
+Unduh Hitungan: *${Fg.download_count}*
+Durasi: *${Fg.duration}*
+Deskripsi: *${Fg.description}*\n${spas}*Versi 3.0*`
                 await conn.sendFile(m.chat, Fg.play || Fg.hdplay , "", FgCap, m)
             } catch (e) {
                 try {
                 const god = await axios.get("https://godownloader.com/api/tiktok-no-watermark-free?url=" + matches[0] + "&key=godownloader.com")
                 
-                let GoCap = `${spas}*[ T I K T O K ]*
+                let GoCap = `${spas}*PENGUNDUHAN TIKTOK*
 
-*Desc:* ${god.data.desc}
-\n${spas}*[ V4 ]*`
+Deskripsi: *${god.data.desc}*
+\n${spas}*Versi 4.0*`
                 await conn.sendFile(m.chat, god.data.video_no_watermark, "", GoCap, m)
             } catch (e) {
                 try {
                 let Scrap = await Tiktokdl(matches[0]);
                 
                 let S = Scrap.result
-                let ScrapCap = `${spas}*「 T I K T O K 」*
+                let ScrapCap = `${spas}*PENGUNDUHAN TIKTOK*
 
-*📛 Author:* ${S.author.nickname}
-*📒 Title:* ${S.desc}
-\n${spas}*[ V5 ]*`
+Pengarang: *${S.author.nickname}*
+Deskripsi: *${S.desc}*
+\n${spas}*Versi 5.0*`
                 await conn.sendFile(m.chat, S.download.nowm, "", ScrapCap, m)
             } catch (e) {
                 throw eror
@@ -166,15 +166,15 @@ async function Tiktokdl(url) {
 }
 
 function getVideoInfo(video) {
-    return `Video description: ${video.description}\n` +
-           `🔗 URL: ${video.url}\n` +
-           `👤 Author: ${video.author}\n` +
-           `❤️ Likes: ${video.likes}\n` +
-           `💬 Comments: ${video.comments}\n` +
-           `🔁 Shares: ${video.shares}\n` +
-           `▶️ Plays: ${video.playCount}\n` +
-           `🎵 Music: ${video.music.name} - ${video.music.author}\n` +
-           `🖼️ Thumbnail URL: ${video.previewImageUrl}`;
+    return `Deskripsi Vdeo: *${video.description}*\n` +
+           `URL: *${video.url}*\n` +
+           `Pengarang: *${video.author}*\n` +
+           `Suka: *${video.likes}*\n` +
+           `Komentar: *${video.comments}*\n` +
+           `Bagikan: *${video.shares}*\n` +
+           `Dimainkan: *${video.playCount}*\n` +
+           `Musik: *${video.music.name} - ${video.music.author}*\n` +
+           `URL Gambar Mini: *${video.previewImageUrl}*`;
 }
 
 function getEmojiCount(count) {
@@ -186,11 +186,11 @@ function getUserProfileInfo(tiktokData) {
   const user = tiktokData.author;
   const stats = tiktokData.statistics;
   
-  return `User Profile:
-🆔 Unique ID: ${user.uid}
-👤 Nickname: ${user.nickname}
-💬 Description: ${tiktokData.desc}
-👥 Comments: ${getEmojiCount(stats.comment_count)}
-👍 Likes: ${getEmojiCount(stats.digg_count)}
-🎵 Music: ${tiktokData.download.music_info.title}`;
+  return `Profil Pengguna:
+Identitas Unik: *${user.uid}*
+Nama Panggilan: *${user.nickname}*
+Deskripsi: *${tiktokData.desc}*
+Komentar: *${getEmojiCount(stats.comment_count)}*
+Suka: *${getEmojiCount(stats.digg_count)}*
+Musik: *${tiktokData.download.music_info.title}*`;
 }

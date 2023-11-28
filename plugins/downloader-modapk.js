@@ -15,26 +15,26 @@ let handler = async (m, {
     ]
 
     let [feature, inputs, inputs_, inputs__, inputs___] = text.split("|")
-    if (!lister.includes(feature)) return m.reply("*Example:*\n.playmods search|vpn\n\n*Pilih type yg ada*\n" + lister.map((v, index) => "  ○ " + v).join("\n"))
+    if (!lister.includes(feature)) return m.reply("Format: *.modapk search|kata kunci/tautan*\n\nDaftar Tipe:\n" + lister.map((v, index) => "- " + v).join("\n"))
 
     if (lister.includes(feature)) {
 
         if (feature == "search") {
-            if (!inputs) return m.reply("Input query link\nExample: .playmods search|vpn")
+            if (!inputs) return m.reply("Format: *.modapk search|kata kunci*")
             await m.reply(wait)
             try {
                 let res = await searchApp(inputs)
                 let teks = res.map((item, index) => {
-                    return `🔍 [ RESULT ${index + 1} ]
+                    return `*Hasil Ke-${index + 1}*
 
-🔗 *link:* ${item.link}
-📌 *title:* ${item.title}
-📋 *menu:* ${item.menu}
-📝 *detail:* ${item.detail.replace(/\n/g, ' ')}
-🖼️ *image:* ${item.image}
-⬇️ *downloadText:* ${item.downloadText}
+Tautan: *${item.link}*
+Judul: *${item.title}*
+Menu: *${item.menu}*
+Detail: *${item.detail.replace(/\n/g, ' ')}*
+Gambar: *${item.image}*
+Teks Unduhan: *${item.downloadText}*
 `
-                }).filter(v => v).join("\n\n________________________\n\n")
+                }).filter(v => v).join("\n\n_______________________________________\n\n")
                 await m.reply(teks)
             } catch (e) {
                 await m.reply(eror)
@@ -42,22 +42,22 @@ let handler = async (m, {
         }
 
         if (feature == "app") {
-            if (!inputs) return m.reply("Input query link\nExample: .playmods app|link")
+            if (!inputs) return m.reply("Format: *.modapk app|tautan*")
             try {
                 let item = await getApp(inputs)
-                let cap = `🔍 [ RESULT ]
+                let cap = `*PENCARIAN MOD APK
 
-📌 *Title:* ${item.title}
-🖼️ *Image:* ${item.image}
-👤 *Name:* ${item.name}
-⭐ *Score:* ${item.score}
-📅 *Edisi:* ${item.edisi}
-📏 *Size:* ${item.size}
-🎨 *Create:* ${item.create}
-🔗 *Link:* ${item.link}
-📝 *Detail:* ${item.detail}
-📷 *Screenshots:* \n${generateList(item.screenshots)}
-🔍 *Describe:* \n${addNewline(item.describe)}
+Judul: *${item.title}*
+Gambar: *${item.image}*
+Nama: *${item.name}*
+Skor: *${item.score}*
+Edisi: *${item.edisi}*
+Ukuran: *${item.size}*
+Dibuat: *${item.create}*
+Tautan: *${item.link}*
+Detail: *${item.detail}*
+Tangkap Layar: \n*${generateList(item.screenshots)}*
+Penjelasan: \n*${addNewline(item.describe)}*
 `
                 await conn.sendFile(m.chat, item.screenshots[0], "", cap, m)
                 await conn.sendFile(m.chat, item.link, item.title, null, m, true, {
@@ -72,6 +72,8 @@ let handler = async (m, {
 }
 handler.help = handler.command = ['modapk']
 handler.tags = ['downloader']
+handler.register = true
+handler.limit = true
 export default handler
 
 /* New Line */

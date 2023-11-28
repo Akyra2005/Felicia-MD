@@ -17,7 +17,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 	} finally {
 	  let username = conn.getName(who)
 	  let str = `
-  • Name: ${username}, \n• Tag: @${who.replace(/@.+/, '')}, ${status ? '\n• Bio: ' + status : ''}, \n• Set At Bio: ${(setAt && moment(setAt).format("DD MMMM YYYY")) || "Unknown"}, \n• Number: ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')},\n• Link: https://wa.me/${who.split`@`[0]}`.trim()
+*PROFIL*\n\nNama: *${username}*\nTag: *@${who.replace(/@.+/, '')}* ${status ? '\nBio: *' + status : '*'}\nBio Diatur: *${(setAt && moment(setAt).format("DD MMMM YYYY")) || "Unknown"}*\nNomor: *${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}*\nTautan: *https://wa.me/${who.split`@`[0]}*`.trim()
   
 	  let mentionedJid = [who]
 	  conn.sendFile(m.chat, pp, 'pp.jpeg', str, m, false, { contextInfo: { mentionedJid }})
@@ -27,5 +27,5 @@ let handler = async (m, { conn, usedPrefix }) => {
   handler.tags = ['tools','misc']
   handler.command = /^(profile3)$/i
   handler.group = true
-  
+  handler.register = true
   export default handler

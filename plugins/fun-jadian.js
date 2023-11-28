@@ -7,7 +7,7 @@ let ps = groupMetadata.participants.map(v => v.id)
     let b
     do b = ps.getRandom()
     while (b === a)
-    let caption = `*Love Message...* ${toM(a)} ❤️ ${toM(b)}\n\n${await buchin.getRandom()}`
+    let caption = `*${toM(a)} ❤️ ${toM(b)}*\n\n${await buchin.getRandom()}`
     await conn.reply(m.chat, caption, m, { mentions: conn.parseMention(caption) })
     }
     
@@ -15,14 +15,14 @@ if (command == 'jodohku') {
 let ps = groupMetadata.participants.map(v => v.id)
     let a = ps.getRandom()
     let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-    let caption = `*Love Message...* ${toM(who)} ❤️ ${toM(a)}\n\n${await buchin.getRandom()}`
+    let caption = `*${toM(who)} ❤️ ${toM(a)}*\n\n${await buchin.getRandom()}`
     await conn.reply(m.chat, caption, m, { mentions: conn.parseMention(caption) })
     }
     
 }
 handler.tags = ['main', 'fun']
 handler.command = handler.help = ['jodohnya', 'jodohku']
-
+handler.register = true
 handler.group = true
 
 export default handler

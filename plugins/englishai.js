@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 let handler = async (m, { text, usedPrefix, command }) => {
   
   if (!text && !(m.quoted && m.quoted.text)) {
-    throw `Please provide some text or quote a message to get a response.`;
+    throw `Format: *.englishai Keywords*`;
   }
 
   if (!text && m.quoted && m.quoted.text) {
@@ -24,12 +24,13 @@ let handler = async (m, { text, usedPrefix, command }) => {
 
   } catch (error) {
     console.error('Error:', error);
-    throw `*ERROR*`;
+    throw `*E R R O R*`;
   }
 };
 handler.help = ['englishai']
-handler.tags = ['openai']
+handler.tags = ['ai']
 handler.command = ['englishai'];
-
+handler.register = true
+handler.limit = true
 export default handler;
 

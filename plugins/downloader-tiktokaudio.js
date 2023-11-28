@@ -2,19 +2,13 @@ import fetch from 'node-fetch'
 import axios from "axios"
 let handler = async (m, { conn, args }) => {
 let spas = "                "
-  if (!args[0]) throw 'Uhm...url nya mana?'
+  if (!args[0]) throw 'Format: *.tiktokaudio Tautan*'
   try {
  let chat = global.db.data.chats[m.chat]
     let url = `https://api.lolhuman.xyz/api/tiktokwm?apikey=${global.lolkey}&url=${args[0]}`
 let txt = `🚀 *Link:* ${await(await axios.get(`https://tinyurl.com/api-create.php?url=${args[0]}`)).data}` 
-    await conn.sendFile(m.chat, `https://api.lolhuman.xyz/api/tiktokwm?apikey=${global.lolkey}&url=${args[0]}`, 'tiktokaudio.mp3', `
-┏┉━━━━━━━━━━━❏
-┆ *YOUTUBE MP3*
-├┈┈┈┈┈┈┈┈┈┈┈
-┆• *Judul:* 
-│• *Type:* MP3
-┆• *📥 Ukuran File:* 
-└❏
+    await conn.sendFile(m.chat, `https://api.lolhuman.xyz/api/tiktokwm?apikey=${global.lolkey}&url=${args[0]}`, 'Felicia-MD.mp3', `
+*PENGUNDUHAN TIKTOK AUDIO*
 `.trim(), m, null, {
    document: { url: `https://api.lolhuman.xyz/api/tiktokwm?apikey=${global.lolkey}&url=${args[0]}`}, mimetype: 'audio/mpeg', fileName: 'tiktok.mp3', conntextInfo: {
         externalAdReply: {
@@ -49,7 +43,7 @@ ${spas}*[ A U D I O ]*
 *Author:* ${cer.music.author}
 *Duration:* ${cer.music.durationFormatted}
 `
-await conn.sendFile(m.chat, cer.music.play_url, 'tiktokaudio.mp3', cap, m, null, {
+await conn.sendFile(m.chat, cer.music.play_url, 'Di Unduh Oleh Felicia-MD.mp3', cap, m, null, {
    document: { url: cer.music.play_url }, mimetype: 'audio/mpeg', fileName: 'tiktok.mp3', conntextInfo: {
         externalAdReply: {
             title: '▶︎ ━━━━━━━•────────────────── ', 
@@ -65,7 +59,7 @@ await conn.sendFile(m.chat, cer.music.play_url, 'tiktokaudio.mp3', cap, m, null,
 }
 handler.tags = ['downloader']
 handler.command = /^(tiktokaudio)$/i
-
+handler.register = true
 handler.limit = true
 
 export default handler

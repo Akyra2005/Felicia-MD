@@ -5,7 +5,7 @@ let handler = async (m, {
     command,
     args
 }) => {
-    let query = usedPrefix + command + " cf|40"
+    let query = "*Konversi Satuan*\n\nFormat: *.convert tipe|jumlah*\nContoh: *.convert cf|50*\n\n*Daftar Tipe:*\ncf - Celcius Ke Fahrenheit\nfc - Fahrenheit Ke Celcius\nck - Celcius Ke Kelvin\nkc - Kelvin Ke Celcius\nrc - Rankine Ke Celcius\ncr - Celcius Ke Rankine\nrf - Rankine Ke Celcius\nfr - Fahrenheit Ke Rankine\nfk - Fahrenheit Ke Kelvin\nkf - Kelvin Ke Fahrenheit\nkm - Kilometer Ke Miles\nmk - Miles Ke Kilometer\ntg - Ton Ke Gram\ngk - Gram Ke Kilogram\nkg - Kilogram Ke Gram\ngt - Gram Ke Tons\nkgt - Kilogram Ke Tons\ngmg - Gram Ke Miligram\ntmg - Ton Ke Miligram\ntkg - Ton Ke Kilogram\nmgt - Miligram Ke Ton\nkgmg - Kilogram Ke Miligram\nmgg - Miligram Ke Gram\nmgkg - Miligram Ke Kilogram"
     let text
     if (args.length >= 1) {
         text = args.slice(0).join(" ")
@@ -20,6 +20,8 @@ let handler = async (m, {
 }
 handler.tags = ["tools"]
 handler.command = handler.help = ["convert"]
+handler.register = true
+handler.limit = true
 export default handler
 
     function Calculate(type, val){

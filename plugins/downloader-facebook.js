@@ -26,7 +26,7 @@ import fetch from 'node-fetch'
 
 var handler = async (m, { args }) => {
     if (!args[0]) {
-        throw 'Input *URL*';
+        throw 'Format: *.fb Tautan*';
     }
     
     try {
@@ -48,8 +48,8 @@ var handler = async (m, { args }) => {
         const hdMedia = firstUrls[0][0];
         const sdMedia = firstUrls[1][0];
         
-        const hdCaption = `Video Kualitas HD\nLink HD: ${hdMedia}`;
-        const sdCaption = `Video Kualitas SD\nLink SD: ${sdMedia}`;
+        const hdCaption = `Video Kualitas HD: *${hdMedia}*`;
+        const sdCaption = `Video Kualitas SD: *${sdMedia}*`;
         
         m.reply(wait);
 
@@ -72,13 +72,13 @@ var handler = async (m, { args }) => {
            //     conn.sendFile(m.chat, await sdFile.buffer(), 'video_sd.mp4', sdCaption, m);
             } catch {
                 // If both HD and SD videos don't exist, send an error message
-                const cap = 'Gagal mengunduh video FB';
+                const cap = '*Gagal Mengunduh Video FB*';
                 conn.sendFile(m.chat, 'facebook.mp4', 'facebook.mp4', cap, m);
             }
         }
     } catch {
         // Jika terjadi kesalahan pada tahap lainnya, kirim pesan kesalahan
-        const cap = 'Gagal mengunduh video FB';
+        const cap = '*Gagal Mengunduh Video FB*';
         conn.sendFile(m.chat, 'facebook.mp4', 'facebook.mp4', cap, m);
     }
 }

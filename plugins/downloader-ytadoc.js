@@ -4,7 +4,7 @@ import {
 } from '@bochilteam/scraper'
 
 var handler = async (m, { conn, args }) => {
-  if (!args[0]) throw '?'
+  if (!args[0]) throw 'Format: *.ytmp3doc Tautan*'
   m.reply(wait)
   let q = '128kbps'
   let v = args[0]
@@ -17,9 +17,10 @@ var handler = async (m, { conn, args }) => {
 
   // Tampilkan informasi file beserta thumbnail
   const info = `
-• Judul: ${ttl}
-• Ukuran: ${size}
-• Link YouTube: ${v}`
+*PENGUNDUHAN YOUTUBE MP3*\n
+Judul: *${ttl}*
+Ukuran: *${size}*
+Tautan YouTube: *${v}*`
   await conn.sendMessage(m.chat, { 
     document: { url: dl_url }, 
     mimetype: 'audio/mpeg', 
@@ -33,4 +34,5 @@ handler.tags = ['downloader']
 handler.help = ['ytmp3','yta','youtubemp3']
 handler.command = /^(ytadoc|ytmp3doc|)$/i
 handler.limit = true
+handler.register = true
 export default handler

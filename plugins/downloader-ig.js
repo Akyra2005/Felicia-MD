@@ -2,7 +2,7 @@ import axios from 'axios'
 
 let handler = async (m, { conn, text }) => {
   if (!text) {
-    return conn.reply(m.chat, 'Silakan masukkan URL Instagram setelah perintah.', m)
+    return conn.reply(m.chat, 'Format: *.ig Tautan*', m)
   }
 
   let url = `https://vihangayt.me/download/instagram?url=${encodeURIComponent(text)}`
@@ -11,7 +11,7 @@ let handler = async (m, { conn, text }) => {
     // Fetch the Instagram reel using Axios
     const response = await axios.get(url)
     if (!response.data.status) {
-      throw new Error(`Error fetching data from ${url}`)
+      throw new Error(`*E R R O R*`)
     }
 
     const data = response.data.data
@@ -22,11 +22,11 @@ let handler = async (m, { conn, text }) => {
       // Send the file with type as caption
       await conn.sendFile(m.chat, videoURL, 'instagram_reel.mp4', caption, m)
     } else {
-      conn.reply(m.chat, 'Tidak dapat menemukan video Instagram.', m)
+      conn.reply(m.chat, '*Tidak Dapat Menemukan Video*', m)
     }
   } catch (error) {
     console.error(error)
-    conn.reply(m.chat, 'Terjadi kesalahan saat mengambil reel Instagram.', m)
+    conn.reply(m.chat, '*Terjadi Kesalahan Saat Mengunduh Reel Instagram*.', m)
   }
 }
 
@@ -35,5 +35,5 @@ handler.tags = ['downloader']
 handler.help = ['instagram','ig']
 handler.premium = false
 handler.limit = true
-
+handler.register = true
 export default handler
