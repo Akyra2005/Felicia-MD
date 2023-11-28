@@ -1,9 +1,9 @@
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, args }) => {
-  if (!args[0]) throw 'Masukkan kata kunci untuk pencarian Steam.';
+  if (!args[0]) throw 'Format: *.steam Nama Permainan*';
   
-  m.reply('Tunggu sebentar...');
+  m.reply('*Memproses Permintaan...*');
   
   let query = encodeURIComponent(args[0]);
   let apiUrl = `https://ll--lasdanon.repl.co/api/search/steam?q=${query}&apikey=Onlasdan`;
@@ -14,22 +14,23 @@ let handler = async (m, { conn, args }) => {
   if (json.status === 'Success' && json.data && json.data.length > 0) {
     let game = json.data[0];
     let message = `
-Nama Game: ${game.judul}
-Harga: ${game.harga}
-Tanggal Rilis: ${game.rilis}
-Rating: ${game.rating}
-Link: ${game.link}
+*PENCARIAN STEAM*\n
+Nama Permainan: *${game.judul}*
+Harga: *${game.harga}*
+Tanggal Rilis: *${game.rilis}*
+Peringkat: *${game.rating}*
+Tautan: *${game.link}*
     `;
     
     await conn.sendFile(m.chat, game.img, 'preview.jpg', message, m);
   } else {
-    throw 'Tidak ada hasil pencarian yang ditemukan';
+    throw '*Tidak Ditemukan*';
   }
 };
 
 handler.help = ['steam'];
-handler.tags = ['internet];
+handler.tags = ['internet'];
 handler.command = /^(steam)$/i;
 handler.limit = true;
-
+handler.register = true
 export default handler;

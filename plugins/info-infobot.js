@@ -51,26 +51,23 @@ let handler = async (m, { conn, usedPrefix, __dirname, text, command }) => {
   let old = performance.now()
   let neww = performance.now()
   let speed = neww - old
-  let capti = `🤖 ɴᴀᴍᴇ: ${_package.name}
-🧩 ᴠᴇʀsɪᴏɴ: ${_package.version}
-📚 ʟɪʙʀᴀʀʏ: ${_package.description}
+  let capti = `*INFORMASI BOT*
+Nama: *Felicia-MD*
+Versi: *52*
+Rilis: *25 November 2021*
+Uptime: *${uptime}*
+Database: *${totalreg}*
 
-⏳ ᴜᴩᴛɪᴍᴇ: ${uptime}
-📈 ᴅᴀᴛᴀʙᴀsᴇ: ${totalreg}
+*INFORMASI SERVER*
+Ping: *${speed} MS*
+Ram: *${format(totalmem() - freemem())} / ${format(totalmem())}*
 
-📅 ᴅᴀᴛᴇ: ${date}
-⌚ ᴛɪᴍᴇ: ${time} ﹙ɢᴍᴛ +5:30﹚
-
-💻 sᴇʀᴠᴇʀ ɪɴғᴏ :
-⮕ ᴩɪɴɢ: ${speed} ᴍs
-⮕ ʀᴀᴍ: ${format(totalmem() - freemem())} / ${format(totalmem())}
-
-💬 ᴡʜᴀᴛsᴀᴩᴩ sᴛᴀᴛᴜs :
-⮕ ${groupsIn.length} - Group Chats
-⮕ ${groupsIn.length} - Groups Joined
-⮕ ${groupsIn.length - groupsIn.length} - Groups Left
-⮕ ${chats.length - groupsIn.length} - Personal Chats
-⮕ ${chats.length} - Total Chats
+*STATUS WHATSAPP*
+*${groupsIn.length}* - Obrolan Grup
+*${groupsIn.length}* - Grup Bergabung
+*${groupsIn.length - groupsIn.length}* - Keluar Grup
+*${chats.length - groupsIn.length}* - Obrolan Pribadi
+*${chats.length}* - Total Obrolan
 `.trim()
 
     await m.reply(capti)
@@ -79,7 +76,7 @@ let handler = async (m, { conn, usedPrefix, __dirname, text, command }) => {
 handler.help = ['botinfo']
 handler.tags = ['info']
 handler.command = /^(bot(info)?|infobot)$/i
-
+handler.register = true
 export default handler
 
 function clockString(ms) {

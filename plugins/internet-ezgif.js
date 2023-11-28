@@ -16,21 +16,21 @@ let handler = async (m, {
     ]
 
     let [feature, inputs, inputs_, inputs__, inputs___] = text.split("|")
-    if (!lister.includes(feature)) return m.reply("*Example:*\n.ezgif search|vpn\n\n*Pilih type yg ada*\n" + lister.map((v, index) => "  ○ " + v).join("\n"))
+    if (!lister.includes(feature)) return m.reply("Format: *.ezgif tipe|tautan*\n\n*Daftar Tipe:*\n" + lister.map((v, index) => "  ○ " + v).join("\n"))
 
     if (lister.includes(feature)) {
 
         if (feature == "videotogif") {
-            if (!inputs) return m.reply("Input query link\nExample: .ezgif videotogif|link")
+            if (!inputs) return m.reply("Format: *.ezgif videotogif|tautan*")
             try {
                 let item = await VideoToGif(inputs)
-                let cap = `🔍 [ RESULT ]
+                let cap = `*HASIL VIDEOTOGIF*
 
-📁 *fileSize:* ${item.fileSize}
-📏 *width:* ${item.width}
-📐 *height:* ${item.height}
-🖼️ *frames:* ${item.frames}
-📄 *fileType:* ${item.fileType}
+Ukuran File: *${item.fileSize}*
+Lebar: *${item.width}*
+Tinggi: *${item.height}*
+Bingkai: *${item.frames}*
+Tipe File: *${item.fileType}*
 
  ${item.outputImageUrl}
 `
@@ -51,12 +51,12 @@ let handler = async (m, {
         }
         
         if (feature == "giftovideo") {
-            if (!inputs) return m.reply("Input query link\nExample: .ezgif videotogif|link")
+            if (!inputs) return m.reply("Format: *.ezgif giftovideo|tautan*")
             try {
                 let item = await GifToVideo(inputs)
-                let cap = `🔍 [ RESULT ]
+                let cap = `*HASIL GIFTOVIDEO*
 
-📁 *fileSize:* ${item.fileSize}
+Ukuran File: *${item.fileSize}*
  ${item.outputImageUrl}
 `
                 let urlgif = item.outputImageUrl
@@ -74,12 +74,12 @@ let handler = async (m, {
         }
         
         if (feature == "optijpeg") {
-            if (!inputs) return m.reply("Input query link\nExample: .ezgif videotogif|link")
+            if (!inputs) return m.reply("Format: *.ezgif optijpeg|tautan*")
             try {
                 let item = await OptiJpeg(inputs, inputs_, inputs__)
-                let cap = `🔍 [ RESULT ]
+                let cap = `*HASIL OPTIJPEG*
 
-📁 *fileSize:* ${item.fileSize}
+Ukuran File: *${item.fileSize}*
  ${item.outputImageUrl}
 `
                 let urlgif = item.outputImageUrl
@@ -101,6 +101,8 @@ let handler = async (m, {
 handler.help = ["ezgif"]
 handler.tags = ["internet"]
 handler.command = /^(ezgif)$/i
+handler.register = true
+handler.limit = true
 export default handler
 
 /* New Line */

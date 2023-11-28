@@ -28,12 +28,12 @@ var list_input = [
 "yana",
 "ziva"
 ]
-var salah_input = "*Example:*\n" + usedPrefix + command + " santuy \n*[ Daftar Asupans ]*\n\n" + await ArrClean(list_input)
+var salah_input = "Format: *" + usedPrefix + command + " alcakenya*\n\n*Daftar Anime:*\n" + await ArrClean(list_input)
 if (!list_input.includes(text)) throw salah_input
 try {
     let res = 'https://api.zeeoneofc.my.id/api/asupan/' + text + '?apikey=dhmDlD5x'
     m.reply(wait)
-    conn.sendFile(m.chat, res, 'result', "Result Asupan: *" + text.toUpperCase() + "*", m)
+    conn.sendFile(m.chat, res, 'result', "Hasil Dari *" + text.toUpperCase() + "*", m)
     } catch (e) {
     throw eror
     }

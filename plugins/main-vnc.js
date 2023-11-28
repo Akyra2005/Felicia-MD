@@ -23,14 +23,16 @@ let handler = async (m, { conn, isBotAdmin }) => {
         return conn.sendMessage(m.chat, { delete: m.quoted.vM.key });
       }
     } else {
-      throw "❌ Media type tidak valid!";
+      throw "*Tidak Mendukung Tipe Media Tersebut*";
     }
   } catch {
-    throw 'Terjadi kesalahan';
+    throw '*Balas Media, Jangan Dengan Keterangan*';
   }
 };
 
 handler.help = ['vnc *[reply media]*'];
 handler.tags = ['main'];
 handler.command = /^(vnc)$/i;
+handler.register = true
+handler.limit = true
 export default handler;

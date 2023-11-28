@@ -6,7 +6,7 @@ const groups = Object.keys(conn.chats)
   if (args.length === 0) {
     // Menampilkan daftar nama grup dengan urutan
     const list = groups.map((group, index) => `*${index + 1}.* ${group.subject}`).join('\n');
-    conn.reply(m.chat, `📋 *Daftar Nama Grup dengan Urutan:*\n\n${list}`, m);
+    conn.reply(m.chat, `📋 *Daftar Nama Grup Dengan Urutan:*\n\n${list}`, m);
   } else if (args.length === 1 && /^\d+$/.test(args[0])) {
     const index = parseInt(args[0]) - 1;
     if (index >= 0 && index < groups.length) {
@@ -50,9 +50,10 @@ const groups = Object.keys(conn.chats)
 };
 
 handler.menu = ['gcl'];
-handler.tags = ['group'];
+handler.tags = ['owner'];
 handler.command = /^(gcl)$/i;
-
+handler.owner = true
+handler.limit = true
 export default handler;
 
 function formatTime(timestamp) {

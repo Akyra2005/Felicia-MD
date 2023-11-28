@@ -12,7 +12,7 @@ let ps = groupMetadata.participants.map(v => v.id)
         mentions: [a, b]
     })
     */
-    let caption = `*Love Message...* ${toM(a)} ❤️ ${toM(b)}\n${await ktnmbk.getRandom()}`
+    let caption = `*Pesan Cinta...*\n\n*${toM(a)} ❤️ ${toM(b)}*\n*${await ktnmbk.getRandom()}*`
     await conn.reply(m.chat, caption, m, { mentions: conn.parseMention(caption) })
     }
 	if(isNaN(text)) {
@@ -21,10 +21,10 @@ let ps = groupMetadata.participants.map(v => v.id)
   	var number = text
   }
 
-  if(!text && !m.quoted) return conn.reply(m.chat, `Atau Masukan nomor, tag target atau balas pesan target`, m)
+  if(!text && !m.quoted) return conn.reply(m.chat, `Atau masukan nomor, tag target atau balas pesan target`, m)
   
-  if(isNaN(number)) return conn.reply(m.chat, `_*Nomor tidak valid.*_`, m)
-  if(number.length > 15) return conn.reply(m.chat, `*_Format Tidak Valid.*_`, m)
+  if(isNaN(number)) return conn.reply(m.chat, `*Nomor Tidak Valid*`, m)
+  if(number.length > 15) return conn.reply(m.chat, `*Format Tidak Valid*`, m)
   try {
 		if(text) {
 			var user = number + '@s.whatsapp.net'
@@ -36,29 +36,29 @@ let ps = groupMetadata.participants.map(v => v.id)
 		} catch (e) {
   } finally {
     let users = m.isGroup ? participants.find(v => areJidsSameUser(v.jid == user)) : {}
-    if(!users) return conn.reply(m.chat, `*_Target atau Nomor tidak ditemukan, mungkin sudah keluar atau bukan anggota grup ini.*_`, m)
-    if(user === m.sender) return conn.reply(m.chat, `_*Tidak bisa berpacaran dengan diri sendiri.*_`, m)
-    if(user === conn.user.jid) return conn.reply(m.chat, `_*Tidak bisa berpacaran dengan saya. :')*_`, m)
+    if(!users) return conn.reply(m.chat, `*Target Atau Nomor Tidak Ditemukan, Mungkin Sudah Keluar Atau Bukan Anggota Grup Ini*`, m)
+    if(user === m.sender) return conn.reply(m.chat, `*Tidak Bisa Berpacaran Dengan Diri Sendiri*`, m)
+    if(user === conn.user.jid) return conn.reply(m.chat, `*Saya Dilarang Pacaran*`, m)
 
-    if (typeof global.db.data.users[user] == "undefined") return m.reply("_*Orang yang anda tag tidak terdaftar di dalam database.*_")
+    if (typeof global.db.data.users[user] == "undefined") return m.reply("*Orang Yang Anda Tag Tidak Terdaftar Di Dalam Database*")
     var pacar = global.db.data.users[user].pasangan
     var spac = global.db.data.users[m.sender].pasangan
     if(global.db.data.users[m.sender].pasangan != "" && global.db.data.users[global.db.data.users[m.sender].pasangan].pasangan == m.sender && global.db.data.users[m.sender].pasangan != user){
-      conn.reply(m.chat, `Kamu sudah berpacaran dengan @${global.db.data.users[m.sender].pasangan.split('@')[0]}\n\nSilahkan putus dulu (ketik .putus untuk memutuskan hubungan) untuk menembak @${user.split('@')[0]}\n\nBtw yang setia dikit banget!`, m , { contextInfo: { mentionedJid: [user, global.db.data.users[m.sender].pasangan]}})
+      conn.reply(m.chat, `*Kamu Sudah Berpacaran Dengan @${global.db.data.users[m.sender].pasangan.split('@')[0]}*\n\nSilahkan Putus Dulu, Format *.putus* Untuk Memutuskan Hubungan`, m , { contextInfo: { mentionedJid: [user, global.db.data.users[m.sender].pasangan]}})
     }else if(global.db.data.users[user].pasangan != ""){
       if (pacar){
         if (m.sender == pacar && global.db.data.users[m.sender].pasangan == user) return conn.reply(m.chat, `Anda sudah berpacaran dengan ${spac.split('@')[0]}`, m , { contextInfo: { mentionedJid: [spac]}})
-        conn.reply(m.chat, `Maaf, @${user.split('@')[0]} sudah berpacaran dengan @${pacar.split('@')[0]}\nSilahkan cari pasangan lain!`, m , { contextInfo: { mentionedJid: [user, pacar]}})
+        conn.reply(m.chat, `*@${user.split('@')[0]} Sudah Berpacaran Dengan @${pacar.split('@')[0]}*`, m , { contextInfo: { mentionedJid: [user, pacar]}})
       }else{
         global.db.data.users[m.sender].pasangan = user
-        conn.reply(m.chat, `${await ktnmbk.getRandom()}\n\nAnda baru saja mengajak @${user.split('@')[0]} berpacaran\n\nSilahkan menunggu jawaban darinya!\n\nKetik *${usedPrefix}terima @user* untuk menerima\n*${usedPrefix}tolak @user untuk menolak*`, m , { contextInfo: { mentionedJid: [user]}})
+        conn.reply(m.chat, `*${await ktnmbk.getRandom()}*\n\n*Anda Baru Saja Mengajak @${user.split('@')[0]} Berpacaran*\n*Silahkan Menunggu Jawaban Darinya*\n\nFormat: *${usedPrefix}terima @Tag* Untuk Menerima\nFormat: *${usedPrefix}tolak @Tag* Untuk Menolak`, m , { contextInfo: { mentionedJid: [user]}})
       }
     }else if (global.db.data.users[user].pasangan == m.sender){
       global.db.data.users[m.sender].pasangan = user
-      conn.reply(m.chat, `Selamat anda resmi berpacaran dengan @${user.split('@')[0]}\n\nSemoga langgeng dan bahagia selalu 🥳🥳🥳`, m , { contextInfo: { mentionedJid: [user]}})
+      conn.reply(m.chat, `*Selamat Anda Resmi Berpacaran Dengan @${user.split('@')[0]}*\n\n*Semoga Langgeng Dan Bahagia Selalu:)*`, m , { contextInfo: { mentionedJid: [user]}})
     }else {
       global.db.data.users[m.sender].pasangan = user
-      conn.reply(m.chat, `${await ktnmbk.getRandom()}\n\nKamu baru saja mengajak @${user.split('@')[0]} berpacaran\n\nSilahkan menunggu jawaban darinya!\n\nKetik *${usedPrefix}terima @user* untuk menerima\n*${usedPrefix}tolak @user untuk menolak*`, m , { contextInfo: { mentionedJid: [user]}})
+      conn.reply(m.chat, `${await ktnmbk.getRandom()}\n\n*Kamu Baru Saja Mengajak @${user.split('@')[0]} Berpacaran*\n*Silahkan Menunggu Jawaban Darinya*\n\nFormat: *${usedPrefix}terima @Tag* Untuk Menerima\nFormat: *${usedPrefix}tolak @Tag* Untuk Menolak`, m , { contextInfo: { mentionedJid: [user]}})
     }
 	}	
 }
@@ -66,7 +66,7 @@ handler.help = ['tembak *@tag*']
 handler.tags = ['jadian']
 handler.command = /^(tembak|jadian)$/i
 handler.group = true
-
+handler.register = true
 export default handler
 
 

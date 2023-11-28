@@ -1,22 +1,30 @@
-import fetch from 'node-fetch'
-let handler = async(m, { conn, text, usedPrefix, command }) => {
-let pp = await conn.profilePictureUrl(m.chat).catch(_ => null)
+import fetch from 'node-fetch';
 
-let krtu = `0ཻུ۪۪ꦽꦼ̷⸙‹•══════════════♡᭄
-│       「 Kartu Intro 」
+let handler = async (m, { conn, usedPrefix, command }) => {
+    try {
+        let pp = await conn.profilePictureUrl(m.chat);
+
+        let kartuIntro = `
+╭─「 KARTU INTRO 」
 │ Nama     : 
 │ Gender   : 
 │ Umur      : 
 │ Hobby    : 
 │ Kelas      : 
 │ Asal         : 
-|  Status     : 
-╰═════ꪶ ཻུ۪۪ꦽꦼ̷⸙ ━ ━ ━ ━ ꪶ ཻུ۪۪ꦽꦼ̷⸙
-`
-m.reply(krtu)
-}
-  handler.help = ['intro']
-  handler.tags = ['main']
-  handler.command = /^(intro)$/i
-  
-  export default handler
+│ Status     : 
+╰─•══════════════♡
+        `;
+
+        m.reply(kartuIntro);
+    } catch (error) {
+        console.error(error);
+        m.reply('*E R R O R*');
+    }
+};
+
+handler.help = ['intro'];
+handler.tags = ['main'];
+handler.command = /^(intro)$/i;
+
+export default handler;

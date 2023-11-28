@@ -4,34 +4,34 @@ import cheerio from 'cheerio'
 import { webp2png } from '../lib/webp2mp4.js'
 let handler = async (m, { conn, args, usedPrefix, text, command }) => {
   try {
-    if (!text) throw 'Input Text';
+    if (!text) throw 'Format: *.pixai Kata Kunci*';
 
     const res = await getImages(encodeURIComponent(text), 1);
     if (!res.artworks || !res.artworks.edges || res.artworks.edges.length === 0) {
-      throw 'No results found for the given text.';
+      throw '*Tidak Ditemukan*';
     }
 
     const output = await apiResponse(res.artworks.edges[0].node.id);
     const outputImg = imageUrlFromResponse(output);
 
     if (!output.artwork) {
-      throw 'Error fetching artwork information.';
+      throw '*E R R O R*';
     }
 
     let teks = `
-🔍 *[ RESULT ]*
+*HASIL PIXAI*
 
-📚 Title: ${output.artwork.title}
-🔗 Author: ${output.artwork.author.displayName}
-📝 Created At: ${output.artwork.createdAt}
-👥 Follower Count: ${output.artwork.author.followerCount}
-👁️ Views: ${output.artwork.views}
+Judul: *${output.artwork.title}*
+Pengarang: *${output.artwork.author.displayName}*
+Dibuat Pada: *${output.artwork.createdAt}*
+Pengikut: *${output.artwork.author.followerCount}*
+Penonton: *${output.artwork.views}*
 `;
 
     conn.sendFile(m.chat, await webp2png((await conn.getFile(outputImg[0])).data), '', teks, m);
   } catch (error) {
     console.error(error);
-    conn.reply(m.chat, `Error: ${error}`, m);
+    conn.reply(m.chat, `*E R R O R*`, m);
   }
 };
 

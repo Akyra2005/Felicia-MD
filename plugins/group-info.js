@@ -4,30 +4,30 @@ let handler = async (m, { conn, participants, groupMetadata }) => {
     const groupAdmins = participants.filter(p => p.admin)
     const listAdmin = groupAdmins.map((v, i) => `${i + 1}. @${v.id.split('@')[0]}`).join('\n')
     const owner = groupMetadata.owner || groupAdmins.find(p => p.admin === 'superadmin')?.id || m.chat.split`-`[0] + '@s.whatsapp.net'
-    let text = `*「 Group Information 」*\n
-*ID:* 
-${groupMetadata.id}
-*Name:* 
-${groupMetadata.subject}
-*Description:* 
-${groupMetadata.desc?.toString() || 'unknown'}
-*Total Members:*
-${participants.length} Members
-*Group Owner:* 
-@${owner.split('@')[0]}
-*Group Admins:*
-${listAdmin}
-*Group Settings:*
+    let text = `*INFORMASI GRUP*\n
+ID:
+*${groupMetadata.id}*
+Nama:
+*${groupMetadata.subject}*
+Deskripsi: 
+*${groupMetadata.desc?.toString() || 'Unknown'}*
+Total Anggota:
+*${participants.length} Anggota*
+Pemilik Grup:
+*@${owner.split('@')[0]}*
+Admin Grup:
+*${listAdmin}*
+Pengaturan Grup:
 ${isBanned ? '✅' : '❌'} Banned
 ${welcome ? '✅' : '❌'} Welcome
 ${detect ? '✅' : '❌'} Detect
 ${del ? '❌' : '✅'} Anti Delete
 ${antiLink ? '✅' : '❌'} Anti Link
-*Message Settings:*
-Welcome: ${sWelcome}
-Bye: ${sBye}
-Promote: ${sPromote}
-Demote: ${sDemote}
+Pengaturan Pesan:
+Welcome: *${sWelcome}*
+Bye: *${sBye}*
+Promote: *${sPromote}*
+Demote:* ${sDemote}*
 `.trim()
     conn.sendFile(m.chat, pp, 'pp.jpg', text, m, false, { mentions: [...groupAdmins.map(v => v.id), owner] })
 }

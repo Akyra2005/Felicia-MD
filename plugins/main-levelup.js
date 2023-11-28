@@ -7,21 +7,20 @@ let handler = async (m, { conn }) => {
     if (!canLevelUp(user.level, user.exp, global.multiplier)) {
         let { min, xp, max } = xpRange(user.level, global.multiplier)
         throw `
-Level *${user.level} (${user.exp - min}/${xp})*
-Kurang *${max - user.exp}* lagi!
+📊 Level *${user.level} (${user.exp - min}/${xp})*
+Kurang *${max - user.exp} ✨ XP* Lagi
 `.trim()
     }
     let before = user.level * 1
     while (canLevelUp(user.level, user.exp, global.multiplier)) user.level++
     if (before !== user.level) {
-        let teks = `Selamat ${conn.getName(m.sender)} naik 🧬level`
+        let teks = `*Selamat ${conn.getName(m.sender)} Naik Level 👏*`
         let str = `
-${teks} 
-• 🧬Level Sebelumnya : ${before}
-• 🧬Level Baru : ${user.level}
-• 🧬Role Kamu : ${user.role}
-• Pada Jam : ${new Date().toLocaleString('id-ID')}
-*_Semakin sering berinteraksi dengan bot Semakin Tinggi level kamu_*
+${teks}\n
+*${before} > ${user.level}*
+🏅 Role Kamu: *${user.role}*\n
+*Pada Pukul ${new Date().toLocaleString('id-ID')}*\n
+*.leaderboard* - Untuk Mengecek Papan Peringkat
 `.trim()
         try {
             const img = await levelup(teks, user.level)
@@ -34,7 +33,7 @@ ${teks}
 
 handler.help = ['levelup']
 handler.tags = ['xp']
-
+handler.register = true
 handler.command = /^level(|up)$/i
 
 export default handler

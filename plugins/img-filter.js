@@ -7,11 +7,9 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
     let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || q.mediaType || ''
     let effect = text.trim().toLowerCase()
-  if (!effects.includes(effect)) throw `
-*Usage:* ${usedPrefix}stickmaker <effectname>
-*Example:* ${usedPrefix}stickmaker jail
+  if (!effects.includes(effect)) throw `Format: *.filter Efek*
 
-*List Effect:*
+*Daftar Efek:*
 ${effects.map(effect => `_> ${effect}_`).join('\n')}
 `.trim()
     if (/image/g.test(mime) && !/webp/g.test(mime)) {
@@ -26,12 +24,14 @@ ${effects.map(effect => `_> ${effect}_`).join('\n')}
     		console.log(e)
     	}
     } else {
-    	m.reply(`Kirim Gambar Dengan Caption *${usedPrefix + command}* Atau Tag Gambar Yang Sudah Dikirim`)
+    	m.reply(`*Balas Media Dengan Perintah ${usedPrefix + command}*`)
     }
 }
 
 handler.help = ['filter']
 handler.tags = ['img']
 handler.command = /^(filter)$/i
+handler.register = true
+handler.limit = true
 
 export default handler

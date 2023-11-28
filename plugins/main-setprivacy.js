@@ -106,7 +106,7 @@ const handler = async (m, {
 };
 
 handler.help = ['setprivacy'];
-handler.tags = ['main'];
+handler.tags = ['owner'];
 handler.command = /^(setprivacy)$/i;
-
+handler.owner = true
 export default handler;

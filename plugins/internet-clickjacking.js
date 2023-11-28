@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 
 const handler = async (m, { conn, text, command, usedPrefix }) => {
   if (!text) {
-    throw `_*Masukkan URL yang ingin Anda cek!*_\n_*perintah:*_ ${usedPrefix + command} https://tr.deployers.repl.co\n*_atau_*\n${usedPrefix + command} tr.deployers.repl.co`;
+    throw `Format: *${usedPrefix + command} URL*`;
   }
 
   const url = `https://tr.deployers.repl.co/cj?u=${encodeURIComponent(text)}`;
@@ -10,7 +10,7 @@ const handler = async (m, { conn, text, command, usedPrefix }) => {
   try {
     const response = await fetch(url);
     if (!response.ok) {
-      throw 'Failed to fetch data.';
+      throw '*E R R O R*';
     }
 
     const data = await response.json();
@@ -18,14 +18,13 @@ const handler = async (m, { conn, text, command, usedPrefix }) => {
 
     // Reply to the user with all the fetched data
     const replyText = `
-Server Scanning at: ${data.current_time}
-URL: ${data.url}
-IP Address: ${data.ip_address}
-Real IP Address: ${data.real_ip_address}
-Result Message: *_${data.result_message}_*
-Donasi: https://tr.deployers.repl.co/images or Dana ${mySecret}
+Dipindai Pada: *${data.current_time}*
+URL: *${data.url}*
+Alamat IP: *${data.ip_address}*
+Alamat IP Asli: *${data.real_ip_address}*
+Hasil Pesan: *${data.result_message}*
 \n
-===================
+===============================
 ${data.how_to_protect}
     `;
 //     const replyText = `
@@ -45,12 +44,13 @@ ${data.how_to_protect}
   } catch (error) {
     console.error('Error:', error);
     // Reply to the user with an error message (optional):
-    await conn.reply(m.chat, 'Failed to fetch data.', m);
+    await conn.reply(m.chat, '*E R R O R*', m);
   }
 };
 
 handler.command = /^(cj|clickjacking|clickjack|clickjacker)?$/i;
 handler.tags = ['internet'];
 handler.help = ['cj <URL>'];
-
+handler.register = true
+handler.limit = true
 export default handler;

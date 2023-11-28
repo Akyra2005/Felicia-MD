@@ -1,22 +1,25 @@
 import { kbbi } from '@bochilteam/scraper'
 
 let handler = async (m, { text, usedPrefix, command }) => {
-    if (!text) throw `Example use ${usedPrefix}${command} halo`
+    if (!text) throw `Format: *${usedPrefix}${command} Kata Kunci*`
     const res = await kbbi(text)
     m.reply(`
 ${res.map(v => `
-*📌${v.title}*
+*${v.title}*
 
 ${v.means.map(v => '- ' + v).join('\n`')}
 `).join('\n').trim()}
 
-Note:
-p = Partikel: kelas kata yang meliputi kata depan, kata sambung, kata seru, kata sandang, ucapan salam
-n = Nomina: kata benda
+*Catatan:*
+P = Partikel: 
+*Kelas Kata Yang Meliputi Kata Depan, Kata Sambung, Kata Seru, Kata Sandang, Ucapan Salam*
+N = Nomina: 
+*Kata Benda*
 `.trim())
 }
 handler.help = ['kbbi <teks>']
 handler.tags = ['internet']
 handler.command = /^kbbi$/i
-
+handler.register = true
+handler.limit = true
 export default handler

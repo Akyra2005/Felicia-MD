@@ -49,12 +49,12 @@ var list_input = [
 "yuzuki",
 "zoro"
 ]
-var salah_input = "*Example:*\n" + usedPrefix + command + " vietnam \n*[ Daftar animes ]*\n\n" + await ArrClean(list_input)
+var salah_input = "Format: *" + usedPrefix + command + " anna*\n\n*Daftar Anime:*\n" + await ArrClean(list_input)
 if (!list_input.includes(text)) throw salah_input
 try {
     let res = 'https://api.zeeoneofc.my.id/api/anime/' + text + '?apikey=dhmDlD5x'
     m.reply(wait)
-    conn.sendFile(m.chat, res, 'result', "Result Anime: *" + text.toUpperCase() + "*", m)
+    conn.sendFile(m.chat, res, 'result', "Hasil Dari *" + text.toUpperCase() + "*", m)
     } catch (e) {
     throw eror
     }
@@ -62,7 +62,8 @@ try {
 handler.help = ["animes"]
 handler.tags = ['internet']
 handler.command = ["animes"]
-
+handler.register = true
+handler.limit = true
 export default handler
 
 function ArrClean(str) {

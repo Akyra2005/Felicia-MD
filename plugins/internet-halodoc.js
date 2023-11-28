@@ -15,26 +15,26 @@ let handler = async (m, {
     ]
 
     let [feature, inputs, inputs_, inputs__, inputs___] = text.split("|")
-    if (!lister.includes(feature)) return m.reply("*Example:*\n.halodoc search|vpn\n\n*Pilih type yg ada*\n" + lister.map((v, index) => "  ○ " + v).join("\n"))
+    if (!lister.includes(feature)) return m.reply("Format: *.halodoc tipe|nama penyakit*\n\n*Daftar Tipe:*\n" + lister.map((v, index) => "  ○ " + v).join("\n"))
 
     if (lister.includes(feature)) {
 
         if (feature == "search") {
-            if (!inputs) return m.reply("Input query link\nExample: .halodoc search|vpn")
+            if (!inputs) return m.reply("Format: *.halodoc search|nama penyakit*")
             await m.reply(wait)
             try {
                 let res = await searchHalodoc(inputs)
                 let teks = res.map((item, index) => {
-                    return `🔍 *[ RESULT ${index + 1} ]*
+                    return `*Hasil Ke ${index + 1}*
 
-  📚 Title: ${item.title}
-  🔗 Article Link: ${item.articleLink}
-  🖼️ Image Src: ${item.imageSrc}
-  ⚕️ Health Link: ${item.healthLink}
-  🏥 Health Title: ${item.healthTitle}
-  📝 Description: ${item.description}
+Judul: *${item.title}*
+Tautan Artikel: *${item.articleLink}*
+Gambar Src: *${item.imageSrc}*
+Tautan Kesehatan: *${item.healthLink}*
+Judul Kesehatan: *${item.healthTitle}*
+Deskripsi: *${item.description}*
   `
-                }).filter(v => v).join("\n\n________________________\n\n")
+                }).filter(v => v).join("\n\n______________________________________\n\n")
                 await m.reply(teks)
             } catch (e) {
                 await m.reply(eror)
@@ -42,18 +42,18 @@ let handler = async (m, {
         }
 
         if (feature == "detail") {
-            if (!inputs) return m.reply("Input query link\nExample: .halodoc app|link")
+            if (!inputs) return m.reply("Format: *.halodoc detail|nama penyakit*")
             await m.reply(wait)
             try {
                 let item = await getDetails(inputs)
-                let cap = `🔍 *[ RESULT ]*
+                let cap = `*HASIL HALODOC*
 
-📚 Title: ${item.title}
-📝 Content: ${item.content}
-⌛ Times: ${item.times}
-✍️ Author: ${item.author}
-🔗 Link: ${item.link}
-🖼️ Image: ${item.image}
+Nama: *${item.title}*
+Konten: *${item.content}*
+Waktu: *${item.times}*
+Pengarang: *${item.author}*
+Tautan: *${item.link}*
+Gambar: *${item.image}*
 `
                 await conn.sendFile(m.chat, item.image || logo, "", cap, m)
                 
@@ -66,6 +66,8 @@ let handler = async (m, {
 handler.help = ["halodoc"]
 handler.tags = ["internet"]
 handler.command = /^(halodoc)$/i
+handler.register = true
+handler.limit = true
 export default handler
 
 /* New Line */

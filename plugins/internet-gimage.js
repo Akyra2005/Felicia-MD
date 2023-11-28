@@ -1,12 +1,12 @@
 import { googleImage } from '@bochilteam/scraper'
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) throw `Use example ${usedPrefix}${command} Minecraft`
+    if (!text) throw `Format: *${usedPrefix}${command} Kata Kunci*`
     const res = await googleImage(text)
     let image = res.getRandom()
     let link = image
     let caption = `*${htki} GOOGLE IMAGE ${htka}*
-🔎 *Result:* ${text}
-🌎 *Source:* Google
+Hasil: *${text}*
+Sumber: *Google*
 
 🔗 *link:* ${link}
 `

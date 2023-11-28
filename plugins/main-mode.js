@@ -22,9 +22,10 @@ extendedTextMessage:{
 }}, {})
 }
 handler.help = ['mode']
-handler.tags = ['main']
+handler.tags = ['owner']
 handler.customPrefix = /^(mode)$/i 
 handler.command = new RegExp
+handler.owner = true
 handler.limit = false
 
 export default handler

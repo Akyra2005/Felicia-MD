@@ -3,7 +3,7 @@ import cheerio from 'cheerio'
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
 	let [from, to] = text.split(/[^\w\s]/g)
-	if (!(from && to)) throw `Ex: ${usedPrefix + command} jakarta|bandung`
+	if (!(from && to)) throw `Format: *${usedPrefix + command} Lokasi1|Lokasi2*`
 	let data = await jarak(from, to)
 	if (data.img) return conn.sendMessage(m.chat, { image: data.img, caption: data.desc }, { quoted: m })
 	else m.reply(data.desc)
@@ -12,6 +12,7 @@ handler.help = ['jarak']
 handler.tags = ['internet']
 handler.command = ['jarak']
 handler.limit = true
+handler.register = true
 export default handler
 
 export async function jarak(dari, ke) {

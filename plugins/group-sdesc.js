@@ -1,7 +1,7 @@
 let handler = async (m, { text }) => {
-if(!text) throw 'Text?'
+if(!text) throw 'Format: *setdecs Deskripsi*'
 await conn.groupUpdateDescription(m.chat, text)
-return m.reply("Done.")
+return m.reply("*Sukses*")
 }
 
 handler.help = ['setdesc'].map(v => v + ' <text>')

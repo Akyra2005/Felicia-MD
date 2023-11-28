@@ -27,7 +27,7 @@ handler.help = ['delete']
 handler.tags = ['group']
 
 handler.command = /^(del|delete|hapus?)$/i
-
+handler.register = true
 handler.limit = false
 
 handler.admin = false

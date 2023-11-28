@@ -2,7 +2,7 @@
 import fetch from "node-fetch"
 
 let handler = async (m, { conn, isOwner, usedPrefix, command, args }) => {
-	let query = "input text\nEx. .diffusion hello world\n<command> <tex>"
+	let query = "Format: *.diffusion Perintah*"
 	let text
 	if (args.length >= 1) {
 		text = args.slice(0).join(" ")
@@ -12,7 +12,7 @@ let handler = async (m, { conn, isOwner, usedPrefix, command, args }) => {
 	try {
 	m.reply(wait)
 	 await Draw(text).then((img) => {
-                conn.sendFile(m.chat, img, text, "*[ Result ]*\n" + text, m)
+                conn.sendFile(m.chat, img, text, "Hasil Dari " + text, m)
             })
       } catch (e) {
       throw eror
@@ -22,6 +22,8 @@ let handler = async (m, { conn, isOwner, usedPrefix, command, args }) => {
 handler.help = ["diffusion"]
 handler.tags = ["misc"]
 handler.command = /^(diffusion)$/i
+handler.register = true
+handler.limit = true
 export default handler
 
 

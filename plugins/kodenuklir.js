@@ -7,7 +7,7 @@ let url = json.url
 conn.reply(m.chat, `Nihh ${command}`.trim(), m)} 
 if (command == 'kodenuklir') {
 let konuk = `
-	「 KODE NUKLIR 」
+	*「 KODE NUKLIR 」*
 
 Code Nuklear [Doujin Hentai Genre NTR] (Netorare)
 
@@ -47,14 +47,11 @@ Hard Mode :
 • https://nhentai.net/g/311882/
 • https://nhentai.net/g/312180/
 
-Kodeu nuklir ti MILF Oneesan dugi ka bro ***** loli
-
 https://nhentai.net/g/271890/
 https://nhentai.net/g/272057/
 https://nhentai.net/g/272173/
 https://nhentai.net/g/272182/
 https://nhentai.net/g/272196/
-ht
 https://nhentai.net/g/272512/
 https://nhentai.net/g/271245/
 https://nhentai.net/g/271056/
@@ -504,4 +501,6 @@ conn.reply(m.chat, konuk, m)}
 
 handler.command =  handler.help = ['trapito', 'kodenuklir']
 handler.tags = ['nsfw']
+handler.register = true
+handler.level = 1000
 export default  handler

@@ -14,7 +14,7 @@ conn.sendMessage(m.chat, {
       externalAdReply: {
       showAdAttribution: true,
       title: botdate,
-      body: `ファイル ・「ムファル」`,
+      body: `NOMOR SERI`,
       thumbnailUrl: pp,
       sourceUrl: sig, 
       mediaType: 1,

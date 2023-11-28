@@ -1,8 +1,8 @@
 let handler = async (m, { conn, text, participants }) => {
-if (!text) throw `Tag salah satu orang`
+if (!text) throw `Format: *.promote @Tag*`
 let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 await conn.groupParticipantsUpdate(m.chat, [users], 'promote')
-m.reply(`@${users.split("@")[0]} sekarang admin`)
+m.reply(`*@${users.split("@")[0]} Sekarang Admin*`)
 }
 handler.help = ['promote'].map(v => v + ' @tag')
 handler.tags = ["group"]

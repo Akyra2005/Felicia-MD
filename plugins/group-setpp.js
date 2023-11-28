@@ -43,7 +43,7 @@ var media = await q.download()
             }
             ]
             })
-            m.reply(`Succes update profile group ✓`)
+            m.reply(`*Sukses*`)
 } else if (args[0] && args[0].match(URL_REGEX)) {
             var { img } = await generateProfilePicture(args[0])
             await conn.query({
@@ -61,14 +61,15 @@ var media = await q.download()
             }
             ]
             })
-            m.reply(`Succes update profile group ✓`)
-            } else throw 'Where\'s the media?'
+            m.reply(`*Sukses*`)
+            } else throw '*Balas Media Dengan Perintah .setppgrup*'
 }
 handler.help = ['setppgrup']
 handler.tags = ['group']
 handler.alias = ['setppgc', 'setppgrup', 'setppgroup']
 handler.command = /^setpp(gc|grup|group)$/i
 handler.group = handler.admin = handler.botAdmin = true
+handler.register = true
 export default handler
 
 async function generateProfilePicture(buffer) {

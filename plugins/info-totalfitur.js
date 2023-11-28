@@ -8,9 +8,9 @@ let fitur = Object.values(plugins).filter(v => v.help && !v.disabled).map(v => v
 let totalf = Object.values(global.plugins).filter(
     (v) => v.help && v.tags
   ).length
-let txt = `*乂  B O T  -  F E A T U R E*\n\n`
-      txt += `	• *ᴛᴏᴛᴀʟ* : ${fitur.length}\n`
-      txt += `  • *ᴄʀᴇᴀᴛᴏʀ* : ʀᴇʏᴢxᴅ\n`
+let txt = ``
+      txt += `Jumlah Fitur Bot: *${fitur.length}*`
+      txt += `  `
       txt += author
    await conn.relayMessage(m.chat,  {
     requestPaymentMessage: {

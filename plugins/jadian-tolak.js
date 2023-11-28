@@ -7,10 +7,10 @@ let handler = async (m, { conn, text, participants, groupMetadata }) => {
   	var number = text
   }
 
-  if(!text && !m.quoted) return conn.reply(m.chat, `Masukan nomor, tag atau balas pesan target.`, m)
+  if(!text && !m.quoted) return conn.reply(m.chat, `*Masukan Nomor, Tag Atau Balas Pesan Target*`, m)
   
-  if(isNaN(number)) return conn.reply(m.chat, `Nomor yang anda masukan salah!`, m)
-  if(number.length > 15) return conn.reply(m.chat, `Format salah!`, m)
+  if(isNaN(number)) return conn.reply(m.chat, `*Nomor Yang Anda Masukan Salah*`, m)
+  if(number.length > 15) return conn.reply(m.chat, `Format: *.terima @Tag*`, m)
   try {
 		if(text) {
 			var user = number + '@s.whatsapp.net'
@@ -22,17 +22,17 @@ let handler = async (m, { conn, text, participants, groupMetadata }) => {
 		} catch (e) {
   } finally {
     let users = m.isGroup ? participants.find(v => areJidsSameUser(v.jid == user)) : {}
-    if(!users) return conn.reply(m.chat, `Target atau Nomor tidak ditemukan, mungkin sudah keluar atau bukan anggota grup ini.`, m)
-    if(user === m.sender) return conn.reply(m.chat, `Tidak bisa berpacaran dengan diri sendiri!`, m)
-    if(user === conn.user.jid) return conn.reply(m.chat, `*Tidak bisa berpacaran dengan saya t_t`, m)
+    if(!users) return conn.reply(m.chat, `*Target Atau Nomor Tidak Ditemukan, Mungkin Sudah Keluar Atau Bukan Anggota Grup Ini*`, m)
+    if(user === m.sender) return conn.reply(m.chat, `*Tidak Bisa Berpacaran Dengan Diri Sendiri*`, m)
+    if(user === conn.user.jid) return conn.reply(m.chat, `*Tidak Bisa Berpacaran Dengan Saya*`, m)
     
     if(global.db.data.users[user].pasangan != m.sender){
-      conn.reply(m.chat,`Maaf @${user.split('@')[0]} tidak sedang menembak anda`,m,{contextInfo: {
+      conn.reply(m.chat,`*@${user.split('@')[0]} Tidak Sedang Menembak Anda*`,m,{contextInfo: {
         mentionedJid: [user]
       }})
     }else{
       global.db.data.users[user].pasangan = ""
-      conn.reply(m.chat,`Anda baru saja menolak @${user.split('@')[0]} untuk menjadi pasangan anda!`,m,{contextInfo: {
+      conn.reply(m.chat,`*Anda Baru Saja Menolak @${user.split('@')[0]} Untuk Menjadi Pasangan Anda*`,m,{contextInfo: {
         mentionedJid: [user]
       }})
     }
@@ -45,5 +45,6 @@ handler.mods = false
 handler.premium = false
 handler.group = true
 handler.limit = false
+handler.register = true
 handler.fail = null
 export default handler

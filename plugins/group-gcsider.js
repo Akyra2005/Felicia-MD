@@ -12,7 +12,7 @@ await conn.sendPresenceUpdate('composing', m.chat)
 
     let member = groupMetadata.participants.map(v => v.id)
     if (!text) {
-        var pesan = "🚩 Please be active in the group because there will be member cleaning at any time"
+        var pesan = "*Mohon Aktif Di Grup Karena Sewaktu-waktu Akan Ada Pembersihan Anggota*"
     } else {
         var pesan = text
     }
@@ -34,8 +34,8 @@ await conn.sendPresenceUpdate('composing', m.chat)
             }
         }
     }
-    if (total == 0) return conn.reply(m.chat, `🚩 *There are no siders in this group.*`, m)
-    conn.reply(m.chat, `*${total}/${sum}* anggota grup *${await conn.getName(m.chat)}* adalah sider dengan alasan :\n1. Tidak aktif selama lebih dari 7 hari\n2. Baru join tetapi tidak pernah nimbrung\n\n_“${pesan}”_\n\n*LIST SIDER :*\n${sider.map(v => '  ○ @' + v.replace(/@.+/, '' + typeof global.db.data.users[v] == "undefined" ? ' Sider ' : ' Off ' + msToDate(milliseconds * 1 - global.db.data.users[v].lastseen))).join('\n')}`, m, {
+    if (total == 0) return conn.reply(m.chat, `*Tidak Ada Sider Di Grup Ini*`, m)
+    conn.reply(m.chat, `*${total}/${sum}* Anggota Grup *${await conn.getName(m.chat)}* Adalah Sider Dengan Alasan :\n1. Tidak Aktif Selama Lebih Dari 7 Hari\n2. Bergabung Tetapi Tidak Pernah Nimbrung\n\n“${pesan}”\n\n*LIST SIDER :*\n${sider.map(v => '  ○ @' + v.replace(/@.+/, '' + typeof global.db.data.users[v] == "undefined" ? ' Sider ' : ' Off ' + msToDate(milliseconds * 1 - global.db.data.users[v].lastseen))).join('\n')}`, m, {
         contextInfo: {
             mentionedJid: sider
         }
@@ -45,6 +45,7 @@ handler.help = ['gcsider']
 handler.tags = ['group']
 handler.command = /^(gcsider)$/i
 handler.group = true
+handler.limit = 10
 export default handler
 
 const more = String.fromCharCode(8206)

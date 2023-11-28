@@ -15,29 +15,29 @@ let handler = async (m, {
     ]
 
     let [feature, inputs, inputs_, inputs__, inputs___] = text.split("|")
-    if (!lister.includes(feature)) return m.reply("*Example:*\n.deviantart search|vpn\n\n*Pilih type yg ada*\n" + lister.map((v, index) => "  ○ " + v).join("\n"))
+    if (!lister.includes(feature)) return m.reply("Format: *.deviantart tipe|kata kunci\n\n*Daftar Tipe:*\n" + lister.map((v, index) => "  ○ " + v).join("\n"))
 
     if (lister.includes(feature)) {
 
         if (feature == "search") {
-            if (!inputs) return m.reply("Input query link\nExample: .deviantart search|vpn")
+            if (!inputs) return m.reply("Format: *.deviantart tipe|kata kunci*")
             await m.reply(wait)
             try {
                 let res = await searchDeviantart(inputs)
                 let teks = res.map((item, index) => {
                 
-                    return `🔍 *[ RESULT ${index + 1} ]*
+                    return `*Hasil Ke ${index + 1}*
 
-📚 *Title:* ${item.title}
-🔗 *Link:* ${item.link}
-🆔 *Guid:* ${extractIdFromUrl(item.guid)}
-📅 *PubDate:* ${item.pubDate}
-🎥 *MediaTitle:* ${item.mediaTitle}
-📰 *MediaCategory:* ${item.mediaCategory}
-📷 *MediaCredit:* ${generateOutput(item.mediaCredit)}
-📝 *MediaDescription:* ${removeHtmlTags(item.mediaDescription)}
+Nama: *${item.title}*
+Tautan: *${item.link}*
+Panduan: *${extractIdFromUrl(item.guid)}*
+Tanggal Pub: *${item.pubDate}*
+Judul Media: *${item.mediaTitle}*
+Kategori Media: *${item.mediaCategory}*
+Kredit Media: *${generateOutput(item.mediaCredit)}*
+Deskripsi Media: *${removeHtmlTags(item.mediaDescription)}*
 `
-                }).filter(v => v).join("\n\n________________________\n\n")
+                }).filter(v => v).join("\n\n________________________________________\n\n")
                 await m.reply(teks)
             } catch (e) {
                 await m.reply(eror)
@@ -45,25 +45,25 @@ let handler = async (m, {
         }
 
         if (feature == "info") {
-            if (!inputs) return m.reply("Input query link\nExample: .deviantart app|link")
+            if (!inputs) return m.reply("*Menggunakan Tautan*\nFormat: *.deviantart app|tautan*")
             await m.reply(wait)
             try {
-            if (!inputs.startsWith('https://www.deviantart.com/') && !inputs.startsWith('https://backend.deviantart.com/')) return m.reply('Link salah');
+            if (!inputs.startsWith('https://www.deviantart.com/') && !inputs.startsWith('https://backend.deviantart.com/')) return m.reply('*Tautan Tidak Sah*');
 
                 let item = await infoDeviantart(inputs)
-                let cap = `🔍 *[ RESULT ]*
+                let cap = `*HASIL DEVIANART*
 
-📷 *Version:* ${item.version}
-🔖 *Type:* ${item.type}
-📚 *Title:* ${item.title}
-📰 *Category:* ${item.category}
-👤 *Author Name:* ${item.author_name}
-🔗 *Author URL:* ${item.author_url}
-📡 *Provider Name:* ${item.provider_name}
-🔗 *Provider URL:* ${item.provider_url}
-🛡️ *Safety:* ${item.safety}
-📅 *Pubdate:* ${item.pubdate}
-🔖 *Tags:* ${item.tags}
+Versi: *${item.version}*
+Tipe: *${item.type}*
+Nama: *${item.title}*
+Kategori: *${item.category}*
+Nama Pengarang: *${item.author_name}*
+URL Pengarang: *${item.author_url}*
+Nama Penyedia: *${item.provider_name}*
+URL Penyedia: *${item.provider_url}*
+Keamanan: *${item.safety}*
+Publikasi: *${item.pubdate}*
+Tag: *${item.tags}*
 `
                 await conn.sendFile(m.chat, item.url || logo, "", cap, m)
                 
@@ -76,13 +76,15 @@ let handler = async (m, {
 handler.help = ["deviantart"]
 handler.tags = ["internet"]
 handler.command = /^(deviantart)$/i
+handler.register = true
+handler.limit = true
 export default handler
 
 /* New Line */
 function generateOutput(text) {
   const name = text.substr(0, text.indexOf("https"));
   const link = text.substr(text.indexOf("https"));
-  return `Credit: ${name}\nLink: ${link}`;
+  return `Kredit: *${name}*\nTautan: *${link}*`;
 }
 
 function extractIdFromUrl(url) {

@@ -26,7 +26,7 @@ let handler = async (m, { conn, args, command }) => {
         title: bottime,
         body: wm2,
         previewType: 0,
-        thumbnailUrl : 'https://telegra.ph/file/bcd97091e2f6b8df17db4.jpg', 
+        thumbnailUrl : 'https://telegra.ph/file/f4d782b10745606a5b14b.jpg', 
         sourceUrl: sgc,
         renderLargerThumbnail: true       
       },
@@ -46,13 +46,13 @@ function clockString(ms) {
   let s = isNaN(ms) ? "--" : Math.floor(ms / 1000) % 60;
   return [
     d,
-    " *ʜᴀʀɪ*\n ",
+    " *Hari*\n ",
     h,
-    " *ᴊᴀᴍ*\n ",
+    " *Jam*\n ",
     m,
-    " *ᴍᴇɴɪᴛ*\n ",
+    " *Menit*\n ",
     s,
-    " *ᴅᴇᴛɪᴋ* ",
+    " *Detik* ",
   ]
     .map((v) => v.toString().padStart(2, 0))
     .join("");

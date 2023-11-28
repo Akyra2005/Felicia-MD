@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import sharp from 'sharp';
 
 const handler = async (m, { conn }) => {
-  conn.reply(m.chat, 'Sedang memuat informasi pengguna acak... Mohon tunggu sebentar', m);
+  conn.reply(m.chat, '*Memproses Permintaan...*', m);
 
   try {
     const response = await fetch('https://randomuser.me/api/');
@@ -33,23 +33,23 @@ const handler = async (m, { conn }) => {
 
     const full_name = `${first} ${last}`;
 
-    const userInfo = `Title: ${title}\nFirst Name: ${first}\nLast Name: ${last}\nFull Name: ${full_name}\n\n` +
-      `Location:\nStreet Number: ${number}\nStreet Name: ${name}\nCity: ${city}\nState: ${state}\nCountry: ${country}\nPostal Code: ${postcode}\nLatitude: ${latitude}\nLongitude: ${longitude}\nTimezone Offset: ${offset}\nTimezone Description: ${description}\n\n` +
-      `Email: ${email}\n\n` +
-      `Login Information:\nUUID: ${uuid}\nUsername: ${username}\nPassword: ${password}\nSalt: ${salt}\nMD5 Hash: ${md5}\nSHA1 Hash: ${sha1}\nSHA256 Hash: ${sha256}\n\n` +
-      `Date of Birth: ${date}\nAge: ${age}\n\n` +
-      `Registration Information:\nRegistered Date: ${registeredDate}\nRegistered Age: ${registeredAge}\n\n` +
-      `Phone Number: ${phone}\nCell Number: ${cell}\n\n` +
-      `ID Name: ${idName}\nID Value: ${idValue}\n\n` +
-      `Large Picture: ${large}\n\n` +
-      `Nationality: ${nat}`;
+    const userInfo = `Nama: *${title}*\nNama Depan: *${first}*\nNama Belakang: *${last}*\nNama Lengkap: *${full_name}*\n\n` +
+      `Lokasi:\nNomor Jalan: *${number}*\nNama Jalan: *${name}*\nKota: *${city}*\nMunisipalitas: *${state}*\nNegara: *${country}*\nKode Pos: *${postcode}*\nGaris Lintang: *${latitude}*\nGaris Bujur: *${longitude}*\nPengimbangan Zona Waktu: *${offset}*\nDeskripsi Zona Waktu: *${description}*\n\n` +
+      `E-Mail: *${email}*\n\n` +
+      `Informasi Masuk:\nUUID: *${uuid}*\nNama Pengguna: *${username}*\nKata Sandi: *${password}*\nGaram: *${salt}*\nMD5 Hash: *${md5}*\nSHA1 Hash: *${sha1}*\nSHA256 Hash: *${sha256}*\n\n` +
+      `Tanggal Lahir: *${date}*\nUmur: *${age}*\n\n` +
+      `Informasi Pendaftaran:\nTanggal Terdaftar: *${registeredDate}*\nUsia Terdaftar: *${registeredAge}*\n\n` +
+      `Nomor Telepon: ${phone}\nNomor Handphone: *${cell}*\n\n` +
+      `Nama ID: *${idName}*\nNilai ID: *${idValue}*\n\n` +
+      `Gambar Besar: *${large}*\n\n` +
+      `Kebangsaan: *${nat}*`;
 
     const imageBuffer = await (await fetch(large)).buffer();
     const resizedImageBuffer = await sharp(imageBuffer).resize(1000).jpeg().toBuffer(); // Resize to width 1000 and convert to JPEG format
 
-    conn.sendFile(m.chat, resizedImageBuffer, 'randomuser.jpg', `Berikut informasi pengguna acak:\n\n${userInfo}`, m);
+    conn.sendFile(m.chat, resizedImageBuffer, 'randomuser.jpg', `*Berikut Informasi Pengguna Acak:*\n\n${userInfo}`, m);
   } catch (error) {
-    conn.reply(m.chat, 'Maaf, terjadi kesalahan. Mohon coba lagi nanti.', m);
+    conn.reply(m.chat, '*E R R O R*', m);
     console.error(error);
   }
 };
@@ -57,5 +57,6 @@ const handler = async (m, { conn }) => {
 handler.help = ['randomuser'];
 handler.tags = ['internet', 'tools'];
 handler.command = /^(randomuser|randuser|ruser|ranuser|rauser|rndmusr)$/i;
-
+handler.register = true
+handler.limit = true
 export default handler;

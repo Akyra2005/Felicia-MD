@@ -16,28 +16,28 @@ let handler = async (m, {
     ]
 
     let [feature, inputs, inputs_, inputs__, inputs___] = text.split("|")
-    if (!lister.includes(feature)) return m.reply("*Example:*\n.dafonts search|vpn\n\n*Pilih type yg ada*\n" + lister.map((v, index) => "  ○ " + v).join("\n"))
+    if (!lister.includes(feature)) return m.reply("Format: *.dafonts tipe|nama font*\n\n*Daftar Tipe:*\n" + lister.map((v, index) => "  ○ " + v).join("\n"))
 
     if (lister.includes(feature)) {
 
         if (feature == "search") {
-            if (!inputs) return m.reply("Input query link\nExample: .dafonts search|vpn")
+            if (!inputs) return m.reply("Format: *.dafonts search|nama font*")
             await m.reply(wait)
             try {
                 let res = await searchDafont(inputs)
                 let teks = res.map((item, index) => {
-                    return `🔍 *[ RESULT ${index + 1} ]*
+                    return `*Hasil Ke ${index + 1}*
 
-📰 *Title:* ${item.title}
-🔗 *Link:* ${item.link}
-📌 *Theme:* ${item.theme}
-🏷️ *Theme link:* ${item.themeLink}
-👤 *Author Name:* ${item.author}
-🔗 *Author Link:* ${item.authorLink}
-🔢 *Total Downloads:* ${formatNumber(item.totalDownloads)}
-🖼️ *Preview Image:* ${item.previewImage}`
+Nama: *${item.title}*
+Tautan: *${item.link}*
+Tema: *${item.theme}*
+Tautan Tema: *${item.themeLink}*
+Nama Pengarang: *${item.author}*
+Tautan Pengarang: *${item.authorLink}*
+Total Unduhan: *${formatNumber(item.totalDownloads)}*
+Pratinjau Gambar: *${item.previewImage}*`
 
-                }).filter(v => v).join("\n\n________________________\n\n")
+                }).filter(v => v).join("\n\n______________________________________\n\n")
                 await m.reply(teks)
             } catch (e) {
                 await m.reply(eror)
@@ -45,17 +45,17 @@ let handler = async (m, {
         }
 
         if (feature == "down") {
-            if (!inputs) return m.reply("Input query link\nExample: .dafonts app|link")
+            if (!inputs) return m.reply("Format: *.dafonts down|nama font*")
             try {
                 let item = await downloadDafont(inputs)
-                let cap = '🔍 *[ RESULT ]*\n\n📰 *Title:* ' + item.title +
-          '\n👤 *Author:* ' + item.author +
-          '\n📌 *Theme:* ' + item.theme +
-          '\n🔢 *Total Downloads:* ' + formatNumber(item.totalDownloads) +
-          '\n📁 *Filenames:*\n' + item.filename.map((e, i) => '   ' + (i + 1) + '. \'' + e + '\'').join('\n') +
-          '\n🖼️ *Image:* ' + item.image +
-          '\n📝 *Note:* ' + item.note.replace(/(Note of the author)(.*)/, '$1\n$2') +
-          '\n⬇️ *Download:* ' + item.download
+                let cap = '*HASIL DAFONTS*\n\nNama: ' + item.title +
+          '\nPsngarang: ' + item.author +
+          '\nTema: ' + item.theme +
+          '\nTotal Unduhan: ' + formatNumber(item.totalDownloads) +
+          '\nNama File:\n' + item.filename.map((e, i) => '   ' + (i + 1) + '. \'' + e + '\'').join('\n') +
+          '\nGambar: ' + item.image +
+          '\nCatatan: ' + item.note.replace(/(Note of the author)(.*)/, '$1\n$2') +
+          '\nUnduhan: ' + item.download
           let details = await getFileDetails(item.download)
           
                 await conn.sendFile(m.chat, item.image, "", cap, m)
@@ -73,6 +73,8 @@ let handler = async (m, {
 handler.help = ["dafonts"]
 handler.tags = ["internet"]
 handler.command = /^(dafonts)$/i
+handler.register = true
+handler.limit = true
 export default handler
 
 /* New Line */
@@ -90,14 +92,14 @@ async function searchDafont(q) {
     const [, title, authorLink, author, themeLink, theme, , totalDownloads, previewImage, link] = match;
 
     const result = {
-      title: title.trim() || 'Tidak diketahui',
-      authorLink: `https://www.dafont.com/${authorLink.trim()}` || 'Tidak diketahui',
-      author: author.trim() || 'Tidak diketahui',
-      themeLink: `https://www.dafont.com/${themeLink.trim()}` || 'Tidak diketahui',
-      theme: theme.trim() || 'Tidak diketahui',
-      totalDownloads: totalDownloads.trim().replace(/[^0-9]/g, '') || 'Tidak diketahui',
-      previewImage: `https://www.dafont.com${previewImage.trim()}` || 'Tidak diketahui',
-      link: `https://www.dafont.com/${link.trim()}` || 'Tidak diketahui',
+      title: title.trim() || '*Tidak Diketahui*',
+      authorLink: `https://www.dafont.com/${authorLink.trim()}` || '*Tidak Diketahui*',
+      author: author.trim() || '*Tidak Diketahui*',
+      themeLink: `https://www.dafont.com/${themeLink.trim()}` || '*Tidak Diketahui*',
+      theme: theme.trim() || '*Tidak Diketahui*',
+      totalDownloads: totalDownloads.trim().replace(/[^0-9]/g, '') || '*Tidak Diketahui*',
+      previewImage: `https://www.dafont.com${previewImage.trim()}` || '*Tidak Diketahui*',
+      link: `https://www.dafont.com/${link.trim()}` || '*Tidak Diketahui*',
     };
 
     results.push(result);
