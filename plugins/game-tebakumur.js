@@ -6,11 +6,11 @@
 import axios from "axios"
 let handler = async(m, { conn, text }) => {
 
-    if (!text) return conn.reply(m.chat, 'Masukan Teksnya', m)
+    if (!text) return conn.reply(m.chat, 'Format: *.tebakumur Nama Lengkap*', m)
 
-    await m.reply('Searching...')
+    await m.reply('*Memproses Permintaan...*')
 	axios.get(`https://api.lolhuman.xyz/api/tebakumur?apikey=${global.lolkey}&name=${text}`).then ((res) => {
-	 	let hasil = `Namamu : ${text}\nUmurmu : ${res.data.result.age}`
+	 	let hasil = `Nama: *${text}*\nUmur: *${res.data.result.age}*`
 
     conn.reply(m.chat, hasil, m)
 	})

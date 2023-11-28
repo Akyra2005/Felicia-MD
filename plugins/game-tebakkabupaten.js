@@ -1,36 +1,60 @@
 import cheerio from 'cheerio';
 import fetch from 'node-fetch';
 
-let timeout = 120000
-let poin = 4999
 let handler = async (m, { conn, command, usedPrefix }) => {
     conn.tebakkabupaten = conn.tebakkabupaten ? conn.tebakkabupaten : {}
     let id = m.chat
     if (id in conn.tebakkabupaten) {
-        conn.reply(m.chat, 'Masih ada soal belum terjawab di chat ini', conn.tebakkabupaten[id][0])
+        conn.reply(m.chat, '*Masih Ada Soal Belum Terjawab Di Chat Ini*', conn.tebakkabupaten[id][0])
         throw false
     }
-    
-  let json = await getRandomKabupaten()
-  let caption = `*${command.toUpperCase()}*
-Kabupaten apakah ini?
-Timeout *${(timeout / 1000).toFixed(2)} detik*
-Ketik ${usedPrefix}hkab untuk bantuan
-Bonus: ${poin} XP
+
+    let timeout, poin
+    // Tentukan tingkatan berdasarkan perintah
+    switch (command.toLowerCase()) {
+        case 'tebakkabupaten1':
+            timeout = 120000; // 120 detik
+            poin = 4999;
+            break;
+        case 'tebakkabupaten2':
+            timeout = 40000; // 40 detik
+            poin = 8999;
+            break;
+        case 'tebakkabupaten3':
+            timeout = 10000; // 10 detik
+            poin = 19999;
+            break;
+        case 'tebakkabupaten4':
+            timeout = 3000; // 3 detik
+            poin = 39999;
+            break;
+        default:
+            conn.reply(m.chat, '*Perintah Tidak Valid*', m)
+            return
+    }
+
+    let json = await getRandomKabupaten()
+    let caption = `*${command.toUpperCase()}*\n
+*Kabupaten Apakah Ini?*
+⏳ Timeout *${(timeout / 1000).toFixed(2)} Detik*
+🔎 Ketik *${usedPrefix}hkabu* Untuk Bantuan
+🎁 Hadiah: *${poin} ✨ XP*
     `.trim()
     conn.tebakkabupaten[id] = [
         await conn.sendFile(m.chat, json.url, '', caption, m),
         json, poin,
         setTimeout(() => {
-            if (conn.tebakkabupaten[id]) conn.reply(m.chat, `Waktu habis!\nJawabannya adalah *${json.title}*`, conn.tebakkabupaten[id][0])
+            if (conn.tebakkabupaten[id]) conn.reply(m.chat, `*Waktu Habis*\nJawabannya Adalah *${json.title}*`, conn.tebakkabupaten[id][0])
             delete conn.tebakkabupaten[id]
         }, timeout)
     ]
 }
-handler.help = ['tebakkabupaten']
+
+handler.help = ['tebakkabupaten1', 'tebakkabupaten2', 'tebakkabupaten3', 'tebakkabupaten4']
 handler.tags = ['game']
 handler.command = /^tebakkabupaten/i
-
+handler.register = true
+handler.limit = true
 export default handler
 
 const buttons = [

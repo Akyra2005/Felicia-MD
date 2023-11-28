@@ -6,7 +6,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
     let room = Object.values(conn.game).find(room => room.state === 'WAITING' && (text ? room.name === text : true))
     // m.reply('[WIP Feature]')
     if (room) {
-        m.reply('Partner ditemukan!')
+        m.reply('*Lawan Ditemukan*')
         room.o = m.chat
         room.game.playerO = m.sender
         room.state = 'PLAYING'
@@ -48,7 +48,7 @@ Ketik *nyerah* untuk nyerah
             state: 'WAITING'
         }
         if (text) room.name = text
-        m.reply('Menunggu partner' + (text ? ` mengetik command dibawah ini
+        m.reply('Menunggu Lawan' + (text ? ` Mengetik Perintah Dibawah Ini
 ${usedPrefix}${command} ${text}` : ''))
         conn.game[room.id] = room
     }
@@ -57,5 +57,6 @@ ${usedPrefix}${command} ${text}` : ''))
 handler.help = ['tictactoe', 'ttt']
 handler.tags = ['game']
 handler.command = /^(tictactoe|t{3})$/
-
+handler.register = true
+handler.limit = true
 export default handler

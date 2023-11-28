@@ -16,11 +16,11 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
     // m.reply("Turn : " + turn + "-" + turnNow + "\n\nTime : " + time + "-" + timeNow)
     if (turn == turnNow && time == timeNow){
       conn.war[m.chat][turn].hp -= 2500
-      conn.reply(m.chat,`*@${conn.war[m.chat][turn].user.split('@')[0]} sedang AFK (Denda -2500 HP)*\n\n.war player = statistik pemain\n.attack @tag = serang lawan`,null,{contextInfo : {mentionedJid : [conn.war[m.chat][turn].user]}})
+      conn.reply(m.chat,`*@${conn.war[m.chat][turn].user.split('@')[0]} Sedang AFK, Denda -2500 HP*\n\n.war player = Statistik Pemain\n.attack @tag = Serang Lawan`,null,{contextInfo : {mentionedJid : [conn.war[m.chat][turn].user]}})
       await sleep(3000)
       // cek kalau mati
       if (conn.war[m.chat][turn].hp <= 0) {
-        conn.reply(m.chat,`*@${conn.war[m.chat][turn].user.split('@')[0]} sudah mati karena HP (Health Point) habis.*`,null,{contextInfo : {mentionedJid : [conn.war[m.chat][turn].user]}})
+        conn.reply(m.chat,`*@${conn.war[m.chat][turn].user.split('@')[0]} Sudah Mati Karena HP Habis*`,null,{contextInfo : {mentionedJid : [conn.war[m.chat][turn].user]}})
         // cek tim nya
         let playerTotal = 0
         let playerKalah = 0
@@ -51,7 +51,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
                 teamAB.push(conn.war[m.chat][j].user)
               }
             }
-            conn.reply(m.chat, `*TEAM B MENANG KARENA TEAM A GOBLOK SEMUA*\n\n*TEAM A :*\n` + teamA.map((v, i )=> `${conn.war[m.chat][i].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (- Rp. ${Number(conn.war2[m.chat].money).toLocaleString()})`).join`\n` + "\n\n*TEAM B :*\n" + teamB.map((v, i) => `${conn.war[m.chat][i+5].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (+ Rp. ${Number(conn.war2[m.chat].money).toLocaleString()})`).join`\n`,m, {contextInfo: {
+            conn.reply(m.chat, `*TEAM B MENANG KARENA TEAM A TOLOL SEMUA*\n\n*TEAM A :*\n` + teamA.map((v, i )=> `${conn.war[m.chat][i].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} -${Number(conn.war2[m.chat].money).toLocaleString()} 🪙 Flint`).join`\n` + "\n\n*TEAM B :*\n" + teamB.map((v, i) => `${conn.war[m.chat][i+5].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} +${Number(conn.war2[m.chat].money).toLocaleString()} 🪙 Flint`).join`\n`,m, {contextInfo: {
               mentionedJid: teamAB
             }})
             delete conn.war[m.chat]
@@ -84,7 +84,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
                 teamAB.push(conn.war[m.chat][j].user)
               }
             }
-            conn.reply(m.chat, `*TEAM A MENANG KARENA TEAM B GOBLOK SEMUA*\n\n*TEAM A :*\n` + teamA.map((v, i )=> `${conn.war[m.chat][i].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (+ Rp. ${Number(conn.war2[m.chat].money).toLocaleString()})`).join`\n` + "\n\n*TEAM B :*\n" + teamB.map((v, i) => `${conn.war[m.chat][i+5].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (- Rp. ${Number(conn.war2[m.chat].money).toLocaleString()})`).join`\n`,m, {contextInfo: {
+            conn.reply(m.chat, `*TEAM A MENANG KARENA TEAM B TOLOL SEMUA*\n\n*TEAM A :*\n` + teamA.map((v, i )=> `${conn.war[m.chat][i].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} +${Number(conn.war2[m.chat].money).toLocaleString()} 🪙 Flint`).join`\n` + "\n\n*TEAM B :*\n" + teamB.map((v, i) => `${conn.war[m.chat][i+5].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} -${Number(conn.war2[m.chat].money).toLocaleString()} 🪙 Flint`).join`\n`,m, {contextInfo: {
               mentionedJid: teamAB
             }})
             delete conn.war[m.chat]
@@ -120,22 +120,22 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
         }
       }
       await sleep(3000)
-      conn.reply(m.chat,`*Giliran @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} untuk menyerang (Waktu 90 detik)*\n\n.war player = statistik pemain\n.attack @tag = serang lawan`,null,{contextInfo : {mentionedJid : [conn.war[m.chat][conn.war2[m.chat].turn].user]}})
+      conn.reply(m.chat,`*Giliran @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} Untuk Menyerang*\n\n.war player = Statistik Pemain\n.attack @Tag = Serang Lawan`,null,{contextInfo : {mentionedJid : [conn.war[m.chat][conn.war2[m.chat].turn].user]}})
       cekAFK(conn.war2[m.chat].turn)
     }
   }
 
-  if (!(m.chat in conn.war)) return m.reply(`*Tidak ada game di grup ini.*`)
-  if (!conn.war2[m.chat].war) return m.reply(`*War belom dimulai, ketik ".war start" untuk memulai pertarungan.*`)
+  if (!(m.chat in conn.war)) return m.reply(`*Tidak Ada Permainan Di Grup Ini*`)
+  if (!conn.war2[m.chat].war) return m.reply(`*War Belom Dimulai, Ketik ".war start" Untuk Memulai Pertarungan*`)
   for (let i=0;i<10;i++){
     if (m.sender == conn.war[m.chat][i].user){
       if (i != conn.war2[m.chat].turn) {
-        conn.reply(m.chat,`*Sekarang adalah giliran @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} untuk menyerang.*`,m, {contextInfo : { mentionedJid : [conn.war[m.chat][conn.war2[m.chat].turn].user]}})
+        conn.reply(m.chat,`*Sekarang Adalah Giliran @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} Untuk Menyerang.*`,m, {contextInfo : { mentionedJid : [conn.war[m.chat][conn.war2[m.chat].turn].user]}})
         cekAFK(conn.war2[m.chat].turn)
       }
     }
   }
-  if (!args[0]) return m.reply(`*Tag musuh yang akan diserang*\n*Ketik .war player*`)
+  if (!args[0]) return m.reply(`*Tag Musuh Yang Akan Diserang*\n*Ketik .war @Tag*`)
   args[0] = args[0].split('@')[1]
   args[0] += "@s.whatsapp.net"
   let success = false
@@ -166,16 +166,16 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
           if (conn.war[m.chat][i].user == target){
             conn.war[m.chat][i].hp -= pointAttacker * 500
             conn.war[m.chat][conn.war2[m.chat].turn].turn = true
-            conn.reply(m.chat,`*@${attacker.split('@')[0]} menyerang @${target.split('@')[0]} sampai nyawanya berkurang ${pointAttacker * 500} (Sisa HP: ${conn.war[m.chat][i].hp})*\n\n*@${attacker.split('@')[0]} [${pointAttacker*10}%] - [${pointTarget*10}%] @${target.split('@')[0]}*\n*Level sangat mempengaruhi keberhasilan.*`,m,{contextInfo : {mentionedJid : [attacker, target]}})
+            conn.reply(m.chat,`*@${attacker.split('@')[0]} Menyerang @${target.split('@')[0]} Sampai HP Berkurang ${pointAttacker * 500} (Sisa HP: ${conn.war[m.chat][i].hp})*\n\n*@${attacker.split('@')[0]} [${pointAttacker*10}%] - [${pointTarget*10}%] @${target.split('@')[0]}*`,m,{contextInfo : {mentionedJid : [attacker, target]}})
             await sleep(2000)
-            if (conn.war[m.chat][i].hp <= 0) conn.reply(m.chat,`*@${target.split(`@`)[0]} sudah mati dalam pertarungan.*`,m, {contextInfo : {mentionedJid : [target]}})
+            if (conn.war[m.chat][i].hp <= 0) conn.reply(m.chat,`*@${target.split(`@`)[0]} Sudah Mati Dalam Pertarungan*`,m, {contextInfo : {mentionedJid : [target]}})
             success = true
           }
         }
       }
     }
     if (success == false) {
-      return m.reply(`*Masukkan list pemain game yang benar bos.*\n\n*Cek ".war player"*`)
+      return m.reply(`*Pemain Tersebut Tidak Bergabung Dalam War*\n\n*Cek ".war player"*`)
     }else {
       for (let i=0;i<10;i++){
         if (m.sender == conn.war[m.chat][i].user){
@@ -210,16 +210,16 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
             conn.reply(m.chat,conn.war[m.chat][conn.war2[m.chat].turn].turn,m)
             conn.war[m.chat][conn.war2[m.chat].turn].turn = true
             conn.reply(m.chat,conn.war[m.chat][conn.war2[m.chat].turn].turn,m)
-            conn.reply(m.chat,`*@${attacker.split('@')[0]} menyerang @${target.split('@')[0]} sampai nyawanya berkurang ${pointAttacker * 500} (Sisa HP: ${conn.war[m.chat][i].hp})*\n\n*@${attacker.split('@')[0]} [${pointAttacker*10}%] - [${pointTarget*10}%] @${target.split('@')[0]}*\n*Level sangat mempengaruhi keberhasilan.*`,m,{contextInfo : {mentionedJid : [attacker, target]}})
+            conn.reply(m.chat,`*@${attacker.split('@')[0]} menyerang @${target.split('@')[0]} Sampai HP Berkurang ${pointAttacker * 500} (Sisa HP: ${conn.war[m.chat][i].hp})*\n\n*@${attacker.split('@')[0]} [${pointAttacker*10}%] - [${pointTarget*10}%] @${target.split('@')[0]}*`,m,{contextInfo : {mentionedJid : [attacker, target]}})
             await sleep(2000)
-            if (conn.war[m.chat][i].hp <= 0) conn.reply(m.chat,`*@${target.split(`@`)[0]} sudah mati dalam pertarungan.*`,m, {contextInfo : {mentionedJid : [target]}})
+            if (conn.war[m.chat][i].hp <= 0) conn.reply(m.chat,`*@${target.split(`@`)[0]} Sudah Mati Dalam Pertarungan*`,m, {contextInfo : {mentionedJid : [target]}})
             success = true
           }
         }
       }
     }
     if (success == false) {
-      return m.reply(`*Masukkan list pemain game yang benar bos.*\n\n*Cek ".war player"*`)
+      return m.reply(`*Pemain Tersebut Tidak Bergabung Dalam War*\n\n*Cek ".war player"*`)
     }else {
       for (let i=0;i<10;i++){
         if (m.sender == conn.war[m.chat][i].user){
@@ -259,7 +259,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
           teamAB.push(conn.war[m.chat][j].user)
         }
       }
-      conn.reply(m.chat, `*TEAM A MENANG KARENA TEAM B GOBLOK SEMUA*\n\n*TEAM A :*\n` + teamA.map((v, i )=> `${conn.war[m.chat][i].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (+ Rp. ${Number(conn.war2[m.chat].money).toLocaleString()})`).join`\n` + "\n\n*TEAM B :*\n" + teamB.map((v, i) => `${conn.war[m.chat][i+5].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (- Rp. ${Number(conn.war2[m.chat].money).toLocaleString()})`).join`\n`,m, {contextInfo: {
+      conn.reply(m.chat, `*TEAM A MENANG KARENA TEAM B TOLOL SEMUA*\n\n*TEAM A :*\n` + teamA.map((v, i )=> `${conn.war[m.chat][i].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} +${Number(conn.war2[m.chat].money).toLocaleString()}`).join`\n` + "\n\n*TEAM B :*\n" + teamB.map((v, i) => `${conn.war[m.chat][i+5].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} -${Number(conn.war2[m.chat].money).toLocaleString()} 🪙 Flint`).join`\n`,m, {contextInfo: {
         mentionedJid: teamAB
       }})
       delete conn.war[m.chat]
@@ -286,7 +286,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
       }
     }
     await sleep(2000)
-    conn.reply(m.chat,`*Giliran @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} untuk menyerang (Waktu 90 detik)*\n\n.war player = statistik pemain\n.attack @tag = serang lawan`,m, {contextInfo : {mentionedJid: [conn.war[m.chat][conn.war2[m.chat].turn].user]}})
+    conn.reply(m.chat,`*Giliran @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} Untuk Menyerang*\n\n.war player = Statistik Pemain\n.attack @tag = Serang Lawan`,m, {contextInfo : {mentionedJid: [conn.war[m.chat][conn.war2[m.chat].turn].user]}})
     cekAFK(conn.war2[m.chat].turn)
   }else {
     let userAktif = 0
@@ -317,7 +317,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
           teamAB.push(conn.war[m.chat][j].user)
         }
       }
-      conn.reply(m.chat, `*TEAM B MENANG KARENA TEAM A GOBLOK SEMUA*\n\n*TEAM A :*\n` + teamA.map((v, i )=> `${conn.war[m.chat][i].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (- Rp. ${Number(conn.war2[m.chat].money).toLocaleString()})`).join`\n` + "\n\n*TEAM B :*\n" + teamB.map((v, i) => `${conn.war[m.chat][i+5].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} (+ Rp. ${Number(conn.war2[m.chat].money).toLocaleString()})`).join`\n`,m, {contextInfo: {
+      conn.reply(m.chat, `*TEAM B MENANG KARENA TEAM A TOLOL SEMUA*\n\n*TEAM A :*\n` + teamA.map((v, i )=> `${conn.war[m.chat][i].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} -${Number(conn.war2[m.chat].money).toLocaleString()} 🪙 Flint`).join`\n` + "\n\n*TEAM B :*\n" + teamB.map((v, i) => `${conn.war[m.chat][i+5].hp > 0 ? '❤️ ' : '☠️ ' }@${v.split('@')[0]} +${Number(conn.war2[m.chat].money).toLocaleString()} 🪙 Flint`).join`\n`,m, {contextInfo: {
         mentionedJid: teamAB
       }})
       delete conn.war[m.chat]
@@ -344,7 +344,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
       }
     }
     await sleep(2000)
-    conn.reply(m.chat,`*Giliran @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} untuk menyerang (Waktu 90 detik)*\n\n.war player = statistik pemain\n.attack @tag = serang lawan`,m, {contextInfo : {mentionedJid: [conn.war[m.chat][conn.war2[m.chat].turn].user]}})
+    conn.reply(m.chat,`*Giliran @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} Untuk Menyerang*\n\n.war player = Statistik Pemain\n.attack @tag = Serang Lawan`,m, {contextInfo : {mentionedJid: [conn.war[m.chat][conn.war2[m.chat].turn].user]}})
     cekAFK(conn.war2[m.chat].turn)
   }
 

@@ -1,5 +1,23 @@
 let handler  = async (m, { conn }) => {
-  conn.reply(m.chat,`${pickRandom(global.iq)}`, m)
+  // Menentukan nilai IQ secara acak dari 1 sampai 10000
+  let iq = Math.floor(Math.random() * 1000) + 1
+  // Menentukan pesan respon berdasarkan nilai IQ
+  let response = `IQ Anda Sebesar : ${iq}\n`
+  if (iq < 50) {
+    response += 'Anda sangat bodoh, mungkin Anda harus belajar lebih keras.'
+  } else if (iq < 100) {
+    response += 'Anda cukup pintar, tapi masih bisa lebih baik.'
+  } else if (iq < 200) {
+    response += 'Anda sangat pintar, Anda pasti suka membaca dan belajar.'
+  } else if (iq < 500) {
+    response += 'Anda luar biasa cerdas, Anda mungkin adalah seorang jenius.'
+  } else if (iq < 900) {
+    response += 'Anda menakjubkan, Anda memiliki IQ yang setara dengan Albert Einstein.'
+  } else {
+    response += 'Anda tidak manusiawi, Anda memiliki IQ yang melebihi batas kemampuan otak manusia.'
+  }
+  // Mengirim respon ke pengguna
+  conn.reply(m.chat, response, m)
 }
 handler.help = ['iqtest']
 handler.tags = ['game']
@@ -16,33 +34,3 @@ handler.botAdmin = false
 handler.fail = null
 
 export default handler
-
-function pickRandom(list) {
-  return list[Math.floor(list.length * Math.random())]
-}
-
-global.iq = [
-'IQ Anda Sebesar : 1',
-'IQ Anda Sebesar : 14',
-'IQ Anda Sebesar : 23',
-'IQ Anda Sebesar : 35',
-'IQ Anda Sebesar : 41',
-'IQ Anda Sebesar : 50',
-'IQ Anda Sebesar : 67',
-'IQ Anda Sebesar : 72',
-'IQ Anda Sebesar : 86',
-'IQ Anda Sebesar : 99',
-'IQ Anda Sebesar : 150',
-'IQ Anda Sebesar : 340',
-'IQ Anda Sebesar : 423',
-'IQ Anda Sebesar : 500',
-'IQ Anda Sebesar : 676',
-'IQ Anda Sebesar : 780',
-'IQ Anda Sebesar : 812',
-'IQ Anda Sebesar : 945',
-'IQ Anda Sebesar : 1000',
-'IQ Anda Sebesar : Tidak Terbatas!',
-'IQ Anda Sebesar : 5000',
-'IQ Anda Sebesar : 7500',
-'IQ Anda Sebesar : 10000',
-]

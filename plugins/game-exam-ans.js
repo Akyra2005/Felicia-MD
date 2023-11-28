@@ -5,13 +5,13 @@ export async function all(m, { chatUpdate }) {
 		if (!msg.message.extendedTextMessage) return
 		if (!(msg.message.extendedTextMessage.text == this.exam[m.chat][3]) && !(msg.message.extendedTextMessage.text == this.exam[m.chat][4]) && !(msg.message.extendedTextMessage.text == this.exam[m.chat][5])) return
 		if (msg.message.extendedTextMessage.text == this.exam[m.chat][1].trim()) {
-			await m.reply('✅ Kamu benar.. jawabannya adalah ' + this.exam[m.chat][1])
+			await m.reply('✅ Kamu Benar.. Jawabannya Adalah ' + this.exam[m.chat][1])
 			clearTimeout(this.exam[m.chat][2])
 			delete this.exam[m.chat]
 			// db.data.users[msg.sender].limit += 1
 			// db.data.users[msg.sender].limitgame += 1
 		} else {
-			await m.reply('Jawaban kamu salah, soal berkahir')
+			await m.reply('*Jawaban Kamu Salah, Soal Berkahir*')
 			clearTimeout(this.exam[m.chat][2])
 			delete this.exam[m.chat]
 		}

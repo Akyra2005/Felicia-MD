@@ -9,14 +9,23 @@ handler.before = async function (m) {
     if (m.quoted.id == this.siapakahaku[id][0].id) {
         let json = JSON.parse(JSON.stringify(this.siapakahaku[id][1]))
         // m.reply(JSON.stringify(json, null, '\t'))
-        if (m.text.toLowerCase() == json.jawaban.toLowerCase().trim()) {
-            global.db.data.users[m.sender].
-                exp += this.siapakahaku[id][2]
-            conn.reply(m.chat, `*Benar!*\n+${this.siapakahaku[id][2]} XP`, m)
-            clearTimeout(this.siapakahaku[id][3])
-            delete this.siapakahaku[id]
-        } else if (similarity(m.text.toLowerCase(), json.jawaban.toLowerCase().trim()) >= threshold) m.reply(`*Dikit Lagi!*`)
-        else m.reply(`*Salah!*`)
+        // ...
+
+if (m.text.toLowerCase() == json.jawaban.toLowerCase().trim()) {
+    global.db.data.users[m.sender].exp += this.siapakahaku[id][2]
+    conn.reply(m.chat, `*Benar!*\n+${this.siapakahaku[id][2]} XP`, m)
+    clearTimeout(this.siapakahaku[id][3])
+    delete this.siapakahaku[id]
+} else if (similarity(m.text.toLowerCase(), json.jawaban.toLowerCase().trim()) >= threshold) {
+    m.reply(`*Dikit Lagi!*`)
+    // Tambahkan respons atau tindakan lain jika jawaban mendekati benar
+} else {
+    m.reply(`*Salah!*`)
+    // Tambahkan respons atau tindakan lain jika jawaban salah
+}
+
+// ...
+
     }
     return !0
 }

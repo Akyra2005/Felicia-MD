@@ -1,5 +1,5 @@
 let handler = async (m, { text, usedPrefix }) => {
-    let salah = `Pilihan yang tersedia\n\ngunting, kertas, batu\n\n${usedPrefix}suit gunting\n\nkasih spasi!`
+    let salah = `*Pilihan Tersedia:*\n\ngunting, kertas, batu\n\nFormat: *${usedPrefix}suit gunting*`
     if (!text) throw salah
     var astro = Math.random()
 
@@ -13,27 +13,27 @@ let handler = async (m, { text, usedPrefix }) => {
 
     //menentukan rules
     if (text == astro) {
-        m.reply(`Seri!\nkamu: ${text}\nBot: ${astro}`)
+        m.reply(`*SERI*\nKamu: *${text}*\nBot: *${astro}*`)
     } else if (text == 'batu') {
         if (astro == 'gunting') {
             global.db.data.users[m.sender].money += 1000
-            m.reply(`Kamu menang! +Rp1000\nKamu: ${text}\nBot: ${astro}`)
+            m.reply(`*Kamu Menang +1000 🪙 Flint*\nKamu: ${text}\nBot: ${astro}`)
         } else {
             m.reply(`Kamu kalah!\nkamu: ${text}\nBot: ${astro}`)
         }
     } else if (text == 'gunting') {
         if (astro == 'kertas') {
             global.db.data.users[m.sender].money += 1000
-            m.reply(`Kamu menang! +Rp1000\nKamu: ${text}\nBot: ${astro}`)
+            m.reply(`*Kamu Menang +1000 🪙 Flint*\nKamu: ${text}\nBot: ${astro}`)
         } else {
             m.reply(`Kamu kalah!\nkamu: ${text}\nBot: ${astro}`)
         }
     } else if (text == 'kertas') {
         if (astro == 'batu') {
             global.db.data.users[m.sender].money += 1000
-            m.reply(`Kamu menang! +Rp1000\nKamu: ${text}\nBot: ${astro}`)
+            m.reply(`*Kamu Menang +1000 🪙 Flint*\nKamu: ${text}\nBot: ${astro}`)
         } else {
-            m.reply(`Kamu kalah!\nkamu: ${text}\nBot: ${astro}`)
+            m.reply(`*Kamu Kalah*\nKamu: ${text}\nBot: ${astro}`)
         }
     } else {
         throw salah
@@ -42,5 +42,6 @@ let handler = async (m, { text, usedPrefix }) => {
 handler.help = ['suit']
 handler.tags = ['game']
 handler.command = /^(suit)$/i
-
+handler.register = true
+handler.limit = true
 export default handler

@@ -6,25 +6,25 @@ export async function before(m) {
         return !0
     this.tebakingambar = this.tebakingambar ? this.tebakingambar : {}
     if (!(id in this.tebakingambar))
-        return conn.reply(m.chat, 'Soal itu telah berakhir', m)
+        return conn.reply(m.chat, '*Soal Itu Telah Berakhir*', m)
     if (m.quoted.id == this.tebakingambar[id][0].id) {
         let isSurrender = /^((me)?nyerah|surr?ender)$/i.test(m.text)
         if (isSurrender) {
             clearTimeout(this.tebakingambar[id][3])
             delete this.tebakingambar[id]
-            return conn.reply(m.chat, '*Yah Menyerah :( !*', m)
+            return conn.reply(m.chat, '*Anda Telah Menyerah*', m)
         }
         let json = JSON.parse(JSON.stringify(this.tebakingambar[id][1]))
         // m.reply(JSON.stringify(json, null, '\t'))
         if (m.text.toLowerCase() == json.jawaban.toLowerCase().trim()) {
             global.db.data.users[m.sender].exp += this.tebakingambar[id][2]
-            conn.reply(m.chat, `*Benar!*\n+${this.tebakingambar[id][2]} XP`, m)
+            conn.reply(m.chat, `*BENAR*\n+${this.tebakingambar[id][2]} ✨ XP`, m)
             clearTimeout(this.tebakingambar[id][3])
             delete this.tebakingambar[id]
         } else if (similarity(m.text.toLowerCase(), json.jawaban.toLowerCase().trim()) >= threshold)
-            m.reply(`*Dikit Lagi!*`)
+            m.reply(`*Sedikit Lagi*`)
         else
-            conn.reply(m.chat, `*Salah!*`, m)
+            conn.reply(m.chat, `*Salah*`, m)
     }
     return !0
 }
