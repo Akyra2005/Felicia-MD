@@ -1,15 +1,16 @@
 //buatan zyko-md, jgn hapus atuh 😊
 let handler = async (m, { conn, usedPrefix, command }) => {
-  await m.reply(`*_ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ_*`)
+  await m.reply(`*Memproses Permintaan...*`)
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let name = conn.getName(who)
-  conn.sendFile(m.chat, pickRandom(animemiku), null, `Nih *${name}*.`, m)
+  conn.sendFile(m.chat, pickRandom(animemiku), null, `*Sukses*`, m)
 }
-handler.help = ['animemiku']
+handler.help = ['miku2']
 handler.tags = ['anime']
-handler.command = /^(animemiku)$/i
+handler.command = /^(miku2)$/i
 
 handler.limit = true
+handler.register = true
 
 export default handler
 

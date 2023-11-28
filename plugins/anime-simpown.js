@@ -2,13 +2,14 @@ import fetch from 'node-fetch'
 
 let handler = async (m, { conn }) => {
 	let url = gamanaufal[Math.floor(Math.random() * gamanaufal.length)]
-	conn.sendFile(m.chat, url, 'image.jpg', '*ɪɴɪ ᴄᴜᴍᴀ ꜱɪᴍᴘᴇɴᴀɴ ᴏᴡɴᴇʀ ʙᴏᴛ ᴋᴏᴋ ᴋᴀᴋ (≧ω≦)* ', m)
+	conn.sendFile(m.chat, url, 'image.jpg', '*Sukses* ', m)
 }
-handler.command = /^(simpown)$/i
+handler.command = /^(own-safe)$/i
 handler.tags = ['anime']
-handler.help = ['simpown']
+handler.help = ['own-safe']
 export default handler
 handler.limit = true
+handler.register = true
 
 global.gamanaufal = [
 	'https://telegra.ph/file/f34d76df4a2065af1a5ba.jpg',

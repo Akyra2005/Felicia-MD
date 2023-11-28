@@ -4,10 +4,11 @@ let handler = async (m, { conn }) => {
 	let url = gensin[Math.floor(Math.random() * gensin.length)]
 	conn.sendFile(m.chat, url, 'gensin.jpg', '_Nih Kak_', m)
 }
-handler.command = /^(gensin)$/i
+handler.command = /^(genshin2)$/i
 handler.tags = ['random']
-handler.help = ['gensin']
-handler.limit = true
+handler.help = ['genshin2']
+handler.limit = false
+handler.register = true
 export default handler
 
 global.gensin = [

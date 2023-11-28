@@ -12,17 +12,17 @@ export async function before(m, { conn, args, usedPrefix, command, isAdmin, isBo
     let bang = m.key.id
     
     if (chat.antiToxic && isAntiToxic) {
-        await conn.reply(m.chat, `🚩*HAI* ${name} Kata" Aneh Terdeksi ${isBotAdmin ? '' : '\n\n_Bot bukan admin_'}`)
+        await conn.reply(m.chat, `*${name} Terdeteksi Toxic* ${isBotAdmin ? '' : '\n\n*Bot Bukan Admin*'}`)
         if (isBotAdmin && chat.antiToxic) {
             await conn.sendMessage(m.chat, { delete: m.key })
             return !1
         } else if (!chat.antiToxic) {
              await conn.sendMessage(m.chat, { delete: m.key })
-            await conn.sendMessage(m.chat, 'Sorry Pesan Harus Saya Hapus👾!')           
+            await conn.sendMessage(m.chat, '*Pesan Anda Telah Dihapus*')           
             return !1
         }
     }
     return !0
 }
 
-export const disable = true
+export const disable = false

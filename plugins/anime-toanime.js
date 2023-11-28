@@ -6,16 +6,16 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? c
 let name = await conn.getName(who)
 let q = m.quoted ? m.quoted : m
 let mime = (q.msg || q).mimetype || ''
-if (!mime) throw 'Kirim/Reply Gambar Dengan Caption .toanime'
+if (!mime) throw 'Balas Media Dengan Perintah *.toanime*'
 m.reply(wait)
 let media = await q.download()
 let url = await uploadImage(media)
 let hasil = await (await fetch(`https://api.lolhuman.xyz/api/imagetoanime?apikey=${global.lolkey}&img=${url}`)).buffer()
-await conn.sendFile(m.chat, hasil, '', 'Nih Kak, Maaf Kalau Hasilnya Tidak Sesuai Keinginan', m)
+await conn.sendFile(m.chat, hasil, '', '*Sukses*', m)
 }
 handler.help = ['toanime', 'jadianime']
 handler.tags = ['anime', 'ai']
 handler.command = /^(jadianime|toanime)$/i
 handler.premium = true
-
+handler.register = true
 export default handler

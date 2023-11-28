@@ -3,6 +3,8 @@ import fetch from 'node-fetch';
 import { lookup } from 'mime-types';
 import { pickRandom } from  '../lib/other-function.js'
 let handler = async (m, { conn, args }) => {
+	let chat = global.db.data.chats[m.chat]
+	if (!chat.nsfw) throw `*Grup Ini Tidak Mengizinkan NSFW*\nIzinkan Dengan *.enable 33*`
 let score = '200'
 m.reply(wait)
   let { image, info } = await getYandeImageWithScore(score);
@@ -18,9 +20,11 @@ m.reply(wait)
     { quoted: m }
   );
 };
-handler.tags = [`anime`]
+handler.tags = [`anime`,`nsfw`]
 handler.help = handler.command = ['btmles']
-
+handler.limit = true
+handler.register = true
+handler.nsfw = true
 export default handler;
 const randomNum = Math.floor(Math.random() * 100) + 1;
 let angkah = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15','16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30','31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45','46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60','61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75','76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90','91', '92', '93', '94', '95', '96', '97', '98', '99', '100']
@@ -33,12 +37,12 @@ async function getYandeImageWithScore(score) {
   let json = await res.json();
     
   if (json.length === 0) {
-    throw `Gambar dengan skor ${score} tidak ditemukan :/`;
+    throw `Gambar Dengan Skor *${score}* Tidak Ditemukan`;
   }
 
   let data = json[~~(Math.random() * json.length)];
   if (!data) {
-    throw `Gambar dengan skor ${score} tidak ditemukan :/`;
+    throw `Gambar Dengan Skor *${score}* Tidak Ditemukan`;
   }
 
   let imageInfo = {
@@ -93,21 +97,21 @@ async function getYandeImageWithScore(score) {
 
 function createCaption(info) {
   return `
-ID: ${info.id}
-Tags: ${info.tags}
-Author: ${info.author}
-Source: ${info.source}
-Score: ${info.score}
-Width: ${info.width}
-Height: ${info.height}
-MD5: ${info.md5}
-File Size: ${info.file_size}
-File Ext: ${info.file_ext}
-Is Shown in Index: ${info.is_shown_in_index}
-Rating: ${info.rating}
-Is Rating Locked: ${info.is_rating_locked}
-Has Children: ${info.has_children}
-Parent ID: ${info.parent_id}
-Status: ${info.status}
+ID: *${info.id}*
+Tag: *${info.tags}*
+Pengarang: *${info.author}*
+Sumber: *${info.source}*
+Skor: *${info.score}*
+Lebar: *${info.width}*
+Tinggi: *${info.height}*
+MD5: *${info.md5}*
+Ukuran File: *${info.file_size}*
+Format File: *${info.file_ext}*
+Ditampilkan di Indeks: *${info.is_shown_in_index}*
+Peringkat: *${info.rating}*
+Apakah Peringkat Terkunci: *${info.is_rating_locked}*
+Memiliki Anak: *${info.has_children}*
+Identitas Orang Tua: *${info.parent_id}*
+Status: *${info.status}*
   `;
 }

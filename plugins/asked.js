@@ -2,6 +2,8 @@ import axios from 'axios';
 import { pickRandom } from '../lib/other-function.js'
 import fetch from 'node-fetch'
 let handler = async (m) => {
+	let chat = global.db.data.chats[m.chat]
+	if (!chat.nsfw) throw `*Grup Ini Tidak Mengizinkan NSFW*\nIzinkan Dengan *.enable 33*`
   let videoUrls = [
 "https://media.discordapp.net/attachments/892359838405894156/1154009743959015514/Fanspage_-Lp2022_V_1.mp4",
 "https://media.discordapp.net/attachments/892359838405894156/1154015550217912411/Fanspage_-_Lp2022_V_10.mp4",
@@ -532,13 +534,14 @@ let poto = pickRandom(global.AraChu2)
    const pidio = await conn.sendMessage(m.chat, {
     video: { url: video },
    
-    caption: 'video akan otomatis di hapus dalam 15 menit',
+    caption: '*Video Akan Otomatis Di Hapus Dalam 15 Menit*',
     }, { quoted: m,ephemeralExpiration: 86400});
 setTimeout(() => { conn.sendMessage(m.chat, { delete: pidio.key }); }, 900000); // 3000 
 
 }
 
-handler.help = handler.command = ['bkp2'];
-handler.tags = ['asupan']
-handler.premium = false
+handler.help = handler.command = ['bokep2'];
+handler.tags = ['nsfw']
+handler.premium = true
+handler.register = true
 export default handler;

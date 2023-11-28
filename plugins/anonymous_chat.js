@@ -5,10 +5,10 @@ async function handler(m, { command }) {
         case 'next':
         case 'leave': {
             let room = Object.values(this.anonymous).find(room => room.check(m.sender))
-            if (!room) return this.reply(m.chat, `_Kamu tidak sedang berada di anonymous chat_\n\nKetik .start ( untuk mencari partner )`, m)
+            if (!room) return this.reply(m.chat, `*Kamu Tidak Sedang Berada Di Anonymous Chat*\n\n*.start* - Untuk Mencari Partner`, m)
             m.reply('Ok')
             let other = room.other(m.sender)
-            if (other) await this.reply(other, `_Partner meninggalkan chat_\n\nKetik .start ( untuk mencari partner )`, m)
+            if (other) await this.reply(other, `*Partner Meninggalkan Chat*\n\n*.start* - Untuk Mencari Partner`, m)
             delete this.anonymous[room.id]
             if (command === 'leave') break
         }
@@ -16,10 +16,10 @@ async function handler(m, { command }) {
             if (Object.values(this.anonymous).find(room => room.check(m.sender))) return this.reply(m.chat, `_Kamu masih berada di dalam anonymous chat, menunggu partner_\n\nKetik .leave ( untuk keluar )`, m)
             let room = Object.values(this.anonymous).find(room => room.state === 'WAITING' && !room.check(m.sender))
             if (room) {
-                await this.reply(room.a, `_Partner ditemukan!_\n\nKetik .next ( untuk meng-skip partner )`, m)
+                await this.reply(room.a, `*Partner Ditemukan*\n\n*.next* - Untuk Melewati Partner`, m)
                 room.b = m.sender
                 room.state = 'CHATTING'
-                await this.reply(room.b, `_Partner ditemukan!_\n\nKetik .next ( untuk meng-skip partner )`, m)
+                await this.reply(room.b, `*Partner Ditemukan*\n\n*.next* - Untuk Melewati Partner`, m)
             } else {
                 let id = + new Date
                 this.anonymous[id] = {
@@ -34,7 +34,7 @@ async function handler(m, { command }) {
                         return who === this.a ? this.b : who === this.b ? this.a : ''
                     },
                 }
-                await this.reply(m.chat, `_Menunggu partner..._\n\nKetik .leave ( jika kamu ingin keluar )`, m)
+                await this.reply(m.chat, `*Menunggu Partner...*\n\n*.leave* - Untuk Keluar Dari Anonymous Chat`, m)
             }
             break
         }
@@ -44,4 +44,5 @@ handler.help = ['start', 'leave', 'next']
 handler.tags = ['anonymous']
 handler.command = ['start', 'leave', 'next']
 handler.private = true
+handler.register = true
 export default handler

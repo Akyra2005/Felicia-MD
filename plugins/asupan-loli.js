@@ -1,22 +1,16 @@
 let handler = async (m, { conn, text }) => {
     let yh = global.asupan
     let url = yh[Math.floor(Math.random() * yh.length)]
-    conn.sendFile(m.chat, url, 'anu.mp4', '_Tcih Dasar Pedo_', m)
+    conn.sendFile(m.chat, url, 'anu.mp4', '*Sukses*', m)
   }
   handler.command = /^(loli)$/i
   handler.tags = ['sfw']
   handler.help = ['loli']
-  
-  handler.limit = true
+  handler.register = true
+  handler.limit = false
   
   export default handler
-  global.adReply = {
-
-			contextInfo: {
-
-				forwardingScore: 9999
- global.asupan = [
-  "https://storage.itsrose.my.id/asupan/loli/loli1.mp4",
+ global.asupan = ["https://storage.itsrose.my.id/asupan/loli/loli1.mp4",
   "https://storage.itsrose.my.id/asupan/loli/loli2.mp4",
   "https://storage.itsrose.my.id/asupan/loli/loli3.mp4",
   "https://storage.itsrose.my.id/asupan/loli/loli4.mp4",
@@ -59,5 +53,4 @@ let handler = async (m, { conn, text }) => {
   "https://storage.itsrose.my.id/asupan/loli/loli40.mp4",
   "https://storage.itsrose.my.id/asupan/loli/loli41.mp4",
   "https://storage.itsrose.my.id/asupan/loli/loli42.mp4",
-  "https://storage.itsrose.my.id/asupan/loli/loli43.mp4"
-]
+  "https://storage.itsrose.my.id/asupan/loli/loli43.mp4"]

@@ -11,13 +11,13 @@ export async function before(m, { isAdmin, isBotAdmin }) {
     let bang = m.key.id
 
     if (chat.antiSatir && isAntiSatir) {
-        await this.reply(m.chat, `*Kata Satir Terdeteksi!* ${isBotAdmin ? '' : '\n\n_Bot bukan atmin_'}`, m)
+        await this.reply(m.chat, `*KATA SATIR TERDETEKSI* ${isBotAdmin ? '' : '\n\n*Bot Bukan Admin*'}`, m)
         if (isBotAdmin && bot.restrict) {
             // await this.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
     global.db.data.users[m.sender].warn += 1
     global.db.data.users[m.sender].banned = true
     return this.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: hapus }})
-        } else if (!bot.restrict) return m.reply('Semoga harimu suram!')
+        } else if (!bot.restrict) return m.reply('*Semoga Harimu Senin Terus*')
     }
     return !0
 }

@@ -4,7 +4,7 @@ import { apivisit } from './kanghit.js'
 let handler = async (m, { conn, args, usedPrefix: _p }) => {
     let page = args[0] || `1`
     let ress = await fetch(`https://weeb-scraper.onrender.com/api/anoboy?page=` + page)
-    if (!ress) throw 'Error 404 Not Found'
+    if (!ress) throw '*Tidak Ditemukan*'
     let res = await ress.json()
     let v = res.data
 	let arr = []
@@ -21,4 +21,5 @@ let handler = async (m, { conn, args, usedPrefix: _p }) => {
 handler.help = ['anoboylatest']
 handler.tags = ['tools']
 handler.command = /^(anoboylatest)$/i
+handler.register = true
 export default handler

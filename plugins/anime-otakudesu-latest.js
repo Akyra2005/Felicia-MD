@@ -7,7 +7,7 @@ let handler = async (m, { conn, args, usedPrefix: _p }) => {
     let res = await api.json()
     let vs = res.animeList
 	let arr = []
-	let tekss = res.animeList.map(v => { return `${v.title}\n${v.episode || '-'}, ${v.uploaded_on || '-'} Hari Update ${v.day_updated || '-'}\n${v.link}`}).filter(v => v).join('\n\n')
+	let tekss = res.animeList.map(v => { return `*${v.title}*\n*${v.episode || '-'}, ${v.uploaded_on || '-'}* Hari Update *${v.day_updated || '-'}*\n*${v.link}*`}).filter(v => v).join('\n\n')
 	// for (let x of vs) arr.push({ title: x.title, description: `${x.episode}, ${x.uploaded_on} Hari Update ${x.day_updated}`, rowId: `${_p}otakuinfo ${x.link}` })
 	try {
 	await m.reply(tekss)
@@ -15,7 +15,7 @@ let handler = async (m, { conn, args, usedPrefix: _p }) => {
 	await apivisit
 	} catch (e) {
 		console.log(e)
-		m.reply(`Terjadi kesalahan atau server sedang mengalami gangguan.`)
+		m.reply(`*E R R O R*`)
 	}
 	// By Chandra XD
 	// Follow bang
@@ -23,6 +23,6 @@ let handler = async (m, { conn, args, usedPrefix: _p }) => {
 	// Github : https://github.com/Chandra-XD
 	}
 handler.help = ['otakulatest']
-handler.tags = ['tools']
+handler.tags = ['tools','anime']
 handler.command = /^(otakulatest|otakudesulatest)$/i
 export default handler

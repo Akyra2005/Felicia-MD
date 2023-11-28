@@ -7,7 +7,7 @@ let handler = async (m, {
     command,
     args
 }) => {
-    let query = "Masukan Kodenya!!!\nContoh:\n.carbon console.log('hello world ')"
+    let query = "Format: *.carbon Kode*"
     let text
     if (args.length >= 1) {
         text = args.slice(0).join(" ")
@@ -17,15 +17,15 @@ let handler = async (m, {
     await m.reply(wait)
     try {
         let result = await Carbonify(text)
-        await conn.sendFile(m.chat, result, "", "*From:*\n" + m.name, m)
+        await conn.sendFile(m.chat, result, "", "*From:* " + m.name, m)
     } catch (e) {
         try {
             let result = await CarbonifyV2(text)
-            await conn.sendFile(m.chat, result, "", "*From:*\n" + m.name, m)
+            await conn.sendFile(m.chat, result, "", "*From:* " + m.name, m)
         } catch (e) {
             try {
                 let result = await CarbonifyV3(text)
-                await conn.sendFile(m.chat, result, "", "*From:*\n" + m.name, m)
+                await conn.sendFile(m.chat, result, "", "*From:* " + m.name, m)
             } catch (e) {
                 throw eror
             }
@@ -134,3 +134,4 @@ async function CarbonifyV2(input) {
     let arrayBuffer = await Blobs.arrayBuffer();
     let buffer = Buffer.from(arrayBuffer);
     return buffer
+}

@@ -6,13 +6,13 @@ import { apivisit } from './kanghit.js';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   text = text.endsWith('SMH') ? text.replace('SMH', '') : text;
-  if (!text) throw 'Input Query / yande.re Url';
+  if (!text) throw 'Format: *.yandere Kata Kunci atau yande.re URL*';
   
   let [query, page] = text.split(' ');
   let res = await getYandeImage(query, page);
 
   if (res === 'in_progress') {
-    await conn.sendMessage(m.chat, 'Fetching image. Please wait...', 'conversation', { quoted: m });
+    await conn.sendMessage(m.chat, '*Memproses Permintaan...*', 'conversation', { quoted: m });
     return;
   }
 
@@ -20,10 +20,10 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   text.match(URL_REGEX)
     ? await conn.sendMessage(
         m.chat,
-        { [mime.split('/')[0]]: { url: res }, caption: `Success Download: ${await shortUrl(res)}` },
+        { [mime.split('/')[0]]: { url: res }, caption: `Sukses Mengunduh: *${await shortUrl(res)}*` },
         { quoted: m }
       )
-    : await conn.sendMessage(m.chat, { image: { url: res }, caption: `Result From: ${text.capitalize()}` }, { quoted: m });
+    : await conn.sendMessage(m.chat, { image: { url: res }, caption: `Hasil Dari: *${text.capitalize()}*` }, { quoted: m });
 
   await apivisit;
 };
@@ -31,7 +31,8 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 handler.help = handler.alias = ['yandere', 'yande'].map((v) => v + ' <query> [page]');
 handler.tags = ['downloader'];
 handler.command = /^(yandere|yande)$/i;
-
+handler.limit = true
+handler.register = true
 export default handler;
 
 async function getYandeImage(query, page = '') {

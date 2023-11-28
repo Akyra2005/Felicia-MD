@@ -9,7 +9,7 @@ export async function before(m, { isAdmin, isBotAdmin }) {
     if(isVideo === "videoMessage"){
         if (isAdmin || !isBotAdmin){		  
         } else {
-          m.reply(`*Video Terdeteksi*\n\nMaaf Tapi Harus Saya Hapus, Karna Admin/Owner Mengaktifkan Anti Video Untuk Chat Ini`)
+          m.reply(`*VIDEO TERDETEKSI*\n\n*Video Akan Dihapus Karena Anti-Video Aktif Digrup Ini*`)
     return this.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: hapus }})
         }return true
     }

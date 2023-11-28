@@ -5,7 +5,7 @@ export async function before(m) {
   ${conn.getName(m.sender)} @${m.sender.split("@")[0]} berhenti AFK ${user.afkReason ? ' setelah ' + user.afkReason : ''}
   Selama ${(new Date - user.afk).toTimeString()}
   `.trim()
-  let kataafk = ['mau turu', 'mau nyolong', 'Ke rumah ayang', 'jagain lilin', 'beli pop es', 'kawin lari', 'main kelereng', 'petak umpet', 'push renk', 'push up joni', 'olahraga', 'onani', 'beraq', 'open bo', 'di suruh emak', 'kerja']
+  let kataafk = ['mau turu', 'mau nyolong', 'Ke rumah ayang', 'jagain lilin', 'beli pop es', 'kawin lari', 'main kelereng', 'petak umpet', 'push rank', 'push up joni', 'olahraga', 'onani', 'beraq', 'open bo', 'di suruh emak', 'kerja']
     conn.reply(m.chat, caption, m, { mentions: conn.parseMention(caption) })
         user.afk = -1
         user.afkReason = ''
@@ -20,8 +20,8 @@ export async function before(m) {
             continue
         let reason = user.afkReason || ''
         let caption = `
-  Jangan tag ${conn.getName(jid)} @${jid.split("@")[0]}!
-  Dia sedang AFK ${reason ? 'dengan alasan ' + reason : 'tanpa alasan'}
+  Anak Ini ${conn.getName(jid)} @${jid.split("@")[0]}!
+  Dia Sedang AFK ${reason ? 'Dengan Alasan ' + reason : 'Tanpa Alasan'}
   Selama ${(new Date - afkTime).toTimeString()}
   `.trim()
     conn.reply(m.chat, caption, m, { mentions: conn.parseMention(caption) })

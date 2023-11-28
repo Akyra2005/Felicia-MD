@@ -1,7 +1,7 @@
 import fetch from "node-fetch"
 
 let handler = async (m, { conn, isOwner, usedPrefix, command, args }) => {
-	let query = "input text Ex:\n.midjourney man kissing"
+	let query = "Format: *.midjourney Kata Kunci*"
 	let text
 	if (args.length >= 1) {
 		text = args.slice(0).join(" ")
@@ -11,7 +11,7 @@ let handler = async (m, { conn, isOwner, usedPrefix, command, args }) => {
 	try {
 	m.reply(wait)
 	 await Draw(text).then((img) => {
-                conn.sendFile(m.chat, img, text, "*[ Result ]*\n" + text, m)
+                conn.sendFile(m.chat, img, text, "*Hasil Dari* " + text, m)
             })
       } catch (e) {
       throw eror
@@ -22,7 +22,8 @@ let handler = async (m, { conn, isOwner, usedPrefix, command, args }) => {
 handler.help = ["midjourney"]
 handler.tags = ["ai"]
 handler.command = /^midjourney$/i
-
+handler.limit = true
+handler.register = true
 export default handler
 
 async function Draw(propmt) {

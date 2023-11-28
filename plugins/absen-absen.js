@@ -3,11 +3,11 @@ let handler = async (m, { conn, usedPrefix }) => {
     let id = m.chat
     conn.absen = conn.absen ? conn.absen : {}
     if (!(id in conn.absen)) {
-        await conn.reply(m.chat, `Tidak ada absen berlangsung!`, m)
+        await conn.reply(m.chat, `*Tidak Ada Absen Berlangsung*`, m)
         throw false
     }
     let absen = conn.absen[id][1]
-    if (absen.includes(m.sender)) throw 'Kamu sudah absen!'
+    if (absen.includes(m.sender)) throw '*Kamu Sudah Absen*'
     absen.push(m.sender)
     let d = new Date
     let date = d.toLocaleDateString('id', {
@@ -34,5 +34,5 @@ await conn.reply(m.chat, caption, m, { mentions: conn.parseMention(caption) })
 handler.help = ['absen']
 handler.tags = ['absen']
 handler.command = /^(absen|hadir)$/i
-
+handler.group = true
 export default handler

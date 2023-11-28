@@ -105,38 +105,38 @@ function randomId() {
 let handler = async (m, { conn, usedPrefix, command }) => {
 	conn.cartoon = conn.cartoon ? conn.cartoon : {};
 	if (m.sender in conn.cartoon)
-		throw "Masih Ada Proses Yang Belum Selesai Kak, Silahkan Tunggu Sampai Selesai Yah >//<";
+		throw "*Fitur Sedang Digunakan Pengguna Lain, Mohon Tunggu Sebentar*";
 	let q = m.quoted ? m.quoted : m;
 	let mime = (q.msg || q).mimetype || q.mediaType || "";
-	if (!mime) throw `Fotonya Mana Kak?`;
-	if (!/image\/(jpe?g|png)/.test(mime)) throw `Mime ${mime} tidak support`;
+	if (!mime) throw `Balas Media Dengan Perintah *.cartoon*`;
+	if (!/image\/(jpe?g|png)/.test(mime)) throw `*Mime ${mime} Tidak Support*`;
 	else conn.cartoon[m.sender] = true;
-	m.reply("Proses Kak...");
+	m.reply("*Memproses Permintaan...*");
 	let img = await q.download?.();
 	try {
 		Cartoon(img).then(async (response) => {
-			if (response.message == "success") {
+			if (response.message == "*success*") {
 				await conn.sendFile(
 					m.chat,
 					response.download.full,
 					"",
-					"Sudah Jadi Kak >//<",
+					"*Sukses*",
 					m
 				);
 			} else {
 				m.reply(
-					"Maaf Kak Di Fotonya Tidak Terdeteksi Wajah."
+					"*Tidak Terdeteksi Wajah Pada Foto*"
 				);
 			}
 		});
 	} catch {
-		m.reply("Proses gagal :(");
+		m.reply("*Gagal Memproses*");
 	} finally {
 		conn.cartoon[m.sender] ? delete conn.cartoon[m.sender] : false;
 	}
 };
 handler.help = ["tocartoon"];
-handler.tags = ["openai"];
+handler.tags = ["ai"];
 handler.command = ["tocartoon", "cartoon"];
 
 handler.premium = true

@@ -12,8 +12,8 @@ pp = await this.profilePictureUrl(m.sender, 'image')
 } finally {
 global.ephemeral = "86400"
 global.kontak2 = [
-[owner[0], await conn.getName(owner[0] + '6283181666350@s.whatsapp.net'), 'ᴅᴇᴠᴇʟᴏᴩᴇʀ ʙᴏᴛ', 'f999@gmail.com', true],
-[owner[1], await conn.getName(owner[1] + '@s.whatsapp.net'), 'ᴅᴇᴠᴇʟᴏᴩᴇʀ ʙᴏᴛ', 'f1000@gmail.com', true],
+[owner[0], await conn.getName(owner[0] + '6281249122429@s.whatsapp.net'), '𝗣𝗲𝗻𝗴𝗲𝗺𝗯𝗮𝗻𝗴 𝗕𝗼𝘁', 'is.keizha@gmail.com', true],
+[owner[1], await conn.getName(owner[1] + '@s.whatsapp.net'), '𝗣𝗲𝗻𝗴𝗲𝗺𝗯𝗮𝗻𝗴 𝗕𝗼𝘁', 'is.keizha@gmail.com', true],
 ]
 global.pppkecil = AraChu2.getRandom()
 global.ucapan = ucapan()
@@ -21,11 +21,11 @@ global.ppkecil = {
             contextInfo: {
             externalAdReply: {
                 showAdAttribution: true,
-                title: `ᴋᴏɴᴇᴋᴏ ᴄʏᴢ`,
+                title: `𝗙𝗲𝗹𝗶𝗰𝗶𝗮-𝗠𝗗`,
                 body: global.author,
                 thumbnail: await fs.readFileSync("./thumbnail.jpg"),
                 thumbnailUrl: pppkecil,
-                sourceUrl: `https://s.id/ReyzShop`,
+                sourceUrl: ``,
                 mediaType: 1,
                 renderLargerThumbnail: false
             }
@@ -44,10 +44,10 @@ global.adReplyS = {
             title: "👋 " + Sapa() + Pagi(),
             body: author,
             mediaUrl: sgc,
-            description: "𝑾𝒖𝒅𝒚𝒔𝒐𝒇𝒕",
+            description: "𝗙𝗲𝗹𝗶𝗰𝗶𝗮-𝗠𝗗",
             previewType: "PHOTO",
             thumbnail: await fs.readFileSync("./55111188_p0.jpg"),
-            sourceUrl:  "https://リコリス・リコイル",
+            sourceUrl:  "http://bit.ly/49PsIf8",
         }
     }
 }
@@ -64,7 +64,7 @@ global.adReply = {
             mediaUrl:  sgc,
             renderLargerThumbnail: true,
             showAdAttribution: true,
-            sourceId: "𝑾𝒖𝒅𝒚𝒔𝒐𝒇𝒕",
+            sourceId: "𝗙𝗲𝗹𝗶𝗰𝗶𝗮-𝗠𝗗",
             sourceType: "PDF",
             previewType: "PDF",
             sourceUrl:  sgc,

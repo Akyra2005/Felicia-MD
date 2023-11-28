@@ -6,8 +6,8 @@ export async function before(m, { isAdmin, isBotAdmin }) {
   const chat = global.db.data.chats[m.chat];
   const isGroupLink = linkRegex.exec(m.text);
   const kickMessage = isAdmin
-    ? `❌ *Tautan Terdeteksi*\nAnda admin grup tidak bisa dikeluarkan dari grup.`
-    : `❌ *Tautan Terdeteksi*\nAnda akan dikeluarkan dari grup.`;
+    ? `*TAUTAN GRUP TERDETEKSI*\n*Anda Admin Grup Tidak Bisa Dikeluarkan Dari Grup*`
+    : `*TAUTAN GRUP TERDETEKSI*\n*Anda Akan Dikeluarkan Dari Grup*`;
 
   if (chat.antiLink && isGroupLink) {
     await this.reply(m.chat, kickMessage, null, { mentions: [m.sender] });

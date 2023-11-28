@@ -8,7 +8,7 @@ export async function before(m, { isAdmin, isBotAdmin }) {
     if (m.isBaileys && m.fromMe == false){
         if (isAdmin || !isBotAdmin){		  
         } else {
-          m.reply(`*Bot Lain Terdeteksi*\n\nMaaf Kak Harus Saya Keluarkan, Karna Admin Mengaktifkan Anti Bot :)`)
+          m.reply(`*BOT LAIN TERDETEKSI*\n\n*Bot Lain Akan Dikeluarkan Karena Anti-Bot Aktif Digrup Ini*`)
     return await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
         }return true
     }

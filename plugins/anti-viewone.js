@@ -18,11 +18,11 @@ let chat = global.db.data.chats[m.chat]
         }
         if (/video/.test(type)) {
             return this.sendFile(m.chat, buffer, author, msg[type].caption || '', m, null, fakefb)
-            return throw '[View Once Video] Detected'
+            return throw '*Lihat Sekali Video Terdeteksi*'
             
         } else if (/image/.test(type)) {
             return this.sendFile(m.chat, buffer, author, msg[type].caption || '', m, null, fakefb)
-            return throw '[View Once Image] Detected'
+            return throw '*Lihat Sekali Gambar Terdeteksi*'
         }
     }
 }

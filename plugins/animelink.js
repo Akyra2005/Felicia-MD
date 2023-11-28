@@ -45,9 +45,9 @@ let handler = async m => m.reply(`
 ┃ ❖ https://myanimelist.net
 ┗ ┅ ━━━━━━━━━━━ ┅ ━
 `.trim()) // Tambah sendiri kalo mau
-handler.help = ['animelink']
-handler.tags = ['anime']
-handler.command = /^animelink$/i
+handler.help = ['ggcf']
+handler.tags = ['hhuhg']
+handler.command = /^ieisisb$/i
 handler.register =false
 
 export default handler

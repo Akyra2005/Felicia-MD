@@ -9,7 +9,7 @@ export async function before(m, { isAdmin, isBotAdmin }) {
     if(isAudio === "audioMessage"){
         if (isAdmin || !isBotAdmin){		  
         } else {
-          m.reply(`*Audio Terdeteksi*\n\nMaaf Tapi Harus Saya Hapus, Karna Admin/Owner Mengaktifkan Anti Audio Untuk Chat Ini`)
+          m.reply(`*AUDIO TERDETEKSI*\n\n*Audio Akan Dihapus Karena Anti-Audio Aktif Digrup Ini*`)
     return this.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: hapus }})
         }return true
     }

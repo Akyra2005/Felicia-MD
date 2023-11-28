@@ -24,12 +24,12 @@ var shipverdict = [
     "☠️  ☠️  ☠️  ☠️  ☠️"
 ];
 var shipfooter = [
-    "You are so friendly. Very welcoming to know you!",
-    "You are not too toxic, is it fun?",
-    "You appear to be toxic. Calm down!",
-    "Don't be so toxic. You can relax!",
-    "There's nothing more I could say, you're totally the most toxic person in the world!",
-    "Your toxic meter also goes above 100%."
+     "*Kamu Sangat Ramah, Senang Sekali Mengenal Anda*",
+     "*Kamu Tidak Terlalu Toxic, Menyenangkan?*",
+     "*Sepertinya Kamu Toxic, Tenanglah*",
+     "*Jangan Terlalu Toxic, Kamu Santai Saja*",
+     "*Tidak Ada Lagi Yang Bisa Aku Katakan, Kamu Benar-Benar Orang Paling Toxic Di Dunia*",
+     "*Meter Toxicmu Juga Melebihi 100%*"
 ];
 
 const toxicity = Number(tes.toxicity * 100).toFixed(2)
@@ -46,18 +46,18 @@ if (toxicity < 15) {
     sIndexer = 4
 } else sIndexer = 5
 
-var caption = `*[ TOXIC STRENGTH ]*
+var caption = `*TINGKATAN TOXIC*
 
 ${shipverdict[sIndexer]}
 ${shipfooter[sIndexer]}
 `
-await this.reply(m.chat, `*Kata Aneh Terdeteksi!* ${isBotAdmin ? '' : '\n\n_Bot bukan atmin_'}`, m)
+await this.reply(m.chat, `*KATA ANEH TERDETEKSI* ${isBotAdmin ? '' : '\n\n*Bot Bukan Admin*'}`, m)
 if (isBotAdmin && bot.restrict) {
             // await this.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
     global.db.data.users[m.sender].warn += 1
     global.db.data.users[m.sender].banned = true
     return this.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: hapus }})
-        } else if (!bot.restrict) return m.reply('Semoga harimu suram!')
+        } else if (!bot.restrict) return m.reply('*Semoga Harimu Senin Terus*')
     }
     return !0
 }

@@ -2,16 +2,16 @@ import axios from 'axios'
 import { apivisit } from './kanghit.js'
 
 let handler = async (m, { conn, text }) => {
-    if (!text) throw `Link?`
-    if (!text.includes("episode")) throw `Invalid Url...`
+    if (!text) throw `Format: *.otakudl Tautan*`
+    if (!text.includes("episode")) throw `Tautan Tidak Sah, Dapatkan Tautan Di *.otakuinfo*`
     let res = (await axios.get(API('can', '/api/anime/otakudesu/dl', { link: text } ))).data;
     let x = res.result
     try {
-    await conn.reply(m.chat, `*Title :* ${x.title}\n\n*Download Quality 360p :* ${x.low}\n*Download Quality 480p :* ${x.medium}\n*Download Quality 720p :* ${x.high}`, m)
+    await conn.reply(m.chat, `Judul: *${x.title}*\n\nKualitas Unduhan 360p: *${x.low}*\nKualitas Unduhan 480p: *${x.medium}*\nKualitas Unduhan 720p: *${x.high}*`, m)
     await apivisit
     } catch (e) {
 		console.log(e)
-		m.reply(`Error :(`)
+		m.reply(`*E R R O R*`)
 	}
 	// By Chandra XD
 	// Follow bang
@@ -19,6 +19,8 @@ let handler = async (m, { conn, text }) => {
 	// Github : https://github.com/Chandra-XD
 	}
 handler.help = ['otakudl'].map(v => v + ' <id>')
-handler.tags = ['downloader']
+handler.tags = ['downloader','anime']
 handler.command = /^(otakudl|otakudesudl)$/i
+handler.limit = true
+handler.register = true
 export default handler

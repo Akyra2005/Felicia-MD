@@ -5,11 +5,11 @@ export async function before(m, { isAdmin, isBotAdmin }) {
   user.warn += 1;
   user.banned = true;
 
-  m.reply('⚠️ *Stiker Terdeteksi!* ⚠️\nKamu telah mengirimkan stiker yang tidak diizinkan.');
+  m.reply('*STIKER TERDETEKSI*\n*Stiker Akan Dihapus Karena Anti-Stiker Aktif Digrup Ini*');
 
   if (isAdmin || isBotAdmin) {
     const deleteMessage = { delete: { remoteJid: m.key.remoteJid, fromMe: false, id: m.key.id, participant: [m.sender] } };
-    m.reply(isAdmin ? '❌ *Kamu tidak diizinkan mengirim stiker.*' : '❌ *Stiker terdeteksi dan dihapus.*');
+    m.reply(isAdmin ? '*Kamu Tidak Diizinkan Mengirim Stiker*' : '*Stiker Terdeteksi Dan Akan Dihapus*');
     await this.sendMessage(m.chat, deleteMessage);
   }
 }

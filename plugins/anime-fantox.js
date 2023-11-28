@@ -7,7 +7,8 @@ let handler = async (m, {
     args,
     command
 }) => {
-
+	let chat = global.db.data.chats[m.chat]
+	if (!chat.nsfw) throw `*Grup Ini Tidak Mengizinkan NSFW*\nIzinkan Dengan *.enable 33*`
     let arrlist = [
         "animal",
         "animalears",
@@ -115,10 +116,11 @@ let handler = async (m, {
         "yuri"
     ]
     let listnya = arrlist.map((v, index) => {
-        return `[ ${++index} ] ${usedPrefix + command} ${v}`
+        return `${usedPrefix + command} ${v}`
     }).join("\n")
-    let nah = `${htki} *L I S T* ${htka}
-_Example: ${usedPrefix + command} yuri_
+    let nah = `${htki} *FANTOX* ${htka}\n
+Format: *${usedPrefix + command} Tipe*
+Contoh: *${usedPrefix + command} bunnygirl*
 
 ${listnya}`
     if (!arrlist.includes(text)) return m.reply(nah)
@@ -126,11 +128,13 @@ ${listnya}`
     try {
         let ani = await fetch("https://fantox-apis.vercel.app/" + text)
         let mek = await ani.json()
-        await conn.sendFile(m.chat, mek.url, "", `Nih kak ${m.name}`, m)
+        await conn.sendFile(m.chat, mek.url, "", `*Sukses*`, m)
     } catch (e) {
         await m.reply(eror)
     }
 }
 handler.command = handler.help = ["fantox"]
-handler.tags = ["anime"]
+handler.tags = ["anime","nsfw"]
+handler.premium = true
+handler.register = true
 export default handler

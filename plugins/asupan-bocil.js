@@ -8,14 +8,15 @@ let asup = await res.json()
 
 let json = asup[Math.floor(Math.random() * asup.length)]
 
-conn.sendFile(m.chat, json.url, '', '_Nih Kak_', m)
+conn.sendFile(m.chat, json.url, '', '*Sukses*', m)
 
 }
 
 handler.help = ['bocil']
 
 handler.tags = ['random']
-
+handler.limit = false
+handler.register = true
 
 handler.command = /^(bocil)$/i
 

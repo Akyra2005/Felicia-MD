@@ -2,7 +2,7 @@
 let handler = async (m, { conn, usedPrefix }) => {
     let id = m.chat
     conn.absen = conn.absen ? conn.absen : {}
-    if (!(id in conn.absen)) await conn.reply(m.chat, `_*Tidak ada absen berlangsung digrup ini!*_\n\n*${usedPrefix}mulaiabsen* - untuk memulai absen`, m)
+    if (!(id in conn.absen)) await conn.reply(m.chat, `*Tidak Ada Absen Berlangsung*\n\n*${usedPrefix}mulaiabsen* - Untuk Memulai Absen`, m)
             
     let d = new Date
     let date = d.toLocaleDateString('id', {
@@ -30,4 +30,5 @@ handler.help = ['cekabsen']
 handler.tags = ['absen']
 handler.command = /^cekabsen$/i
 handler.group = true
+handler.register = true
 export default handler

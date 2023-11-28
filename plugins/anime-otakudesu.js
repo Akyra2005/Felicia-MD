@@ -2,7 +2,7 @@ import axios from 'axios'
 import { apivisit } from './kanghit.js'
 
 let handler = async (m, { conn, args, usedPrefix: _p }) => {
-    if (!args[0]) throw `Judul anime?\nContoh : date a live`
+    if (!args[0]) throw `Format *.otaku Kata Kunci*`
     let res = (await axios.get(API('can', '/api/anime/otakudesu/search', { query: args[0] } ))).data;
     let vs = res.result
 	let arr = []
@@ -14,7 +14,7 @@ let handler = async (m, { conn, args, usedPrefix: _p }) => {
 	await apivisit
 	} catch (e) {
 		console.log(e)
-		m.reply(`Terjadi kesalahan atau server sedang mengalami gangguan.`)
+		m.reply(`*E R R O R*`)
 	}
 	// By Chandra XD
 	// Follow bang
@@ -22,6 +22,8 @@ let handler = async (m, { conn, args, usedPrefix: _p }) => {
 	// Github : https://github.com/Chandra-XD
 	}
 handler.help = ['otaku'].map(v => v + ' <anime>')
-handler.tags = ['tools']
+handler.tags = ['tools','anime']
 handler.command = /^(otaku|otakudesu)$/i
+handler.limit = true
+handler.register = true
 export default handler

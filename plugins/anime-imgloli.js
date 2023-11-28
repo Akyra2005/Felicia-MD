@@ -3,20 +3,24 @@ let handler = async(m, {
 	text,
 	command
 }) => {
+	let chat = global.db.data.chats[m.chat]
+	if (!chat.nsfw) throw `*Grup Ini Tidak Mengizinkan NSFW*\nIzinkan Dengan *.enable 33*`
 	let yh = global.loli
 	let url = yh[Math.floor(Math.random() * yh.length)]
 	conn.sendMessage(m.chat, {
 		image: {
 			url: url
 		},
-		caption: "ʀᴀɴᴅᴏᴍ ʟᴏʟɪ - ɪѕ ᴄᴜᴛᴇ 🥺"
+		caption: "*Sukses*"
 	}, {
 		quoted: m
 	});
 }
-handler.command = /^(imgloli)$/i
+handler.command = /^(loli)$/i
 handler.tags = ['anime']
-handler.help = ['imgloli']
+handler.help = ['loli']
+handler.register = true
+handler.limit = true
 export default handler
 
 global.loli = [

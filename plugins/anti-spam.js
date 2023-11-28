@@ -21,10 +21,10 @@ export async function before(m) {
             setTimeout(() => {
                 users[m.sender].banned = false;
                 this.spam[m.sender].count = 0;
-                m.reply(`✅ *Cooldown selesai*\nAnda bisa mengirim pesan lagi.`);
+                m.reply(`*Hitung Mundur Selesai, Anda Bisa Mengirim Pesan Lagi*`);
             }, 5000);
             const message = m.mtype.replace(/message$/i, '').replace('audio', m.msg.ptt ? 'PTT' : 'audio').replace(/^./, v => v.toUpperCase()) || 'Unknown';
-            return m.reply(`❌ *Mohon jangan spam ${message}*\nTunggu setelah ${remainingCooldown} detik`);
+            return m.reply(`*Mohon Jangan Spam ${message}*\n*Tunggu Setelah ${remainingCooldown} Detik*`);
         }
     } else {
         this.spam[m.sender].count = 0;

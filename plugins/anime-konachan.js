@@ -1,14 +1,17 @@
 let handler = async (m, { conn, usedPrefix, command }) => {
-  await m.reply(`*_ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ_*`)
+	let chat = global.db.data.chats[m.chat]
+	if (!chat.nsfw) throw `*Grup Ini Tidak Mengizinkan NSFW*\nIzinkan Dengan *.enable 33*`
+  await m.reply(`*Memproses Permintaan...*`)
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let name = conn.getName(who)
-conn.sendFile(m.chat, pickRandom(konachan), null, `Nih *${name}*`, m)
+conn.sendFile(m.chat, pickRandom(konachan), null, `*Sukses*`, m)
  // conn.sendButton(m.chat, `Nih *${name}*`, botdate, pickRandom(konachan), [['Next', `/konachan`]],m)
 }
 handler.help = ['konachan']
 handler.tags = ['nsfw', 'anime']
 handler.command = /^(konachan)$/i
 handler.premium = true
+handler.register = true
 export default handler
 
 function pickRandom(list) {

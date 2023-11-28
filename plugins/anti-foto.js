@@ -9,7 +9,7 @@ export async function before(m, { isAdmin, isBotAdmin }) {
     if(isFoto === "imageMessage"){
         if (isAdmin || !isBotAdmin){		  
         } else {
-          m.reply(`*Foto Terdeteksi*\n\nMaaf Tapi Harus Saya Hapus Karna Di Admin/Owner Mengaktifkan Anti Foto Untuk Chat Ini`)
+          m.reply(`*FOTO TERDETEKSI*\n\n*Foto Akan Dihapus Karena Anti-Foto Aktif Digrup Ini*`)
     return this.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: hapus }})
         }return true
     }

@@ -25,9 +25,9 @@ export async function before(m, {
 	let hapus = m.key.participant
 	let bang = m.key.id
 	if (chat.antiLinkTik && isAntiLinkTik) {
-		await this.reply(m.chat, "*[ Link Detected ]*", m)
-		if (!isBotAdmin) return m.reply("Bot bukan *Admin*")
-		if (isAdmin) return m.reply("Kemungkinan anda adalah *Admin* !")
+		await this.reply(m.chat, "*TAUTAN TIKTOK TERDETEKSI*", m)
+		if (!isBotAdmin) return m.reply("*Bot Bukan Admin*")
+		if (isAdmin) return m.reply("*Admin Tidak Akan Dikeluarkan*")
 		if (isBotAdmin) {
 			user.warn += 1
 			user.banned = true
@@ -44,9 +44,9 @@ export async function before(m, {
 	}
 
 	if (chat.antiLinkYt && isAntiLinkYt) {
-		await this.reply(m.chat, "*[ Link Detected ]*", m)
-		if (!isBotAdmin) return m.reply("Bot bukan *Admin*")
-		if (isAdmin) return m.reply("Kemungkinan anda adalah *Admin* !")
+		await this.reply(m.chat, "*TAUTAN YOUTUBE TERDETEKSI*", m)
+		if (!isBotAdmin) return m.reply("*Bot Bukan Admin*")
+		if (isAdmin) return m.reply("*Admin Tidak Akan Dikeluarkan*")
 		if (isBotAdmin) {
 			user.warn += 1
 			user.banned = true
@@ -63,9 +63,9 @@ export async function before(m, {
 	}
 
 	if (chat.antiLinkTel && isAntiLinkTel) {
-		await this.reply(m.chat, "*[ Link Detected ]*", m)
-		if (!isBotAdmin) return m.reply("Bot bukan *Admin*")
-		if (isAdmin) return m.reply("Kemungkinan anda adalah *Admin* !")
+		await this.reply(m.chat, "*TAUTAN TELEGRAM TERDETEKSI*", m)
+		if (!isBotAdmin) return m.reply("*Bot Bukan Admin*")
+		if (isAdmin) return m.reply("*Admin Tidak Akan Dikeluarkan*")
 		if (isBotAdmin) {
 			user.warn += 1
 			user.banned = true
@@ -82,9 +82,9 @@ export async function before(m, {
 	}
 
 	if (chat.antiLinkFb && isAntiLinkFb) {
-		await this.reply(m.chat, "*[ Link Detected ]*", m)
-		if (!isBotAdmin) return m.reply("Bot bukan *Admin*")
-		if (isAdmin) return m.reply("Kemungkinan anda adalah *Admin* !")
+		await this.reply(m.chat, "*TAUTAN FACEBOOK TERDETEKSI*", m)
+		if (!isBotAdmin) return m.reply("*Bot Bukan Admin*")
+		if (isAdmin) return m.reply("*Admin Tidak Akan Dikeluarkan*")
 		if (isBotAdmin) {
 			user.warn += 1
 			user.banned = true
@@ -101,9 +101,9 @@ export async function before(m, {
 	}
 
 	if (chat.antiLinkIg && isAntiLinkIg) {
-		await this.reply(m.chat, "*[ Link Detected ]*", m)
-		if (!isBotAdmin) return m.reply("Bot bukan *Admin*")
-		if (isAdmin) return m.reply("Kemungkinan anda adalah *Admin* !")
+		await this.reply(m.chat, "*TAUTAN INSTAGRAM TERDETEKSI*", m)
+		if (!isBotAdmin) return m.reply("*Bot Bukan Admin*")
+		if (isAdmin) return m.reply("*Admin Tidak Akan Dikeluarkan*")
 		if (isBotAdmin) {
 			user.warn += 1
 			user.banned = true
@@ -120,9 +120,9 @@ export async function before(m, {
 	}
 
 	if (chat.antiLinkWa && isAntiLinkWa) {
-		await this.reply(m.chat, "*[ Link Detected ]*", m)
-		if (!isBotAdmin) return m.reply("Bot bukan *Admin*")
-		if (isAdmin) return m.reply("Kemungkinan anda adalah *Admin* !")
+		await this.reply(m.chat, "*TAUTAN WHATSAPP TERDETEKSI*", m)
+		if (!isBotAdmin) return m.reply("*Bot Bukan Admin*")
+		if (isAdmin) return m.reply("*Admin Tidak Akan Dikeluarkan*")
 		if (isBotAdmin) {
 			user.warn += 1
 			user.banned = true
@@ -139,9 +139,9 @@ export async function before(m, {
 	}
 
 	if (chat.antiLinkHttp && isAntiLinkHttp) {
-		await this.reply(m.chat, "*[ Link Detected ]*", m)
-		if (!isBotAdmin) return m.reply("Bot bukan *Admin*")
-		if (isAdmin) return m.reply("Kemungkinan anda adalah *Admin* !")
+		await this.reply(m.chat, "*TAUTAN HTTP TERDETEKSI*", m)
+		if (!isBotAdmin) return m.reply("*Bot Bukan Admin*")
+		if (isAdmin) return m.reply("*Admin Tidak Akan Dikeluarkan*")
 		if (isBotAdmin) {
 			user.warn += 1
 			user.banned = true
