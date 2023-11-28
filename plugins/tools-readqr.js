@@ -8,7 +8,7 @@ let q = m.quoted ? m.quoted : m
 
 let mime = (q.msg || q).mimetype || ''
 
-if (!mime) throw '*Respond to a qr*'
+if (!mime) throw 'Balas Gambar Berisi QR Dengan Perintah *.readqr*'
 
 let img = await q.download?.()
 

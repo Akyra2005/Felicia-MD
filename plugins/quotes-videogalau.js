@@ -1,5 +1,5 @@
 let handler = async (m, { conn, usedPrefix, command }) => {
-conn.sendFile(m.chat, pickRandom(galau), 'random.mp4', '_Nih Kak_', m)
+conn.sendFile(m.chat, pickRandom(galau), 'random.mp4', '*Sukses*', m)
 };
 handler.help = ["videoquotes", "videogalau"];
 handler.tags = ["quotes"];
@@ -9,7 +9,7 @@ handler.premium = false;
 handler.limit = true;
 
 handler.fail = null;
-handler.register = false;
+handler.register = true;
 
 export default handler;
 

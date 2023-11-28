@@ -5,7 +5,7 @@ import uploadFile from "../lib/uploadFile.js"
 let handler = async (m, { conn, usedPrefix }) => {
   let q = m.quoted ? m.quoted : m
   let mime = (q.msg || q).mimetype || ''
-  if (!mime) throw "Di mana media-nya?"
+  if (!mime) throw "Balas Media Dengan Perintah *.cekreso*"
 
   let media = await q.download()
   let isMedia = /image\/(png|jpe?g|gif)|video\/mp4/.test(mime)
@@ -14,10 +14,10 @@ let handler = async (m, { conn, usedPrefix }) => {
   let height = await source.getHeight()
   let width = await source.getWidth()
 await m.reply(wait)
-  m.reply(`*_💠 RESOLUSI:_* ${width} x ${height}
-  *> Lebar :* ${width}
-  *> Tinggi :* ${height}
-  *> Tautan :* ${link}`)
+  m.reply(`*Resolusi ${width} x ${height}*
+Lebar: *${width}*
+Tinggi: *${height}*
+Tautan: *${link}*`)
 }
 
 handler.help = ['cekresolution *<foto>*', 'cekreso *<foto>*']

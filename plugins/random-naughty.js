@@ -1,10 +1,14 @@
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn }) => {
+	let chat = global.db.data.chats[m.chat]
+	if (!chat.nsfw) throw `*Grup Ini Tidak Mengizinkan NSFW*\nIzinkan Dengan *.enable 33*`
+	let user = global.db.data.users[m.sender].age
+    if (user < 17) throw m.reply(`*Kamu Belum Cukup Umur*`)
 
 	let url = akira[Math.floor(Math.random() * akira.length)]
 
-	conn.sendFile(m.chat, url, null, 'Random naughty', m)
+	conn.sendFile(m.chat, url, null, '*Sukses*', m)
 
 }
 
@@ -13,7 +17,8 @@ handler.command = ['naughty']
 handler.tags = ['random']
 
 handler.help = ['naughty']
-
+handler.register = true
+handler.limit = true
 export default handler
 
 global.akira = [

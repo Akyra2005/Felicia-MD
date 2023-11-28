@@ -6,14 +6,14 @@ let handler = async (m, { conn, usedPrefix, __dirname, text, command }) => {
 let tag = `@${m.sender.replace(/@.+/, '')}`
   let mentionedJid = [m.sender]
 let name = conn.getName(m.sender)
-let bcod = `${pickRandom(global.bacot)}`
+let bcod = `*"${pickRandom(global.bacot)}"*`
 m.reply(bcod)
 }
 handler.help = ['bacot']
 handler.tags = ['quotes']
 handler.command = /^(bacot)$/i
 handler.limit = true
-
+handler.register = true
 export default handler
 
 function ucapan() {

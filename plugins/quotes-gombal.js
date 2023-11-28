@@ -1,11 +1,11 @@
 let handler = async (m, { conn }) => {
-	conn.reply(m.chat, `“${pickRandom(global.gombal)}”`, m);
+	conn.reply(m.chat, `*“${pickRandom(global.gombal)}”*`, m);
 };
 handler.help = ["gombal"];
 handler.tags = ["quotes"];
 handler.command = /^(gombal)$/i;
 handler.limit = true
-
+handler.register = true
 export default handler;
 
 function pickRandom(list) {

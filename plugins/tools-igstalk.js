@@ -2,17 +2,19 @@ import cheerio from 'cheerio'
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, text }) => {
-  if (!text) throw 'Input username'
+  if (!text) throw 'Format: *.igstalk Nama Pengguna*'
   let res = await igStalk(text)
   if (!res) throw res
   let caption = `
-*Name:* ${res.name}
-*Username:* ${res.username}
-*Followers:* ${res.followersH}
-*Following:* ${res.followingH}
-*Posts:* ${res.postsH}
-*Bio:*
-${res.description}
+*PENGUNTIT INSTAGRAM*
+
+Nama: *${res.name}*
+Nama Pengguna: *${res.username}*
+Pengikut: *${res.followersH}*
+Mengikuti: *${res.followingH}*
+Posting: *${res.postsH}*
+Bio:
+*${res.description}*
 `.trim()
   if (res.profilePic) return conn.sendMessage(m.chat, { image: { url: res.profilePic }, caption }, { quoted: m })
   m.reply(caption)
@@ -21,7 +23,8 @@ handler.help = ['igstalk'].map(v => v + ' <username>')
 handler.tags = ['tools']
 handler.alias = ['igstalk', 'stalkig']
 handler.command = /^(igstalk|stalkig)$/i
-
+handler.register = true
+handler.limit = true
 export default handler
 
 async function igStalk(username) {

@@ -6,6 +6,7 @@ handler.help = ["hacker"];
 handler.tags = ["quotes"];
 handler.command = /^(heker|hacker|hekel)$/i;
 handler.limit = true
+handler.register = true
 export default handler;
 
 function pickRandom(list) {

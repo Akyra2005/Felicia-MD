@@ -5,13 +5,14 @@ let handler = async (m, { conn, usedPrefix, __dirname, text, command }) => {
 let tag = `@${m.sender.replace(/@.+/, '')}`
   let mentionedJid = [m.sender]
 let name = conn.getName(m.sender)
-let cin = `${pickRandom(global.pantun)}`
+let cin = `*"${pickRandom(global.pantun)}"*`
 m.reply(cin)
 }
 handler.help = ['pantun']
 handler.tags = ['quotes']
 handler.command = /^(pantun)$/i
 handler.limit = true
+handler.register = true
 export default handler
 
 function ucapan() {

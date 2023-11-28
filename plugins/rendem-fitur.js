@@ -1,7 +1,7 @@
 let handler = async(m, { conn, text, usedPrefix, command }) => {
-  if (!text) return m.reply(`Example : ${usedPrefix + command} cuddle
-  *List Efek:*
+  if (!text) return m.reply(`Format: *${usedPrefix + command} Tipe*
 
+*Daftar Tipe:*
 • bully
 • cuddle
 • cry
@@ -32,10 +32,11 @@ let handler = async(m, { conn, text, usedPrefix, command }) => {
 • cringe
 • blush`)
         let images = `https://api.lolhuman.xyz/api/random/${text}?apikey=${global.lolkey}`
-        await conn.sendFile(m.chat, images, "", `Nih kak ${m.name}`, m)
+        await conn.sendFile(m.chat, images, "", `*Sukses*`, m)
 }
 handler.help = ['randem'].map(v => v + ' <efek>')
 handler.tags = ['tools']
 handler.command = /^(randem)$/i
-
+handler.register = true
+handler.limit = true
 export default handler

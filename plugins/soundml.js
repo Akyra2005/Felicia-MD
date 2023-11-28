@@ -12,7 +12,7 @@ let handler = async (m, {
     text,
     command
 }) => {
-    if (!text) throw "input text"
+    if (!text) throw "*Masukkan Nama Hero Setelah Perintah*"
     try {
         if (command == "mlsounden") {
             await m.reply(wait)

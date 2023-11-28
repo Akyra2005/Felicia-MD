@@ -13,7 +13,7 @@ import search from 'yt-search'
 let sentVideos = [];
 
 let handler = async (m, { conn, text }) => {
-  if (!text) return m.reply('*Example*: .playvideo rewrite the star');
+  if (!text) return m.reply('Format: *.playvideo Kata Kunci*');
 
   conn.sendMessage(m.chat, {
     react: {
@@ -37,7 +37,7 @@ let handler = async (m, { conn, text }) => {
         }
       }
       if (!newVideoId) {
-        return m.reply('🐱 No more videos available with the same title');
+        return m.reply('*Tidak Ditemukan*');
       }
       videoId = newVideoId;
       info = await ytdl.getInfo(videoId);
@@ -53,7 +53,7 @@ let handler = async (m, { conn, text }) => {
       if (fileSize > 50 * 1024 * 1024) {
         video.destroy();
         fs.unlinkSync(`${title}.mp4`);
-        m.reply('🐱 The video you requested is over 50MB');
+        m.reply('*Ukuran Video Melewati Batas*');
       }
     });
 
@@ -69,13 +69,13 @@ let handler = async (m, { conn, text }) => {
     });
   } catch (e) {
     console.log(e);
-    m.reply(`🐱 An error occurred while downloading the video: ${e.message}`);
+    m.reply(`Error: *${e.message}*`);
   }
 };
 
 handler.help = ['playvideo'];
 handler.tags = ['downloader'];
-handler.level = 3;
 handler.command = /^playvideo$/i;
-
+handler.register = true
+handler.limit = true
 export default handler

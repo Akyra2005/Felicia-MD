@@ -1,22 +1,22 @@
 const { default: { Image }} = await import('node-webpmux')
 
 let handler = async (m, { conn, text }) => {
-	if (!m.quoted) throw 'Reply a sticker!'
+	if (!m.quoted) throw 'Balas Stiker Dengan Perintah *.smeta*'
 	let stiker = false
 	try {
 		let [packname, ...author] = text.split('|')
 		author = (author || []).join('|')
 		let mime = m.quoted.mimetype || ''
-		if (!/webp/.test(mime)) throw 'Reply sticker!'
+		if (!/webp/.test(mime)) throw 'Balas Stiker Dengan Perintah *.smeta*'
 		let img = await m.quoted.download()
-		if (!img) throw 'Reply a sticker!'
+		if (!img) throw 'Balas Stiker Dengan Perintah *.smeta*'
 		stiker = await addExif(img, packname || '', author || '')
 	} catch (e) {
 		console.error(e)
 		if (Buffer.isBuffer(e)) stiker = e
 	} finally {
 		if (stiker) conn.sendMessage(m.chat, { sticker: stiker }, { quoted: m })
-		else throw 'Conversion failed'
+		else throw '*Konversi Gagal*'
 	}
 }
 handler.command = /^(smeta)$/i

@@ -8,9 +8,9 @@ let nek = ne.split('\n')
 
 let neko = await nek[Math.floor(Math.random() * nek.length)]
 
-if (neko == '') throw 'Error'
+if (neko == '') throw '*E R R O R*'
 
-conn.sendFile(m.chat, neko, 'error.jpg', `Nyaww~ 🐾💗`, m)}
+conn.sendFile(m.chat, neko, 'error.jpg', `*Sukses*`, m)}
 
 
 handler.command = /^(neko)$/i
@@ -18,5 +18,6 @@ handler.command = /^(neko)$/i
 handler.tags = ['anime']
 
 handler.help = ['neko']
-
+handler.register = true
+handler.limit = true
 export default handler

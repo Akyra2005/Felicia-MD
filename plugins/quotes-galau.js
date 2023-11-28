@@ -1,10 +1,11 @@
 let handler = async (m, { conn, usedPrefix, command }) => {
-m.reply(`“${pickRandom(global.galau)}”`)
+m.reply(`*“${pickRandom(global.galau)}”*`)
 };
 handler.help = ["galau"];
 handler.tags = ["quotes"];
 handler.command = /^(galau)$/i;
 handler.limit = true
+handler.register = true
 export default handler;
 
 function pickRandom(list) {

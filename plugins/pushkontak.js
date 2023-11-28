@@ -5,7 +5,7 @@ let handler = async (m, {
     text,
     command
 }) => {
-if (!text && !m.quoted) return m.reply("Input text\nReply pesan")
+if (!text && !m.quoted) return m.reply("Format: *.pushkontak*")
     let get = await groupMetadata.participants.filter(v => v.id.endsWith('.net')).map(v => v.id)
     let count = get.length;
     let sentCount = 0;
@@ -26,7 +26,7 @@ if (!text && !m.quoted) return m.reply("Input text\nReply pesan")
             count--;
             sentCount++;
             if (count === 0) {
-                m.reply(`Berhasil Push Kontak:\nJumlah Pesan Terkirim: *${sentCount}*`);
+                m.reply(`*Berhasil Push Kontak*\nPesan Terkirim: *${sentCount}*`);
             }
         }, i * 1000); // delay setiap pengiriman selama 1 detik
     }

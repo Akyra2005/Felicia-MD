@@ -5,8 +5,8 @@ import fetch from "node-fetch"
 let handler = async(m, { conn, args }) => {
 
 let code = (args[0] || '').replace(/\D/g, '')
-if (!code) throw 'Input code' 
-	await m.reply('Sedang diproses...')
+if (!code) throw 'Format: *.nhentai Kode*' 
+	await m.reply('*Memproses Permintaan...*')
 let data = await nhentaiScraper(code)
 let pages = []
 let thumb = `https://external-content.duckduckgo.com/iu/?u=https://t.nhentai.net/galleries/${data.media_id}/thumb.jpg`	

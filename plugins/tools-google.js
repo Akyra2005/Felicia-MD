@@ -3,7 +3,7 @@ let handler = async (m, { conn, command, args }) => {
     const fetch = (await import('node-fetch')).default
     let full = /f$/i.test(command)
     let text = args.join` `
-    if (!text) return conn.reply(m.chat, 'Tidak ada teks untuk di cari', m)
+    if (!text) return conn.reply(m.chat, 'Format: *.google Kata Kunci*', m)
     let url = 'https://google.com/search?q=' + encodeURIComponent(text)
     let search = await googleIt(text)
     let msg = search.articles.map(({
@@ -12,7 +12,7 @@ let handler = async (m, { conn, command, args }) => {
         url,
         description
     }) => {
-        return `*${title}*\n_${url}_\n_${description}_`
+        return `*${title}*\n*${url}*\n*${description}*`
     }).join('\n\n')
     try {
         let ss = await (await fetch(global.API('nrtm', '/api/ssweb', { delay: 1000, url, full }))).arrayBuffer()
@@ -26,5 +26,5 @@ handler.help = ['google']
 handler.tags = ['internet']
 handler.command = /^googlef?$/i
 handler.limit = true
-
+handler.register = true
 export default handler

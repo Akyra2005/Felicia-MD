@@ -10,7 +10,7 @@ let handler = async (m, { conn }) => {
 		if (res.status !== 200) throw res.statusText
 		let json = await res.json()
 		m.reply(json?.ParsedResults?.[0]?.ParsedText)
-	} else throw 'Reply an image!'
+	} else throw 'Balas Gambar Berisi Teks Dengan Perintah *.ocr*'
 }
 handler.help = ['ocr']
 handler.tags = ['tools']

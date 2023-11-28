@@ -12,7 +12,7 @@ let text
         text = args.slice(0).join(" ")
     } else if (m.quoted && m.quoted.text) {
         text = m.quoted.text
-    } else throw "Input teks atau reply teks yang ingin di jadikan quote!"
+    } else throw "Format: *.qc Teks*"
    await m.reply(wait)
 
     let pp = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://telegra.ph/file/a2ae6cbfa40f6eeea0cf1.jpg')

@@ -4,7 +4,7 @@ import AdmZip from 'adm-zip';
 let handler = async (m) => {
   let q = m.quoted ? m.quoted : m
   let mime = (q.msg || q).mimetype || ''
-  if (!mime) throw 'No media found'
+  if (!mime) throw 'Balas Media Dengan Perintah *.tourl*'
   let media = await q.download()
 
   if (mime === 'application/zip') {
@@ -24,13 +24,14 @@ let handler = async (m) => {
 
     // Menggabungkan semua link menjadi satu pesan
     const combinedLinks = links.join('\n');
-    m.reply(`Links for all files in ZIP:\n${combinedLinks}`);
+    m.reply(`Tautan Untuk Semua File Dalam ZIP:\n*${combinedLinks}*`);
   } else {
     let link = await uploadImage(media);
     m.reply(`
-*Link:* ${link}
-*Size:* ${media.length} Byte
-*Expired:* No Expiry Date`);
+*KONVERSI MEDIA KE URL*
+
+Tautan: *${link}*
+Ukuran: *${media.length} Byte*`);
   }
 }
 

@@ -2,8 +2,7 @@ import fetch from 'node-fetch';
 
 let elementHandler = async (m, { conn, text }) => {
 
-if (!text) throw `Harap simbol atau nama elemen
-Contoh : .element carbon`;
+if (!text) throw `Format: *.element Tabel Periodik*`;
 
 try {
 
@@ -11,7 +10,7 @@ let res = await fetch(`https://api.popcat.xyz/periodic-table?element=${text}`);
 
 if (!res.ok) {
 
-throw new Error(`API request failed with status ${res.status}`);
+throw new Error(`Error: *${res.status}*`);
 
 }
 
@@ -22,24 +21,15 @@ let json = JSON.parse(Buffer.from(buffer).toString());
 console.log('JSON response:', json);
 
 let elementInfo = 
-
-`*Element Information:*\n
-
-• *Name:* ${json.name}\n
-
-• *Symbol:* ${json.symbol}\n
-
-• *Atomic Number:* ${json.atomic_number}\n
-
-• *Atomic Mass:* ${json.atomic_mass}\n
-
-• *Period:* ${json.period}\n
-
-• *Phase:* ${json.phase}\n
-
-• *Discovered By:* ${json.discovered_by}\n
-
-• *Summary:* ${json.summary}`;
+`*PENCARIAN ELEMEN*\n
+Nama: *${json.name}*
+Simbol: *${json.symbol}*
+Nomor Atomik: *${json.atomic_number}*
+Masa Atomik: *${json.atomic_mass}*
+Periode: *${json.period}*
+Fase: *${json.phase}*
+Ditemukan Oleh: ${json.discovered_by}*
+Ringkasan: *${json.summary}*`;
 
 conn.sendFile(m.chat, json.image, 'element.jpg', elementInfo, m);
 
@@ -58,5 +48,5 @@ elementHandler.help = ['element'];
 elementHandler.tags = ['tools'];
 
 elementHandler.command = /^(element|ele)$/i;
-
+handler.register = true
 export default elementHandler

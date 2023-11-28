@@ -6,7 +6,7 @@ import { format } from 'util';
 const MAX_CONTENT_SIZE = 100 * 1024 * 1024 * 1024; // 100GB
 
 let handler = async (m, { text }) => {
-  if (!text) throw '*Masukkan Link*\n*Ex:* s.id';
+  if (!text) throw 'Format: *.fetch Tautan*';
 
   text = addHttpsIfNeeded(text);
   let { href: url, origin } = new URL(text);
@@ -24,14 +24,14 @@ let handler = async (m, { text }) => {
         response = await axios.get(url, { headers: { 'referer': origin } });
         txt = response.data;
       } catch {
-        throw "Gagal mengambil data dari semua sumber";
+        throw "*Gagal Mendapatkan Data Dari Semua Sumber*";
       }
     }
   }
 
   const contentLength = response.headers['content-length'];
   if (contentLength > MAX_CONTENT_SIZE) {
-    return m.reply(`File terlalu besar. Ukuran maksimum adalah ${formatSize(MAX_CONTENT_SIZE)}`);
+    return m.reply(`File Melewati Batas, Batas *${formatSize(MAX_CONTENT_SIZE)}*`);
   }
 
   if (!/text|json/.test(response.headers['content-type'])) {
@@ -68,5 +68,6 @@ handler.help = ['fetch'];
 handler.tags = ['tools'];
 handler.alias = ['get', 'fetch'];
 handler.command = /^(fetch|get)$/i;
-
+handler.register = true
+handler.limit = true
 export default handler;

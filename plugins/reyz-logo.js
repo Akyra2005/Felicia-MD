@@ -1,6 +1,6 @@
 import fetch from 'node-fetch'
 let handler = async (m, { conn, isOwner, usedPrefix, command, args }) => {
-	let query = "input text\nEx. .logo naruto\n<command> <tex>"
+	let query = "Format: *.logoget Tipe|Teks*\n\n*Daftar Tipe:*\nkaneki\nlolimaker\ngirlneko\nrem\nsadboy"
 	let text
 	if (args.length >= 1) {
 		text = args.slice(0).join(" ")
@@ -27,13 +27,14 @@ let handler = async (m, { conn, isOwner, usedPrefix, command, args }) => {
 	
 	if (command == "logoget") {
 	let res = await Logo(one, two)
-	await conn.sendFile(m.chat, res, 'logo.jpg', `Sudah Jadi`, m, false)
+	await conn.sendFile(m.chat, res, 'logo.jpg', `*Sukses*`, m, false)
 	}
 }
 handler.help = ['logo'].map(v => v + ' <text>')
 handler.tags = ['maker']
 handler.command = ["logo", "logoget"]
-
+handler.register = true
+handler.limit = true
 export default handler
 function Logo(efek, teks1, teks2) {
     try {

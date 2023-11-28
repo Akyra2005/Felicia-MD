@@ -3,7 +3,7 @@ import moment from 'moment-timezone'
 import fs from 'fs'
 let handler = async (m, { conn, command, text }) => {
   let name = await conn.getName(m.sender)
-  await m.reply(`*_${md} @${m.sender.split(`@`)[0]}..._*`)
+  await m.reply(`*${md} @${m.sender.split(`@`)[0]}*`)
   let ucpn = `${ucapan()}`
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
   let pp = await conn.profilePictureUrl(who, 'image').catch((_) => "https://telegra.ph/file/24fa902ead26340f3df2c.png")

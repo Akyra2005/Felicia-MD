@@ -5,13 +5,14 @@ import fetch from "node-fetch"
    let cita = data[Math.floor(Math.random() * data.length)] 
   
    let cowi = await(await fetch(cita.cowo)).buffer() 
-   await conn.sendFile(m.chat, cowi, '', 'cowok ♂️', m) 
+   await conn.sendFile(m.chat, cowi, '', '*Laki-Laki*', m) 
    let ciwi = await(await fetch(cita.cewe)).buffer() 
-   await conn.sendFile(m.chat, ciwi, '', 'cewek ♀️', m) 
+   await conn.sendFile(m.chat, ciwi, '', '*Perempuan*', m) 
  } 
   
  handler.help = ['ppcp'] 
  handler.tags = ['internet'] 
  handler.command = /^ppcp$/i
-  
+ handler.register = true
+ handler.limit = true
  export default handler

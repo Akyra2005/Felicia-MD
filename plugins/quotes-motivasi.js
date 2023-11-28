@@ -8,8 +8,8 @@ let motivasii = pickRandom(global.motivasi)
     externalAdReply :{
     mediaUrl: '',
     mediaType: 2,
-    title: 'Ｍｏｔｉｖａｓｉ', 
-    body: 'Dibaca Ya Kak',  
+    title: 'M O T I V A S I', 
+    body: '...',  
     sourceUrl: sgc, 
     thumbnail: fs.readFileSync('./src/fotonya.jpg')
       }}
@@ -19,7 +19,7 @@ handler.help = ['motivasi']
 handler.tags = ['quotes']
 handler.command = /^(motivasi)$/i
 handler.limit = true
-
+handler.register = true
 export default handler
 
 function pickRandom(list) {

@@ -5,13 +5,14 @@ let handler = async (m, { conn, usedPrefix, __dirname, text, command }) => {
 let tag = `@${m.sender.replace(/@.+/, '')}`
   let mentionedJid = [m.sender]
 let name = conn.getName(m.sender)
-let islam = `${pickRandom(global.islam)}`
+let islam = `*"${pickRandom(global.islam)}"*`
 m.reply(islam)
 }
 handler.help = ['q-islam']
 handler.tags = ['quotes']
 handler.command = /^(q-islam)$/i
 handler.limit = true
+handler.register = true
 export default handler
 
 function ucapan() {

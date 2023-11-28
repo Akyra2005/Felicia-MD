@@ -1,10 +1,10 @@
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) throw `*This command generates image from texts*\n\n*xample usage*\n* ${usedPrefix + command} Beautiful animegirl*\n* ${usedPrefix + command} elon musk in pink output*`;
+  if (!text) throw `Format: *${usedPrefix + command} Prompt*`;
 
   try {
-    m.reply('*Please wait, generating images...*');
+    m.reply('*Memproses Permintaan...*');
 
     const endpoint = `https://gurugpt.cyclic.app/dalle?prompt=${encodeURIComponent(text)}&model=art`;
     const response = await fetch(endpoint);
@@ -18,14 +18,15 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         await conn.sendFile(m.chat, imageBuffer, null, null, m);
       }
     } else {
-      throw '*Image generation failed*';
+      throw '*Gagal*';
     }
   } catch {
-    throw '*Oops! Something went wrong while generating images. Please try again later.*';
+    throw '*Error, Silahkan Coba Lagi*';
   }
 };
 
 handler.help = ['aiimage', 'dalle', 'gen', 'gimg', 'openai2']
 handler.tags = ['openai']
 handler.command = ['aiimage', 'dalle', 'gen', 'gimg', 'openai2'];
+handler.limit = true
 export default handler;

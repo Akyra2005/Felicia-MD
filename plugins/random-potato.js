@@ -1,6 +1,10 @@
 import fetch from 'node-fetch'
 import { pickRandom } from '../lib/other-function.js'
 let handler = async (m, { conn, command }) => {
+let chat = global.db.data.chats[m.chat]
+	if (!chat.nsfw) throw `*Grup Ini Tidak Mengizinkan NSFW*\nIzinkan Dengan *.enable 33*`
+	let user = global.db.data.users[m.sender].age
+    if (user < 17) throw m.reply(`*Kamu Belum Cukup Umur*`)
 let link = [
 'https://c5.coomer.party/data/5b/0c/5b0cc243ea8be583a2a1ad7f1e373fea617f17efc7ea6a4c6efdf4c834ee7f7d.jpg?f=b2792f71-0a7a-425f-87dc-a245480f899d.jpg',
 'https://img.coomer.party/thumbnail/data/9a/2e/9a2e66ebfbae1e9b3a01dee736cf882ca00ab56bf03a46d88c5cabd88f593c1b.jpg',
@@ -16,8 +20,10 @@ let link = [
 'https://img.coomer.party/thumbnail/data/68/d9/68d9712591737ec34f465ebe84578d52273e0969030d913295e144cd97ca776f.jpg'
 ]
 let poto = pickRandom(link)
-conn.sendFile(m.chat, poto, 'wikwik.mp4', '_Jangan Coli Ya..._', m)
+conn.sendFile(m.chat, poto, 'wikwik.mp4', '*Sukses*', m)
 } 
 handler.help = handler.command = ['potato']
 handler.tags = ['random']
+handler.register = true
+handler.limit = true
 export default handler

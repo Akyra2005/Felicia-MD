@@ -1,6 +1,6 @@
 import fetch from 'node-fetch'
 let handler = async (m, { text }) => {
-    if (!text) throw 'Imput Query?'
+    if (!text) throw 'Format: *.githubsearch Nama Pengguna*'
     let res = await fetch(global.API('https://api.github.com', '/search/repositories', {
         q: text
     }))
@@ -15,7 +15,7 @@ _Terakhir update pada *${formatDate(repo.updated_at)}*_
 👁  ${repo.watchers}   🍴  ${repo.forks}   ⭐  ${repo.stargazers_count}
 ${repo.open_issues} Issue${repo.description ? `
 *Deskripsi:*\n${repo.description}` : ''}
-*Clone:* \`\`\`$ git clone ${repo.clone_url}\`\`\`
+*Klon:* \`\`\`$ git clone ${repo.clone_url}\`\`\`
 `.trim()
     }).join('\n\n')
    m.reply(str)
@@ -23,6 +23,8 @@ ${repo.open_issues} Issue${repo.description ? `
 handler.help = ['githubsearch'].map(v => v + ' <query>')
 handler.tags = ['tools']
 handler.command = /^g(ithub|h)search$/i
+handler.register = true
+handler.limit = true
 export default handler
 
 function formatDate(n, locale = 'id') {

@@ -33,23 +33,23 @@ let handler = async (m) => {
 
     const processor = os.cpus()[0].model;
 
-    serverMessage += `┌  ◦  OS : ${osInfo}\n`;
-    serverMessage += `│  ◦  Ram : ${freeRAM} MB / ${totalRAM} MB\n`;
-    serverMessage += `│  ◦  Country : ${serverInfo.country}\n`;
-    serverMessage += `│  ◦  CountryCode : ${serverInfo.countryCode}\n`;
-    serverMessage += `│  ◦  Region : ${serverInfo.region}\n`;
-    serverMessage += `│  ◦  RegionName : ${serverInfo.regionName}\n`;
-    serverMessage += `│  ◦  City : ${serverInfo.city}\n`;
-    serverMessage += `│  ◦  Zip : ${serverInfo.zip}\n`;
-    serverMessage += `│  ◦  Lat : ${serverInfo.lat}\n`;
-    serverMessage += `│  ◦  Lon : ${serverInfo.lon}\n`;
-    serverMessage += `│  ◦  Timezone : ${serverInfo.timezone}\n`;
-    serverMessage += `│  ◦  Isp : ${serverInfo.isp}\n`;
-    serverMessage += `│  ◦  Org : ${serverInfo.org}\n`;
-    serverMessage += `│  ◦  As : ${serverInfo.as}\n`;
-    serverMessage += `│  ◦  Query : HIDDEN\n`;
-    serverMessage += `│  ◦  Uptime : ${uptimeFormatted}\n`;
-    serverMessage += `└  ◦  Processor : ${processor}`;
+    serverMessage += `OS: *${osInfo}*\n`;
+    serverMessage += `Ram: *${freeRAM} MB / ${totalRAM} MB*\n`;
+    serverMessage += `Negara: *${serverInfo.country}*\n`;
+    serverMessage += `Kode Negara: *${serverInfo.countryCode}*\n`;
+    serverMessage += `Wilayah: *${serverInfo.region}*\n`;
+    serverMessage += `Nama Wilayah: *${serverInfo.regionName}*\n`;
+    serverMessage += `Kota: *${serverInfo.city}*\n`;
+    serverMessage += `Zip: *${serverInfo.zip}*\n`;
+    serverMessage += `Lat: *${serverInfo.lat}*\n`;
+    serverMessage += `Lon: *${serverInfo.lon}*\n`;
+    serverMessage += `Zona Waktu: *${serverInfo.timezone}*\n`;
+    serverMessage += `Isp: *${serverInfo.isp}*\n`;
+    serverMessage += `Org: *${serverInfo.org}*\n`;
+    serverMessage += `As: *${serverInfo.as}*\n`;
+    serverMessage += `Pencarian: *HIDDEN*\n`;
+    serverMessage += `Waktu Aktif: *${uptimeFormatted}*\n`;
+    serverMessage += `Prosesor: *${processor}*`;
 
     await m.reply(serverMessage);
   } catch (e) {

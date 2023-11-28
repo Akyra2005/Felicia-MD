@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 
 let handler = async (m, { conn, text }) => {
 
-if (!text) throw 'Please provide a Pokemon name to search for.';
+if (!text) throw 'Format: *.pokedex Nama Pokemon*';
 
 const url = `https://some-random-api.com/pokemon/pokedex?pokemon=${encodeURIComponent(text)}`;
 
@@ -12,25 +12,18 @@ const json = await response.json();
 
 if (!response.ok) {
 
-throw `An error occurred: ${json.error}`;
+throw `Error: *${json.error}*`;
 
 }
 
 const message = `
-
-*Name:* ${json.name}
-
-*ID:* ${json.id}
-
-*Type:* ${json.type}
-
-*Abilities:* ${json.abilities}
-
-*Height:* ${json.height}
-
-*Weight:* ${json.weight}
-
-*Description:* ${json.description}
+Nama: *${json.name}*
+ID: *${json.id}*
+Tipe: *${json.type}*
+Kemampuan: *${json.abilities}*
+Tinggi: *${json.height}*
+Berat: *${json.weight}*
+Deskripsi: *${json.description}*
 
 `;
 
@@ -40,8 +33,9 @@ conn.sendMessage(m.chat, { text: message }, 'extendedTextMessage', { quoted: m }
 
 handler.help = ['pokedex <pokemon>'];
 
-handler.tags = ['pokemon'];
+handler.tags = ['internet'];
 
 handler.command = /^pokedex/i;
-
+handler.register = true
+handler.limit = true
 export default handler;

@@ -135,20 +135,20 @@ let handler = async (m, {
         "zettai"
     ]
     var listnya = arrlist.map((v, index) => {
-        return `[ ${++index} ] ${usedPrefix + command} ${v}`
+        return `${++index} ${usedPrefix + command} ${v}`
     }).join('\n')
-    let nah = `${htki} *L I S T* ${htka}
-_Example: ${usedPrefix + command} yulibocil_
+    let nah = `${htki} *Daftar Foto* ${htka}\n
+Format: *${usedPrefix + command} Nama Foto*
 
 ${listnya}`
     if (!arrlist.includes(text)) throw nah
     if (chat.nsfw == false) {
-        await m.reply('❗ ᴏᴘᴛɪᴏɴs ɴsғᴡ ᴅɪᴄʜᴀᴛ ɪɴɪ ʙᴇʟᴜᴍ ᴅɪɴʏᴀʟᴀᴋᴀɴ ᴏʟᴇʜ ᴀᴅᴍɪɴ ɢʀᴏᴜᴘ\n\nᴇɴᴀʙʟᴇ: *.on nsfw*')
+        await m.reply('*Grup Ini Tidak Mengizinkan NSFW*\nIzinkan Dengan *.enable 33*')
     } else if (chat.nsfw == true) {
         try {
             let ani = await fetch('https://raw.githubusercontent.com/AyGemuy/RESTAPI/master/data/' + text + '.json')
             let mek = await ani.json()
-            await conn.sendFile(m.chat, mek.getRandom(), "", `Nih kak ${m.name}`, m)
+            await conn.sendFile(m.chat, mek.getRandom(), "", `*Sukses*`, m)
         } catch {
             throw eror
         }
@@ -156,4 +156,6 @@ ${listnya}`
 }
 handler.command = handler.help = ["foto"]
 handler.tags = ['random']
+handler.register = true
+handler.limit = true
 export default handler

@@ -8,11 +8,7 @@ let res = await fetch('https://api.thecatapi.com/v1/images/search')
 
 let img = await res.json()
 
-let caption = `
-
-_©The Lasdan - Bot_
-
-`.trim()
+let caption = `*Sukses*`.trim()
 
 conn.sendFile(m.chat, img[0].url, 'cat.jpg', caption, m)
 
@@ -20,7 +16,7 @@ conn.sendFile(m.chat, img[0].url, 'cat.jpg', caption, m)
 
 console.log(e)
 
-throw '*Error!*'
+throw '*E R R O R*'
 
 }}
 
@@ -29,7 +25,7 @@ handler.help = ['cat']
 handler.tags = ['random']
 
 handler.command = /^cat$/i
-
+handler.register = true
 handler.fail = null
 
 export default handler
