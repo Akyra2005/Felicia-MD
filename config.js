@@ -1,6 +1,6 @@
 /*
 RECODE REYZ HAYANASI
-KONTAK ME : 6281249122429
+KONTAK ME : 6285159258830
 YT : @Litzz445
 IG : @reymwmwk112
 REQUEST FITUR CHAT GW
@@ -72,7 +72,7 @@ global.owner = [
 ['6281249122429', '𝗞𝗲𝗶𝘇𝗵𝗮', true] // global owner 3
 ]
 global.mods = [] // siapa partner mu? 
-global.prems = ['6281249122429','6281249122429'] //premium unlimited
+global.prems = ['6281249122429'] //premium unlimited
 
 // =================={[(API KEYS)]}==================
 global.mupar = 'OnLasdan'
@@ -140,12 +140,12 @@ global.sfb = 'https://www.facebook.com'
 global.syt = 'https://youtube.com'
 //====== Url Template Buttons ======//
 global.dtu = '𝗗𝗼𝗻𝗮𝘀𝗶'
-global.urlnya = "wa.me/6281249122429"
+global.urlnya = "wa.me/6285159258830"
 //========== callButtons ==========//
 global.dtc = '𝗛𝘂𝗯𝘂𝗻𝗴𝗶 𝗣𝗲𝗺𝗶𝗹𝗶𝗸'
 global.phn = '+62 812-4912-2429'
 global.ephemeral = '86400'
-global.monitor = "u2209032-5096e7f10915ab963640d415"
+global.monitor = "u1930884-ae15d00ab6652ab7dfa5f610"
 global.multiplier = 25
 /*=========== FAKE SIZE ===========*/
 global.fsizedoc = '999'

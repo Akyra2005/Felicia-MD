@@ -477,6 +477,7 @@ export async function handler(chatUpdate) {
                 if (!isNumber(user.sushi)) user.sushi = 0
                 if (!isNumber(user.sword)) user.sword = 0
                 if (!isNumber(user.sworddurability)) user.sworddurability = 0
+                if (!isNumber(user.stamina)) user.stamina = 0
                 if (!isNumber(user.tigame)) user.tigame = 50
                 if (!isNumber(user.tiketcoin)) user.tiketcoin = 0
                 if (!isNumber(user.title)) user.title = 0
@@ -874,6 +875,7 @@ export async function handler(chatUpdate) {
                     sushi: 0,
                     sword: 0,
                     sworddurability: 0,
+                    stamina: 0,
                     tigame: 50,
                     tiketcoin: 0,
                     title: "",
@@ -1213,7 +1215,7 @@ export async function handler(chatUpdate) {
                     m.exp += xp
                 if (!isPrems && plugin.limit && global.db.data.users[m.sender].limit < plugin.limit * 1) {
                     this.sendMessage(m.chat, {
-                        text: `*Anda Mencapai Batas Penggunaan*`,
+                        text: `*Dibutuhkan ${plugin.limit} Limit*\n\n*true = 1 Limit*`,
                         mentions: [m.sender]
                     }, {
                         quoted: m
