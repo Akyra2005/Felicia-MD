@@ -7,11 +7,9 @@ const _fs = fs.promises
 
 let handler = async (m, { text, usedPrefix, command, __dirname }) => {
     if (!text) throw `
-Penggunaan: ${usedPrefix}${command} <name file>
-Contoh: ${usedPrefix}savefile main.js
-        ${usedPrefix}saveplugin owner
+Format: *.sp File*
 `.trim()
-    if (!m.quoted) throw `Reply Kodenya`
+    if (!m.quoted) throw `*Balas Kodenya*`
     if (/p(lugin)?/i.test(command)) {
         let filename = text.replace(/plugin(s)\//i, '') + (/\.js$/i.test(text) ? '' : '.js')
         const error = syntaxError(m.quoted.text, filename, {
@@ -54,7 +52,7 @@ ${util.format(m.quoted.text)}
 Sukses Menyimpan Di *${text}*
 `.trim())
         } else {
-            throw 'Tidak Support!!'
+            throw '*Format Tidak Didukung*'
         }
     }
 }

@@ -1,11 +1,11 @@
 let handler = async (m, { conn, text }) => {
-  if (!text) throw `uhm.. teksnya mana?`
+  if (!text) throw `Format: *.setbio Bio*`
   try {
     await conn.setStatus(text)
-    m.reply('Berhasil!')
+    m.reply('*Sukses*')
   } catch (e) {
     console.log(e)
-    throw `Eror`
+    throw `*E R R O R*`
   }
 }
 handler.help = ['setbio <teks>']

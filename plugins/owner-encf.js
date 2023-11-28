@@ -10,12 +10,12 @@ let handler = async (m, { conn, text }) => {
   const tmpDir = './tmp';
 
   if (!fs.existsSync(sourceDir)) {
-    m.reply(`Folder "${sourceFolder}" tidak ditemukan.`);
+    m.reply(`*Folder "${sourceFolder}" Tidak Ditemukan*`);
     return;
   }
 
   try {
-    m.reply('Tunggu sebentar, sedang mengenkripsi dan menyimpan file JavaScript...');
+    m.reply('*Sedang Enkripsi File...*');
 
     const files = fs.readdirSync(sourceDir).filter(file => file.endsWith('.js'));
     const obfuscatedFiles = [];
@@ -38,24 +38,24 @@ let handler = async (m, { conn, text }) => {
         obfuscatedFiles.push(obfuscatedFilePath);
       } catch (error) {
         // Jika terjadi kesalahan saat mengenkripsi file, catat file yang bermasalah dan alasan kesalahan
-        console.error(`Error pada file "${file}": ${error.message}`);
+        console.error(`Error Pada File "${file}": *${error.message}*`);
         errorFiles.push({ fileName: file, errorReason: error.message });
       }
     }
 
     if (obfuscatedFiles.length === 0) {
-      m.reply('Tidak ada file JavaScript yang dapat dienkripsi.');
+      m.reply('*Tidak Ada File JavaScript Yang Dapat Dienkripsi*');
       return;
     }
 
     if (errorFiles.length > 0) {
       const errorMessages = errorFiles.map(fileError => {
-        return `File: ${fileError.fileName}, Alasan Error: ${fileError.errorReason}`;
+        return `File: *${fileError.fileName}*\nAlasan Error: *${fileError.errorReason}*`;
       });
-      m.reply(`Beberapa file tidak dapat dienkripsi:\n${errorMessages.join('\n')}`);
+      m.reply(`*Beberapa File Tidak Dapat Dienkripsi:*\n${errorMessages.join('\n')}`);
     }
 
-    m.reply('Tunggu sebentar, sedang membuat file zip...');
+    m.reply('*Sedang Membuat File Zip...'*);
 
     const zipFileName = `${sourceFolder}.zip`;
     const outputZipPath = path.join(tmpDir, zipFileName);
@@ -83,7 +83,7 @@ let handler = async (m, { conn, text }) => {
     }
   } catch (error) {
     console.error(error);
-    m.reply(`Terjadi kesalahan: ${error.message}`);
+    m.reply(`Terjadi Kesalahan: *${error.message}*`);
   }
 };
 

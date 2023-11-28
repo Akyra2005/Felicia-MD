@@ -13,9 +13,9 @@ let handler = async (m, { usedPrefix, command }) => {
             // Set izin direktori 'tmp' menjadi 777
             await fs.promises.chmod(tmpDir, 0o777);
             
-            m.reply('Direktori "tmp" berhasil dibuat dengan izin 777');
+            m.reply('Direktori *"tmp"* Berhasil Dibuat Dengan Izin 777');
         } catch (error) {
-            throw `Gagal membuat direktori 'tmp': ${error.message}`;
+            throw `Gagal Membuat Direktori 'tmp': *${error.message}*`;
         }
     } else {
         // Handle perintah atau pesan lain di sini sesuai kebutuhan

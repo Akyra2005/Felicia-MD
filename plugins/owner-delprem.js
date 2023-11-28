@@ -6,8 +6,16 @@ let handler = async (m, { usedPrefix, command, text }) => {
     if (!who) return m.reply(`tag or mention someone!\n\nexample:\n${usedPrefix + command} @${m.sender.split`@`[0]}`)
     user.premium = false
     user.premiumTime = 0
-    m.reply(`✔️ successfully removed *${user.name}* from premium user`)
+
+    // Hapus nomor dari global.prems
+    let index = global.prems.indexOf(who)
+    if (index !== -1) {
+        global.prems.splice(index, 1)
+    }
+
+    m.reply(`*Sukses Menghapus ${user.name} Dari Premium*`)
 }
+
 handler.help = ['delprem [@user]']
 handler.tags = ['owner']
 handler.command = /^(-|del)p(rem)?$/i

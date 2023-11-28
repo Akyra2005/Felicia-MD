@@ -10,39 +10,39 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? c
 let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
 let name = await conn.getName(who)
 
-let stiker = await sticker(null, global.API(`https://telegra.ph/file/6e8d21da1c9ee43ec4c3f.png`), global.packname, global.author)
+let stiker = await sticker(null, global.API(`https://telegra.ph/file/02c3eaa5dd4552112fbc7.jpg`), global.packname, global.author)
  conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, null, { fileLength: 100, contextInfo: {
           externalAdReply :{
           showAdAttribution: true,
     mediaUrl: sgc,
     mediaType: 2,
-    description: 'ᴋᴏɴᴇᴋᴏ  ᴅᴇᴠɪʟᴍᴀɴ', 
-    title: `${command} ʟᴏᴀᴅɪɴɢ ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ`,
+    description: '', 
+    title: `Memproses Permintaan...`,
     body: botdate,
     thumbnail: await(await fetch(pp)).buffer(),
-    sourceUrl: 'https://s.id/ReyzShop'
+    sourceUrl: 'http://bit.ly/49PsIf8'
      }}
   })
   
-let audio = `https://raw.githubusercontent.com/hyuura/Rest-Sound/main/HyuuraKane/${command}.mp3`
+let audio = `https://raw.githubusercontent.com/hyuura/Rest-Sound/main/HyuuraKane/mang${command}.mp3`
 
 await conn.sendFile(m.chat, audio, 'error.mp3', null, fkontak, true, {
 type: 'audioMessage', 
 ptt: false, seconds: 0,contextInfo: {
          externalAdReply: { showAdAttribution: true,
- mediaUrl: 'www.instagram.com/reymwmwk112',
+ mediaUrl: 'http://bit.ly/49PsIf8',
     mediaType: 2, 
-    description: 'www.instagram.com/reymwmwk112',
-    title: "ɴᴏᴡ ᴘʟᴀʏɪɴɢ...",
+    description: 'http://bit.ly/49PsIf8',
+    title: "Mainkan Musik",
     body: wm,
-    thumbnail: await (await fetch('https://telegra.ph/file/37d0e6baa24055a1c9df7.jpg')).buffer(),
-    sourceUrl: 'www.instagram.com/reymwmwk112'
+    thumbnail: await (await fetch('https://telegra.ph/file/21ab29d2d155bda72dd15.jpg')).buffer(),
+    sourceUrl: ''
 }
      }
     })
 }
-handler.help = ['mangkane1','mangkane2','mangkane3','mangkane4','mangkane5','mangkane6','mangkane7','mangkane8','mangkane9','mangkane10','mangkane11','mangkane12','mangkane13','mangkane14','mangkane15','mangkane16','mangkane17','mangkane18','mangkane19','mangkane20','mangkane21','mangkane22','mangkane23','mangkane24']
+handler.help = ['kane1','kane2','kane3','kane4','kane5','kane6','kane7','kane8','kane9','kane10','kane11','kane12','kane13','kane14','kane15','kane16','kane17','kane18','kane19','kane20','kane21','kane22','kane23','kane24']
 handler.tags = ['sound']
-handler.command = /^(mangkane1|mangkane2|mangkane3|mangkane4|mangkane5|mangkane6|mangkane7|mangkane8|mangkane9|mangkane10|mangkane11|mangkane12|mangkane13|mangkane14|mangkane15|mangkane16|mangkane17|mangkane18|mangkane19|mangkane20|mangkane21|mangkane22|mangkane23|mangkane24)$/i
+handler.command = /^(kane1|kane2|kane3|kane4|kane5|kane6|kane7|kane8|kane9|kane10|kane11|kane12|kane13|kane14|kane15|kane16|kane17|kane18|kane19|kane20|kane21|kane22|kane23|kane24)$/i
 handler.limit = true
 export default handler

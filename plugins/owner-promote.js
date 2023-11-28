@@ -7,7 +7,7 @@ let handler = async (m, { conn, participants }) => {
             const res = await conn.groupParticipantsUpdate(m.chat, [user], 'promote')
             await delay(1 * 1000)
         }
-    m.reply('Succes')
+    m.reply('*Sukses*')
 
 }
 handler.help = ['opromote'].map(v => v + ' @tag')

@@ -20,12 +20,11 @@ let name = await conn.getName(who)
   catch (e) {
     m.reply(e + '')
     text = args.join(' ')
-    if (!text) throw `Use example ${usedPrefix}${command} en hello world`
+    if (!text) throw `Format: *${usedPrefix}${command} kode bahasa teks*\nContoh: *.tts En Hai Kamu*`
     res = await tts(text, defaultLang)
   } finally {
     if (res) conn.sendFile(m.chat, res, res, `
-*${wm}*
-*L O A D I N G. . .*
+*Memproses Permintaan...*
 `.trim(), m, null, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
           externalAdReply :{
     mediaUrl: sig,
@@ -43,7 +42,8 @@ let name = await conn.getName(who)
 handler.help = ['tts <lang> <teks>']
 handler.tags = ['tools']
 handler.command = /^g?tts$/i
-
+handler.register = true
+handler.limit = true
 export default handler
 
 function tts(text, lang = 'id') {

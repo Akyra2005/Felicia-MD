@@ -2,15 +2,19 @@ import cheerio from 'cheerio'
 import axios from 'axios'
 
 let handler = async (m, { conn, text, __dirname, usedPrefix, command }) => {
-  if (!text) throw '*[❗] MASUKKAN NAMA HENTAI YANG AKAN DICARI*'
+    let chat = global.db.data.chats[m.chat]
+	if (!chat.nsfw) throw `*Grup Ini Tidak Mengizinkan NSFW*\nIzinkan Dengan *.enable 33*`
+	let user = global.db.data.users[m.sender].age
+  if (user < 17) throw m.reply(`*Kamu Belum Cukup Umur*`)
+  if (!text) throw 'Format: *.hentaisearch Kata Kunci*'
 
 m.reply(wait)
 
   let searchResults = await searchHentai(text)
   let teks = searchResults.result.map((v, i) => `
-${i + 1}. *_${v.title}_*
-↳ 📺 *_Views:_* ${v.views}
-↳ 🎞️ *_Link:_* ${v.url}`).join('\n\n')
+*${i + 1}. ${v.title}*
+Penonton: *${v.views}*
+Tautan: *${v.url}*`).join('\n\n')
 
   let randomThumbnail
   if (searchResults.result.length > 0) {
@@ -18,7 +22,7 @@ ${i + 1}. *_${v.title}_*
     randomThumbnail = searchResults.result[randomIndex].thumbnail
   } else {
     randomThumbnail = 'https://pictures.hentai-foundry.com/e/Error-Dot/577798/Error-Dot-577798-Zero_Two.png'
-    teks = '*[❗] TIDAK ADA HASIL PENCARIAN*'
+    teks = '*Tidak Ditemukan*'
   }
 
   conn.sendFile(m.chat, randomThumbnail, 'error.jpg', teks, m)
@@ -26,7 +30,8 @@ ${i + 1}. *_${v.title}_*
 
 handler.command = /^(hentaisearch|searchhentai)$/i
 handler.help = ['hentaisearch','searchhentai']
-handler.tags = ['nsfw']
+handler.tags = ['nsfw','premium']
+handler.premium = true
 export default handler
 
 async function searchHentai(search) {

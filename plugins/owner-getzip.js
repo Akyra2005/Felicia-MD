@@ -2,19 +2,19 @@ import fs from 'fs';
 
 let handler = async (m, { conn, text }) => {
   if (!text) {
-    m.reply('Mohon berikan nama file yang akan diambil');
+    m.reply('Format: *.getzip Nama File*');
     return;
   }
 
   const filename = `${text}`;
 
   try {
-    m.reply('Tunggu sebentar, sedang mengambil file database');
+    m.reply('*Sedang Mengambil Zip*');
     const sesi = await fs.promises.readFile(`./${filename}`);
     await conn.sendMessage(m.chat, { document: sesi, mimetype: 'application/octet-stream', fileName: filename }, { quoted: m });
   } catch (error) {
     console.log(error);
-    m.reply('Terjadi kesalahan dalam mengambil file database');
+    m.reply('*E R R O R*');
   }
 };
 

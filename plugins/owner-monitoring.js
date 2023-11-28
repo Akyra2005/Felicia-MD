@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 const MONITOR_API_KEY = global.monitor
 
 let handler = async (m, { conn }) => {
-  m.reply('Sedang memuat informasi monitor... Silahkan tunggu')
+  m.reply('*Sedang Memuat Informasi*')
   try {
     const [monitorResponse, accountResponse] = await Promise.all([
       fetch('https://api.uptimerobot.com/v2/getMonitors', {
@@ -33,16 +33,16 @@ let handler = async (m, { conn }) => {
     ]);
 
     if (!monitorResponse.ok || !accountResponse.ok) {
-      throw new Error('Failed to fetch monitor data');
+      throw new Error('*E R R O R*');
     }
 
     const { monitors } = await monitorResponse.json();
     const { account } = await accountResponse.json();
-    const monitorData = monitors.map(monitor => `Monitor ID: ${monitor.id}\nJudul: ${monitor.friendly_name}\nMonitor URL: ${monitor.url}\nMonitor Status: ${monitor.status}\nPort: ${monitor.port}\nInterval: ${monitor.interval}\n\n`).join('');
+    const monitorData = monitors.map(monitor => `ID Monitor: *${monitor.id}*\nJudul: *${monitor.friendly_name}*\nURL Monitor: *${monitor.url}*\nStatus Monitor: *${monitor.status}*\nPort: *${monitor.port}*\nSelang: *${monitor.interval}*\n\n`).join('');
 
-    conn.reply(m.chat, `Berikut adalah informasi monitor:\n\n${monitorData}\nTotal Monitor Aktif: ${account.up_monitors}\nTotal Monitor Tidak Aktif: ${account.down_monitors}\nTotal Monitor Dinonaktifkan: ${account.paused_monitors}`, m);
+    conn.reply(m.chat, `Berikut Adalah Informasi Monitor:\n\n${monitorData}\nTotal Monitor Aktif: *${account.up_monitors}*\nTotal Monitor Tidak Aktif: *${account.down_monitors}*\nTotal Monitor Dinonaktifkan: *${account.paused_monitors}*`, m);
   } catch (error) {
-    m.reply('Maaf, terjadi kesalahan. Kemungkinan API key telah mencapai batas limit (10 req/min). Harap tunggu selama 1 menit untuk melakukan permintaan lagi.')
+    m.reply('*API KEY Mencapai Batas, Mohon Tunggu 1 Menit Lagi*')
     console.error(error)
   }
 };

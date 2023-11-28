@@ -1,12 +1,15 @@
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn }) => {
-        if (db.data.chats[m.chat].nsfw == false && m.isGroup) return conn.reply(m.chat, `❗ ᴏᴘᴛɪᴏɴs ɴsғᴡ ᴅɪᴄʜᴀᴛ ɪɴɪ ʙᴇʟᴜᴍ ᴅɪɴʏᴀʟᴀᴋᴀɴ ᴏʟᴇʜ ᴀᴅᴍɪɴ ɢʀᴏᴜᴘ\nketik *.on nsfw*`)
+   let chat = global.db.data.chats[m.chat]
+	if (!chat.nsfw) throw `*Grup Ini Tidak Mengizinkan NSFW*\nIzinkan Dengan *.enable 33*`
+	let user = global.db.data.users[m.sender].age
+  if (user < 17) throw m.reply(`*Kamu Belum Cukup Umur*`)
 	let url = paptt[Math.floor(Math.random() * paptt.length)]
-	conn.sendFile(m.chat, url, null, 'Tch, dasar sangean', m)
+	conn.sendFile(m.chat, url, null, '*Sukses*', m)
 }
 handler.help = ['paptt']
-handler.tags = ['nsfw']
+handler.tags = ['nsfw', 'premium']
 handler.command = /^(paptt)$/i
 handler.premium = true
 export default handler

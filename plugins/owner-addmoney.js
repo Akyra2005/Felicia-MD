@@ -1,10 +1,10 @@
 let handler = async (m, { conn, command, text, args }) => {
-    if (!text) throw 'Format salah!\n\nTambah money: addmoney <tag orang> <jumlah money>\nKurangi money: removemoney <tag orang> <jumlah money>'
+    if (!text) throw 'Format: *.addmoney/rem @Tag Jumlah*'
     
     // Extracting the mentioned user and the money value from the command text
     let [who, moneyValue] = text.split(' ')
-    if (!who) throw 'Tag orang yang akan diubah moneynya!'
-    if (isNaN(moneyValue)) throw 'Jumlah money harus angka!'
+    if (!who) throw 'Format: *.addmoney/rem @Tag Jumlah*'
+    if (isNaN(moneyValue)) throw 'Format: *.addmoney/rem @Tag Jumlah*'
 
     // Converting moneyValue to a number
     moneyValue = parseInt(moneyValue)
@@ -19,16 +19,16 @@ let handler = async (m, { conn, command, text, args }) => {
     if (command === 'addmoney') {
         // Adding the specified money to the user's account
         users[user].money += moneyValue
-        conn.reply(m.chat, `Berhasil menambahkan ${moneyValue} money untuk @${user.split('@')[0]}!`, m)
+        conn.reply(m.chat, `*Berhasil Menambahkan ${moneyValue} 🪙 Flint Untuk @${user.split('@')[0]}*`, m)
     } else if (command === 'removemoney') {
         if (moneyValue > users[user].money) {
             // Set the user's money to 0 if the specified money is greater than the user's current money
             users[user].money = 0
-            conn.reply(m.chat, `Berhasil mengurangi money untuk @${user.split('@')[0]}. Money kini menjadi 0!`, m)
+            conn.reply(m.chat, `*Berhasil Mengurangi 🪙 Flint Untuk @${user.split('@')[0]}*`, m)
         } else {
             // Removing the specified money from the user's account
             users[user].money -= moneyValue
-            conn.reply(m.chat, `Berhasil mengurangi ${moneyValue} money untuk @${user.split('@')[0]}!`, m)
+            conn.reply(m.chat, `*Berhasil Mengurangi ${moneyValue} 🪙 Flint Untuk @${user.split('@')[0]}*`, m)
         }
     }
 }

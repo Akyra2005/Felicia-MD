@@ -1,12 +1,16 @@
 //buatan zyko-md, jgn hapus atuh 😊
 let handler = async (m, { conn, usedPrefix, command }) => {
-  await m.reply(`*_ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ_*`)
+	let chat = global.db.data.chats[m.chat]
+	if (!chat.nsfw) throw `*Grup Ini Tidak Mengizinkan NSFW*\nIzinkan Dengan *.enable 33*`
+	let user = global.db.data.users[m.sender].age
+  if (user < 17) throw m.reply(`*Kamu Belum Cukup Umur*`)
+  await m.reply(`*Memproses Permintaan...*`)
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let name = conn.getName(who)
- conn.sendFile(m.chat, pickRandom(cuckold), null, `Nih *${name}*`, m)
+ conn.sendFile(m.chat, pickRandom(cuckold), null, `*Sukses*`, m)
 }
 handler.help = ['cuckold']
-handler.tags = ['premium', 'nsfw']
+handler.tags = ['premium', 'nsfw', 'anime']
 handler.command = /^(cuckold)$/i
 
 handler.premium = true

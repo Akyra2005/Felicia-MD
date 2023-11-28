@@ -24,7 +24,7 @@ let { img } = await pepe(media)
 					}
 				]
 			})
-			await m.reply(`Succes update profile bot`)
+			await m.reply(`*Sukses*`)
 			await apivisit
 } else if (args[0] && args[0].match(URL_REGEX)) {
 let { img } = await pepe(args[0])
@@ -43,9 +43,9 @@ let { img } = await pepe(args[0])
 					}
 				]
 			})
-			await m.reply(`Succes update profile bot`)
+			await m.reply(`*Sukses*`)
 			await apivisit
-			} else throw 'Where\'s the media?'
+			} else throw 'Balas Media Dengan Perintah *.setppbot*'
 }
 handler.alias = handler.help = ['setppbot']
 handler.tags = ['owner']

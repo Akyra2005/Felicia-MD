@@ -25,20 +25,31 @@ import fetch from "node-fetch"
 import { pickRandom } from '../lib/other-function.js'
 
 const defaultMenu = {
-before: `*ʜᴀʟʟᴏ ᴋᴀᴋ👋.* ɴᴀᴍᴀ ꜱᴀyᴀ ᴀᴅᴀʟᴀʜ *ᴋᴏɴᴇᴋᴏ ᴍᴅ* ʙᴏᴛ ʙy *ʀᴇʏᴢ ʜᴀʏᴀɴᴀsɪ*
+before: `*Hai Saya Adalah Felicia-MD*
 
-ʙᴏᴛ ɪɴɪ ᴅᴀᴘᴀᴛ ᴅɪɢᴜɴᴀᴋᴀɴ sᴇʙᴀɢᴀɪ *ᴇᴅᴜᴋᴀsɪ ᴘᴇʟᴀᴊᴀʀᴀɴ*, *ᴜɴᴅᴜʜᴀɴ ᴍᴇᴅɪᴀ*, *ɢᴀᴍᴇ*, *ᴘᴇɴᴊᴀɢᴀ ɢʀᴜᴘ*, *ᴅᴀɴ ʟᴀɪɴɴʏᴀ* ʏᴀɴɢ ᴅᴀᴘᴀᴛ ᴍᴇᴍʙᴜᴀᴛ ᴋᴀᴍᴜ ʟᴇʙɪʜ ᴍᴜᴅᴀʜ ᴜɴᴛᴜᴋ ᴍᴇɴᴊᴀʟᴀɴɪ ʜᴀʀɪ-ʜᴀʀɪ.
+╭─━─━─━─━─━─━─━─━─━─━─━─━─━❐
+╰ ⎔ ─ *Get to Know Me*
+━ ⎔ Nama: *Felicia*
+━ ⎔ Versi: *52.2611.23*
+━ ⎔ Rilis: *25-11-2021*
+━ ⎔ Server: *Railway.app*
+━ ⎔ Pengembang: *Keizha*
+    ┃
+╭ ⎔ ━─━─━─━─━─━─━─━─━─━━❐
+⎔   Semua Menu     *.allmenu*
+⎔   Tipe Menu          *.menulist*
+╰ ⎔ ─━─━─━─━─━─━─━─━─━─━─━─━─━❐
 
-╭  ◦ ᴄʀᴇᴀᴛᴏʀ: *ʀᴇʏᴢ ʜᴀʏᴀɴᴀsɪ*
-│  ◦ ɪɴsᴛᴀɢʀᴀᴍ: *@reymwmwk112*
-╰  ◦ ᴘʀᴇғɪx: *[ . ]*
+╭ ⎔ ━─━─━─━─━─━─━─━─━─━━❐
+│      *Membaca S&K Bot*
+⎔ *— Situs Milshake: https://bit.ly/3T3Yq2t*
+│
+│      *Diharapkan Anda Bergabung*
+⎔ *— Grup WhatsApp: https://bit.ly/49PsIf8*
+╰ ⎔ ─━─━─━─━─━─━─━─━─━─━─━─━─━❐
 
-ᴊɪᴋᴀ ᴀᴅᴀ ᴍᴀsᴀʟᴀʜ ᴅᴀʟᴀᴍ ᴘᴇɴɢɢᴜɴᴀᴀɴ sɪʟᴀʜᴋᴀɴ ʜᴜʙᴜɴɢɪ ᴄʀᴇᴀᴛᴏʀ ᴜɴᴛᴜᴋ ᴍᴇɴᴀɴʏᴀᴋᴀɴ *.ᴏᴡɴᴇʀ*
 
-┌ ◦ ᴍᴇɴᴀᴍᴘɪʟᴋᴀɴ ғɪᴛᴜʀ ʙᴏᴛ: *.ᴀʟʟᴍᴇɴᴜ*
-└ ◦ ꜱʜᴏᴡ ᴍᴇɴᴜʟɪsᴛ ʙᴏᴛ: *.ᴍᴇɴᴜʟɪsᴛ*
-
-ʜᴀʀᴀᴘ ᴜɴᴛᴜᴋ ʙᴇʀɢᴀʙᴜɴɢ ɢʀᴏᴜᴘ ʙᴏᴛ ᴀɢᴀʀ ᴍᴇɴɢᴇᴛᴀʜᴜɪ ɪɴғᴏʀᴍᴀsɪ ʙᴏᴛ ᴊɪᴋᴀ *ᴇʀʀᴏʀ/ʙᴀɴɴᴇᴅ*`,
+`,
 }
 let handler = async (m, {
     conn,
@@ -282,8 +293,8 @@ let nm = pickRandom(global.Pallmenu)
         // Biasa
    await conn.relayMessage(m.chat,  {
     requestPaymentMessage: {
-      currencyCodeIso4217: 'IDR',
-      amount1000: 99999 * 1000,
+      currencyCodeIso4217: 'JPY',
+      amount1000: 10 * 10000000,
       requestFrom: '0@s.whatsapp.net',
       noteMessage: {
       extendedTextMessage: {
@@ -297,12 +308,11 @@ await conn.sendReact(m.chat, "☑️", m.key)
 await conn.sendFile(m.chat, './mp3/menu2.mp3', '', null, m, true)  
         // Biasa
 } catch (e) {
-await conn.reply(m.chat, "Maaf, menu sedang error", m)
+await conn.reply(m.chat, "Maaf, Menu Sedang Error", m)
 throw e
 }
 }
-handler.command = /^(menu|reyzxd|koneko)$/i
-handler.register = false
+handler.command = /^(menu)$/i
 
 export default handler
 //----------- FUNCTION -------

@@ -130,46 +130,45 @@ let handler = async (m, {
     let old = performance.now()
     let neww = performance.now()
     let speed = neww - old
-    let str = `- *ᴘ ɪ ɴ ɢ* -
+    let str = `*KECEPATAN*
 ${Math.round(neww - old)}ms
 ${speed}ms
 
-- *ʀ ᴜ ɴ ᴛ ɪ ᴍ ᴇ* -
+*WAKTU JALANKAN*
 ${muptime}
 ${readMore}
-- *ᴄ ʜ ᴀ ᴛ s* -
-• *${groupsIn.length}* Group Chats
-• *${groupsIn.length}* Groups Joined
-• *${groupsIn.length - groupsIn.length}* Groups Left
-• *${chats.length - groupsIn.length}* Personal Chats
-• *${chats.length}* Total Chats
+*OBROLAN*
+• *${groupsIn.length}* Obrolan Grup
+• *${groupsIn.length}* Grup Bergabung
+• *${groupsIn.length - groupsIn.length}* Keluar Grup
+• *${chats.length - groupsIn.length}* Obrolan Pribadi
+• *${chats.length}* Total Obrolan
 
-- *s ᴇ ʀ ᴠ ᴇ ʀ* -
-*🛑 Rᴀᴍ:* ${ramUsed} / ${_ramTotal}(${/[0-9.+/]/g.test(ramUsed) &&  /[0-9.+/]/g.test(ramTotal) ? Math.round(100 * (ramUsed / ramTotal)) + '%' : NotDetect})
-*🔵 FʀᴇᴇRᴀᴍ:* ${format(freemem())}
+*SERVER*
+Ram: *${ramUsed} / ${_ramTotal}(${/[0-9.+/]/g.test(ramUsed) &&  /[0-9.+/]/g.test(ramTotal) ? Math.round(100 * (ramUsed / ramTotal)) + '%' : NotDetect})*
+Ram Kosong: *${format(freemem())}*
+Platform: *${os.platform()}*
+Server: *${os.hostname()}*
+OS: *${OS}*
+IP: *${ip}*
+Negara: *${cr}*
+Kode Negara: *${cc}*
+Model CPU: *${cpuModel}*
+Inti CPU: *${cpuCore} Core*
+CPU: *${cpuPer}%*
+Waktu Server: *${times}*
 
-*🔭 ᴘʟᴀᴛғᴏʀᴍ:* ${os.platform()}
-*🧿 sᴇʀᴠᴇʀ:* ${os.hostname()}
-*💻 ᴏs:* ${OS}
-*📍 ɪᴘ:* ${ip}
-*🌎 ᴄᴏᴜɴᴛʀʏ:* ${cr}
-*💬 ᴄᴏᴜɴᴛʀʏ ᴄᴏᴅᴇ:* ${cc}
-*📡 ᴄᴘᴜ ᴍᴏᴅᴇʟ:* ${cpuModel}
-*🔮 ᴄᴘᴜ ᴄᴏʀᴇ:* ${cpuCore} Core
-*🎛️ ᴄᴘᴜ:* ${cpuPer}%
-*⏰ ᴛɪᴍᴇ sᴇʀᴠᴇʀ:* ${times}
-
-- *ᴏ ᴛ ʜ ᴇ ʀ* -
-*📅 Wᴇᴇᴋꜱ:* ${weeks}
-*📆 Dᴀᴛᴇꜱ:* ${dates}
-*🔁 NᴇᴛꜱIɴ:* ${netsIn}
-*🔁 NᴇᴛꜱOᴜᴛ:* ${netsOut}
-*💿 DʀɪᴠᴇTᴏᴛᴀʟ:* ${driveTotal}
-*💿 DʀɪᴠᴇUꜱᴇᴅ:* ${driveUsed}
-*⚙️ DʀɪᴠᴇPᴇʀ:* ${drivePer}
+*LAIN-LAINNYA*
+Hari: *${weeks}*
+Tanggal: *${dates}*
+Jaringan Masuk: *${netsIn}*
+Jaringan Keluar: *${netsOut}*
+Total Drive: *${driveTotal}*
+Drive Digunakan: *${driveUsed} GB*
+Drive: *${drivePer}*
 
 ${readMore}
-*${htjava} ɴᴏᴅᴇJS ᴍᴇᴍᴏʀʏ ᴜsᴀɢᴇ*
+*${htjava} Penggunaan Memori NodeJS*
 ${'```' + Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v => v.length)), ' ')}: ${format(used[key])}`).join('\n') + '```'
 }
 `
@@ -205,5 +204,5 @@ function clockString(ms) {
   let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000) % 24
   let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
   let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
-  return [d, ' *Days ☀️*\n ', h, ' *Hours 🕐*\n ', m, ' *Minute ⏰*\n ', s, ' *Second ⏱️* '].map(v => v.toString().padStart(2, 0)).join('')
+  return [d, ' Hari ', h, ' Jam ', m, ' Menit ', s, ' Detik '].map(v => v.toString().padStart(2, 0)).join('')
 }

@@ -1,9 +1,9 @@
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, args }) => {
-  if (!args[0]) throw 'Masukkan kota atau wilayah.\nContoh: *.kodepos medan';
+  if (!args[0]) throw 'Format: *.kodepos Lokasi*';
 
-  m.reply('Tunggu sebentar...');
+  m.reply('*Memproses Permintaan...*');
 
   let kota = encodeURIComponent(args[0]);
   let apiUrl = `https://ll--lasdanon.repl.co/api/search/kodepos?q=${kota}&apikey=Onlasdan`;
@@ -16,17 +16,18 @@ let handler = async (m, { conn, args }) => {
     let message = 'Hasil Pencarian Kode Pos:\n\n';
     for (let i = 0; i < result.length; i++) {
       let { province, regency, subdistrict, ward, postalcode } = result[i];
-      message += `Provinsi: ${province}\nKabupaten/Kota: ${regency}\nKecamatan: ${subdistrict}\nKelurahan: ${ward}\nKode Pos: ${postalcode}\n\n`;
+      message += `Provinsi: *${province}*\nKabupaten/Kota: *${regency}*\nKecamatan: *${subdistrict}*\nKelurahan: *${ward}*\nKode Pos: *${postalcode}*\n\n`;
     }
     await conn.reply(m.chat, message, m);
   } else {
-    throw 'Tidak ada hasil yang ditemukan';
+    throw '*Lokasi Tidak Ditemukan*';
   }
 };
 
 handler.help = ['kodepos'];
-handler.tags = ['pencarian'];
+handler.tags = ['tools'];
 handler.command = /^(kodepos)$/i;
 handler.limit = true;
+handler.register = true
 
 export default handler;

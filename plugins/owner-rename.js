@@ -4,25 +4,13 @@ import fs from 'fs'
 
 let handler = async (m, { args, text, usedPrefix, command }) => {
 
-	let info = `${usedPrefix + command} <Old name> | <New name>
-
-*📌_ • Example:_*
-
-➞ ${usedPrefix + command} inv | rpg-inv
-
-*_🗒️ • Note:_*
-
-Do not use the .js extension at the end of the sentence and make sure the word does not contain spaces "rpg-inv"`
+	let info = `Format: *${usedPrefix + command} Nama Lama|Nama Baru*`
 
 if (!args[0]) throw info
 
-if (!args[1] == "|") throw `• *📌_ • Example:_*:
+if (!args[1] == "|") throw `Format: *${usedPrefix + command} Nama Lama|Nama Baru*`
 
-➞ ${usedPrefix + command} inv | rpg-inv`
-
-if (!args[2]) throw `• example:
-
-➞ ${usedPrefix + command} inv | rpg-inv`
+if (!args[2]) throw `Format: *${usedPrefix + command} Nama Lama|Nama Baru*`
 
 let from = args[0]
 
@@ -32,11 +20,11 @@ let ar = Object.keys(plugins)
 
 let ar1 = ar.map(v => v.replace('.js', ''))
 
-if (!ar1.includes(args[0])) return m.reply(`*🗃️ NOT FOUND!*\n==================================\n\n${ar1.map(v => ' ' + v).join`\n`}`)
+if (!ar1.includes(args[0])) return m.reply(`*Tidak Ditemukan*\n\n\n${ar1.map(v => ' ' + v).join`\n`}`)
 
 await fs.renameSync(`./plugins/${from}.js`, `./plugins/${to}.js`)
 
-conn.reply(m.chat, `Success changes "plugins/${from}.js" to "plugins/${to}.js"`, m)
+conn.reply(m.chat, `Sukses Mengganti *"plugins/${from}.js" Ke "plugins/${to}.js"*`, m)
 
 }
 

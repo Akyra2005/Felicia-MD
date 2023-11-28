@@ -1,14 +1,20 @@
 //buatan zyko-md, jgn hapus atuh 😊
 let handler = async (m, { conn, usedPrefix, command }) => {
-  await m.reply(`*_ᴛᴜɴɢɢᴜ sᴇʙᴇɴᴛᴀʀ_*`)
+    let chat = global.db.data.chats[m.chat]
+	if (!chat.nsfw) throw `*Grup Ini Tidak Mengizinkan NSFW*\nIzinkan Dengan *.enable 33*`
+	let user = global.db.data.users[m.sender].age
+  if (user < 17) throw m.reply(`*Kamu Belum Cukup Umur*`)
+  await m.reply(`*Memproses Permintaan...*`)
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let name = conn.getName(who)
-conn.sendFile(m.chat, pickRandom(animeass), null, `Nih *${name}*`, m)
+conn.sendFile(m.chat, pickRandom(animeass), null, `*Sukses*`, m)
 //  conn.sendButton(m.chat, `Nih *${name}*`, botdate, pickRandom(animeass), [['Next', `/animeass`]],m)
 }
 handler.help = ['animeass']
-handler.tags = ['anime', 'premium', 'nsfw']
+handler.tags = ['anime', 'nsfw']
 handler.command = /^(animeass)$/i
+handler.register = true
+handler.limit = 2
 handler.premium = false
 
 export default handler

@@ -5,7 +5,7 @@ let exec = promisify(_exec).bind(cp)
 let handler = async (m, { conn, isROwner, usedPrefix, command, text }) => {
     await m.reply(global.wait)
     if (!isROwner) return
-    if (!text) throw `uhm.. where the text?\n\nexample:\n${usedPrefix + command} lib/nas.js`
+    if (!text) throw `Format: *${usedPrefix + command} Folder/File*`
     let o
     try {
         o = await exec('ls ' + text)
@@ -16,14 +16,14 @@ let handler = async (m, { conn, isROwner, usedPrefix, command, text }) => {
         if (stdout.trim()) {
             m.reply(stdout)
         } else if (stderr.trim()) {
-            if (stderr.includes('No such file or directory')) {
+            if (stderr.includes('*Tidak Ada Berkas Atau Direktori Seperti Itu*')) {
                 let path = text.substring(0, text.lastIndexOf('/'))
                 let lsOutput = await exec('ls ' + path)
                 let { stdout: lsStdout, stderr: lsStderr } = lsOutput
                 if (lsStderr.trim()) {
                     m.reply(lsStderr)
                 } else {
-                    m.reply(`*🗃️ File not found!*\n==================================\n\n${lsStdout}`)
+                    m.reply(`*Tidak Ditemukan*\n────────────────────────────\n\n${lsStdout}`)
                 }
             } else {
                 m.reply(stderr)

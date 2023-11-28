@@ -6,9 +6,9 @@ let exec = promisify(cp.exec).bind(cp)
 
 let handler = async (m, { conn, isROwner, usedPrefix, command, text }) => {
 
-if (!text) throw `Nama Filenya?`
+if (!text) throw `Format: *.gf Nama File*`
 
-m.reply('Executing...')
+m.reply('*Eksekusi...*')
 
 let o
 

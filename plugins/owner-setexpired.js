@@ -9,7 +9,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     var now = new Date() * 1
     if (now < global.db.data.chats[who].expired) global.db.data.chats[who].expired = jumlahHari
     else global.db.data.chats[who].expired = now + jumlahHari
-    conn.reply(m.chat, `Berhasil menetapkan hari kadaluarsa untuk Grup ini selama ${args[0]} hari.\n\nHitung Mundur : ${msToDate(global.db.data.chats[who].expired - now)}`, m)
+    conn.reply(m.chat, `Berhasil Menetapkan Hari Kadaluarsa Untuk Grup Ini Selama *${args[0]} Hari*\n\nHitung Mundur: *${msToDate(global.db.data.chats[who].expired - now)}*`, m)
 }
 handler.help = ['setexpired'].map(v => v + ' <hari>')
 handler.tags = ['owner']
@@ -27,6 +27,6 @@ function msToDate(ms) {
     let minutes = Math.floor((hoursms) / (60 * 1000));
     let minutesms = ms % (60 * 1000);
     let sec = Math.floor((minutesms) / (1000));
-    return days + " hari " + hours + " jam " + minutes + " menit";
+    return days + " Hari " + hours + " Jam " + minutes + " Menit";
     // +minutes+":"+sec;
 }

@@ -1,6 +1,10 @@
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, command }) => {
+		let chat = global.db.data.chats[m.chat]
+	if (!chat.nsfw) throw `*Grup Ini Tidak Mengizinkan NSFW*\nIzinkan Dengan *.enable 33*`
+	let user = global.db.data.users[m.sender].age
+  if (user < 17) throw m.reply(`*Kamu Belum Cukup Umur*`)
     let url = 'https://api.waifu.im/search?included_tags=paizuri';
     try {
         const response = await fetch(url);
@@ -9,28 +13,28 @@ let handler = async (m, { conn, command }) => {
         if (data.images && data.images.length > 0) {
             const imageInfo = data.images[0];
             const caption = `
-Signature: ${imageInfo.signature}
-Extension: ${imageInfo.extension}
-Image ID: ${imageInfo.image_id}
-Favorites: ${imageInfo.favorites}
-Source: ${imageInfo.source}
-Width: ${imageInfo.width}
-Height: ${imageInfo.height}
-Byte Size: ${imageInfo.byte_size}
-URL: ${imageInfo.url}
+Tanda Tangan: *${imageInfo.signature}*
+Ekstensi: *${imageInfo.extension}*
+ID Gambar: *${imageInfo.image_id}*
+Favorit: *${imageInfo.favorites}*
+Sumber: *${imageInfo.source}*
+Lebar: *${imageInfo.width}*
+Tinggi: *${imageInfo.height}*
+Ukuran Byte: *${imageInfo.byte_size}*
+URL: *${imageInfo.url}*
             `;
             const imageUrl = imageInfo.url;
 
             conn.sendFile(m.chat, imageUrl, null, caption, m);
         } else {
-            conn.reply(m.chat, 'No anime images found.', m);
+            conn.reply(m.chat, '*Tidak Ditemukan*', m);
         }
     } catch (error) {
         console.error(error);
-        conn.reply(m.chat, 'An error occurred while fetching the data.', m);
+        conn.reply(m.chat, '*E R R O R*', m);
     }
 }
 handler.help = handler.command = ['xpaizuri']
-handler.tags = ['nsfw']
-handler.limit = true
+handler.tags = ['nsfw', 'anime']
+handler.limit = 2
 export default handler

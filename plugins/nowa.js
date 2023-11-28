@@ -2,8 +2,8 @@ var handler = async (m, {conn, text, usedPrefix, command}) => {
 
 const regex = /x/g
   
-if (!text) throw '*⚠️ ᴍᴀsᴜᴋᴋᴀɴ ɴᴏᴍᴏʀ ɴʏᴀ! *'
-if (!text.match(regex)) throw `*❕ ᴇxᴀᴍᴘʟᴇ:*\n${usedPrefix + command} 6283181666350x*`
+if (!text) throw 'Format: *.nowa Nomor WhatsApp*'
+if (!text.match(regex)) throw `Format: *.nowa Nomor WhatsApp*`
 let random = text.match(regex).length
 let total = Math.pow(10, random)
 let array = []
@@ -15,14 +15,14 @@ let info = await conn.fetchStatus(result).catch((_) => {})
 array.push({exists: true, jid: result, ...info})
 } else {
 array.push({exists: false, jid: result})}}
-let txt = 'ʀᴇsɢɪᴛᴇʀ\n\n' + array.filter((v) => v.exists).map((v) => `• ᴛᴀɢ: wa.me/${v.jid.split('@')[0]}\n*• ʙɪᴏ:* ${v.status || 'Sin descripcion'}\n*• Fecha:* ${formatDate(v.setAt)}`).join('\n\n') + '\n\n*ɴᴏ ʀᴇɢɪsᴛᴇʀ*\n\n' + array.filter((v) => !v.exists).map((v) => v.jid.split('@')[0]).join('\n');
+let txt = '*TERDAFTAR*\n\n' + array.filter((v) => v.exists).map((v) => `Tag: *wa.me/${v.jid.split('@')[0]}*\nBio: *${v.status || 'Tanpa Deskripsi'}*\nTanggal:* ${formatDate(v.setAt)}*`).join('\n\n') + '\n\n*TIDAK TERDAFTAR*\n\n' + array.filter((v) => !v.exists).map((v) => v.jid.split('@')[0]).join('\n');
 m.reply(txt)
 
 }
 handler.help = ['nowa']
 handler.tags = ['nowa']
 handler.command = /^nowa$/i
-
+handler.register = true
 export default handler
 
 function formatDate(n, locale = 'id') {

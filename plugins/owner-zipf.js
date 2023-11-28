@@ -4,7 +4,7 @@ import archiver from 'archiver';
 
 let handler = async (m, { conn, text }) => {
   if (!text) {
-    m.reply('Mohon berikan nama file atau folder yang akan di-zip');
+    m.reply('Format: *.zipf Nama Folder/File*');
     return;
   }
 
@@ -12,7 +12,7 @@ let handler = async (m, { conn, text }) => {
   const tmpFolder = 'tmp'; // Change this to the path of your "tmp" folder
 
   try {
-    m.reply('Tunggu sebentar, sedang membuat file zip...');
+    m.reply('*Sedang Membuat File Zip...*');
 
     const output = fs.createWriteStream(path.join(tmpFolder, `${filename}.zip`));
     const archive = archiver('zip', {
@@ -34,7 +34,7 @@ let handler = async (m, { conn, text }) => {
     fs.unlinkSync(path.join(tmpFolder, `${filename}.zip`));
   } catch (error) {
     console.error(error);
-    m.reply('Terjadi kesalahan dalam membuat dan mengirim file zip');
+    m.reply('*E R R O R*');
   }
 };
 

@@ -8,7 +8,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   },
   message: {
   documentMessage: {
-  title: '𝙳 𝙰 𝚃 𝙰 𝙱 𝙰 𝚂 𝙴', 
+  title: 'BASIS DATA', 
   jpegThumbnail: fs.readFileSync('./thumbnail.jpg'),
                             }
                           }
@@ -19,12 +19,12 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                 month: 'long',
                 year: 'numeric'
             })
-conn.reply(m.chat, '*Succes*', m)
-conn.reply('6283181666350' + '@s.whatsapp.net', `*🗓️ Database:* ${date}`, null)
-          conn.sendFile('6283181666350' + '@s.whatsapp.net', fs.readFileSync('./database.json'), 'database.json', '', 0, 0, { mimetype: 'application/json', quoted: fdoc})
+conn.reply(m.chat, '*Sukses*', m)
+conn.reply('6281249122429' + '@s.whatsapp.net', `Database: *${date}*`, null)
+          conn.sendFile('6281249122429' + '@s.whatsapp.net', fs.readFileSync('./database.json'), 'database.json', '', 0, 0, { mimetype: 'application/json', quoted: fdoc})
  }
  
- handler.help = ['backup']
+handler.help = ['backup']
 handler.tags = ['owner']
 handler.command = /^(backup)$/i
 handler.rowner = true
