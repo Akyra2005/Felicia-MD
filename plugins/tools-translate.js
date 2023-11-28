@@ -10,25 +10,26 @@ let handler = async (m, {
         lang = args[0] ? args[0] : "id", text = args.slice(1).join(" ")
     } else if (m.quoted && m.quoted.text) {
         lang = args[0] ? args[0] : "id", text = m.quoted.text
-    } else throw `Ex: ${usedPrefix + command} id hello i am robot`
+    } else throw `Format: *${usedPrefix + command} Kode Bahasa Teks*`
     try {
     const prompt = encodeURIComponent(text);
         let reis = await fetch("https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=" + lang + "&dt=t&q=" + prompt)
         let res = await reis.json()
         let lister = Object.keys(await langList())
-        let supp = `Error : Bahasa "${lang}" Tidak Support`
-        if (!lister.includes(lang)) return m.reply(supp + "\n\n*Example:*\n." + command + " id hello\n\n*Pilih kode yg ada*\n" + lister.map((v, index) => `${index +1}. ${v}`).join("\n"))
+        let supp = `Bahasa *"${lang}"* Tidak Didukung`
+        if (!lister.includes(lang)) return m.reply(supp + "\n\nFormat: *." + command + " Kode Bahasa Teks*\n\n*Daftar Kode Bahasa:*\n" + lister.map((v, index) => `${index +1}. ${v}`).join("\n"))
 
         let Detect = (res[2].toUpperCase() ? res[2].toUpperCase() : "US")
         let ToLang = (lang.toUpperCase())
-        let caption = `*[ Terdeteksi ]*
-- ${Detect}
+        let caption = `*PENERJEMAH*\n
+Dari:
+*${Detect}*
 
-*[ Ke Bahasa ]*
-- ${ToLang}
+Ke Bahasa:
+*- ${ToLang}*
 
-*[ Terjemahan ]*
-- ${res[0][0][0]}
+Hasil:
+*${res[0][0][0]}*
 `
         await m.reply(caption, null, m.mentionedJid ? {
         mentions: conn.parseMention(caption)

@@ -2,7 +2,7 @@ import axios from 'axios'
 import cheerio from 'cheerio'
 
 let handler = async (m, { conn, text }) => {
-  if (!text) throw 'Input username!'
+  if (!text) throw 'Format: *.tiktokstalk Nama Pengguna*'
   let res = await tiktokStalk(text), img = res?.pp_user
   delete res.pp_user
   let txt = Object.keys(res).map((v) => `*${v.capitalize()}:* ${res[v]}`).join`\n`

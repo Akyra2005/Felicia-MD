@@ -1,9 +1,9 @@
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
-  if (!text) throw `⚠️ *_Sebutkan orang yang ingin Anda dapatkan vcard-nya._*\n*📌 Contoh penggunaan:* ${usedPrefix + command} @tag`
+  if (!text) throw `Format: *${usedPrefix + command} @Tag*`
   
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
   let bio = await conn.fetchStatus(who).catch(_ => 'undefined')
-  let biot = bio.status?.toString() || 'Sin Información'
+  let biot = bio.status?.toString() || 'Kartu Maya Oleh Felicia-MD'
   let user = global.db.data.users[who]
   let name = await conn.getName(who)
   const vcard = `BEGIN:VCARD\nVERSION:3.0\nN:;${name};;;\nFN:${name}\nORG:${name}\nTITLE:\nitem1.TEL;waid=${who.split`@`[0]}:+${who.split`@`[0]}\nitem1.X-ABLabel:${name}\nX-WA-BIZ-DESCRIPTION:${biot}\nX-WA-BIZ-NAME:${name}\nEND:VCARD`

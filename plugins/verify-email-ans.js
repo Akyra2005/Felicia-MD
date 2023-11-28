@@ -6,25 +6,25 @@ export async function before(m) {
         return !0
     this.emailotp = this.emailotp ? this.emailotp : {}
     if (!(id in this.emailotp))
-        return this.reply(m.chat, 'OTP itu telah berakhir', m)
+        return this.reply(m.chat, '*OTP Itu Telah Berakhir*', m)
     if (m.quoted.id == this.emailotp[id][0].id) {
         let isSurrender = /^((me)?nyerah|surr?ender)$/i.test(m.text)
         if (isSurrender) {
             clearTimeout(this.emailotp[id][3])
             delete this.emailotp[id]
-            return this.reply(m.chat, '*Yah Menyerah :( !*', m)
+            return this.reply(m.chat, '*Anda Telah Menyerah*', m)
         }
         let json = JSON.parse(JSON.stringify(this.emailotp[id][1]))
         // m.reply(JSON.stringify(json, null, '\t'))
         if (m.text.toLowerCase() == json.jawaban.toLowerCase().trim()) {
             global.db.data.users[m.sender].exp += this.emailotp[id][2]
-            this.reply(m.chat, `✅ *OTP Benar!*\n+${this.emailotp[id][2]} XP`, m)
+            this.reply(m.chat, `*BENAR*\n+${this.emailotp[id][2]} ✨ XP`, m)
             clearTimeout(this.emailotp[id][3])
             delete this.emailotp[id]
         } else if (similarity(m.text.toLowerCase(), json.jawaban.toLowerCase().trim()) >= threshold)
-            m.reply(`❗ *Dikit Lagi!*`)
+            m.reply(`*Sedikit Lagi*`)
         else
-            this.reply(m.chat, `❌ *OTP Salah!*`, m)
+            this.reply(m.chat, `*Salah*`, m)
     }
     return !0
 }

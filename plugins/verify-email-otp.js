@@ -7,11 +7,11 @@ let imgr = flaaa.getRandom()
     conn.emailotp = conn.emailotp ? conn.emailotp : {}
     let id = m.chat
     if (id in conn.emailotp) {
-        conn.reply(m.chat, 'Masih ada OTP belum terjawab di chat ini', conn.emailotp[id][0])
+        conn.reply(m.chat, '*Masih Ada OTP Belum Terjawab*', conn.emailotp[id][0])
         throw false
     }
     if (!text) return m.reply(
-        `Example: ${usedPrefix + command} email`
+        `Format: *${usedPrefix + command} E-Mail*`
     )
     let generateOTP = (Math.floor(Math.random() * 9000) + 1000).toString()
     let avatar = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://telegra.ph/file/a2ae6cbfa40f6eeea0cf1.jpg')
@@ -19,21 +19,22 @@ let imgr = flaaa.getRandom()
 
     let json = {
         jawaban: generateOTP,
-        soal: "Reply pesan ini dan masukkan kode OTP"
+        soal: "*Balas Pesan Ini Dengan Kode OTP*"
     }
     if (res.success == true) {
   let caption = `*${command.toUpperCase()}*
-  ${json.soal}
 
-Timeout *${(timeout / 1000).toFixed(2)} detik*
-Ketik ${usedPrefix}hotp untuk bantuan
-Bonus: ${poin} XP
+*${json.soal}*
+
+⏳ Timeout *${(timeout / 1000).toFixed(2)} Detik*
+🔎 Ketik *${usedPrefix}hotp* Untuk Bantuan
+🎁 Hadiah: *${poin} ✨ XP*
     `.trim()
     conn.emailotp[id] = [
         await conn.sendFile(m.chat, imgr + command, '', caption, m),
         json, poin,
         setTimeout(() => {
-            if (conn.emailotp[id]) conn.reply(m.chat, `Waktu habis!\nOTP adalah *${json.jawaban}*`, conn.emailotp[id][0])
+            if (conn.emailotp[id]) conn.reply(m.chat, `*Waktu Habis*\nOTP Adalah *${json.jawaban}*`, conn.emailotp[id][0])
             delete conn.emailotp[id]
         }, timeout)
     ]

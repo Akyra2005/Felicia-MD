@@ -9,7 +9,7 @@ let handler = async (m, {
 }) => {
     let q = m.quoted ? m.quoted : m
     let mime = (m.quoted ? m.quoted : m.msg).mimetype || ''
-    if (!/webp|image|video|gif|viewOnce/g.test(mime)) return m.reply(`Reply Media dengan perintah\n\n${usedPrefix + command}`)
+    if (!/webp|image|video|gif|viewOnce/g.test(mime)) return m.reply(`Balas Media Dengan Perintah *${usedPrefix + command}*`)
     let media = await await q.download?.()
     await m.reply(wait)
     

@@ -1,7 +1,7 @@
 import api from 'api-dylux';
 import { sticker } from '../lib/sticker.js';
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
-  if (!text) throw 'Enter Text'
+  if (!text) throw 'Format: *.tts Teks*'
   try {
     const res = await api.ttp(text);
     const stiker = await sticker(false, res.result, global.packname, global.author);

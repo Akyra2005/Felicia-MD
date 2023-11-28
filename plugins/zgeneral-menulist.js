@@ -50,7 +50,7 @@ let menulist = async (m, { conn, args }) => {
   if (perintah === 'tags') {
     const daftarTag = Object.keys(tagCount)
       .sort()
-      .join('\n│' + htjava + '. menulist ');
+      .join('\n├• .menulist ');
     const more = String.fromCharCode(8206)
     const readMore = more.repeat(4001)
     let _mpt
@@ -81,42 +81,32 @@ let menulist = async (m, { conn, args }) => {
       fileLength: 99999999,
       pageCount: 999,  
       caption: `
-╭─────═[ INFO USER ]═─────⋆
-│╭───────────────···
-┴│☂︎ *ɴᴀᴍᴇ:* ${name}
-⬡│☂︎ *ᴘʀᴇғɪx:* [ . ]
-┬╰────────────────···
-┠─────═[ TODAY ]═─────⋆
-│╭────────────────···
-┴│    *${ucapan()}  ${name}*
-⬡│☂︎ *ᴄʜᴀᴛ ʙᴀɴ:* ${Object.entries(global.db.data.chats).filter(chat => chat[1].isBanned).length}
-⬡│☂︎ *ᴜsᴇᴇ ʙᴀɴ:* ${Object.entries(global.db.data.users).filter(user => user[1].banned).length}
-⬡│☂︎ *ᴅᴀᴛᴇ:* ${global.waktu}
-┬│☂︎ *ᴜᴘᴛɪᴍᴇ:* ${global.bottime}
-│╰────────────────···
-┠─────═[ INFO BOT ]═─────⋆
-│╭────────────────···
-┴│☂︎ *ɴᴀᴍᴇ ʙᴏᴛ:* ᴋᴏɴᴇᴋᴏ ᴄʏᴢ
-⬡│☂︎ *ᴄʀᴇᴀᴛᴏʀ* ʀᴇʏᴢ ʜᴀʏᴀɴᴀsɪ
-⬡│☂︎ *ᴍᴏᴅᴇ:* ${global.opts['sᴇʟғ'] ? 'ᴘʀɪᴠᴀᴛᴇ' : 'ᴘᴜʙʟɪᴄ'}
-⬡│☂︎ *ɴᴏ ᴏᴡɴ:* ${global.nomorown}
-┬│☂︎ *ᴅᴀᴛᴀʙᴀsᴇ:* ${Object.keys(global.db.data.users).length}
-│╰────────────────···
-╰──────────═┅═──────────    
-${readMore}\n╭━━━━━━━━┈─◂\n│≡ *TAG LIST*\n┴\n│${global.htjava} .menulist  ${daftarTag}\n╰━━━━━━━━┈─◂\n*Total Tag:${Object.keys(tagCount).length}*`, contextInfo: { externalAdReply: { showAdAttribution: true, title: wm, body: author, mediaType: 1, thumbnail: fs.readFileSync(prn), sourceUrl: 'https://reyzxd.com', renderLargerThumbnail: true } } }, { quoted: m, ephemeralExpiration: global.ephemeral });
+Hai *${name}* ${ucapan()}
+
+— Nama Bot: *Felicia*
+— Versi: *52.2611.23*
+— Server: *Railway.app*
+— Pengembang: *Keizha*
+— Total Pengguna: *${Object.keys(global.db.data.users).length}*
+
+*Keterangan:*
+🅟 = Premium
+Ⓛ = Limit
+
+${readMore}\n\n╭────「 *Daftar Tag* 」\n├• .menulist ${daftarTag}\n╰─────────────────⎔\n\nTotal Daftar Tag: *${Object.keys(tagCount).length}*`, contextInfo: { externalAdReply: { showAdAttribution: true, title: wm, body: author, mediaType: 1, thumbnail: fs.readFileSync(prn), sourceUrl: 'https://bit.ly/49PsIf8', renderLargerThumbnail: true } } }, { quoted: m, ephemeralExpiration: global.ephemeral });
   await conn.sendFile(m.chat, './mp3/old2.mp3', '', null, m, true) 
   } else if (tagCount[perintah]) {
     const daftarHelp = tagHelpMapping[perintah].map((helpItem, index) => {
       const premiumSign = help[index].premium ? '🅟' : '';
       const limitSign = help[index].limit ? 'Ⓛ' : '';
       return `.${helpItem} ${premiumSign}${limitSign}`;
-    }).join('\n│' + pmenus + ' ');
+    }).join('\n' + '├• ' + '');
     conn.sendMessage(m.chat, { document: fs.readFileSync("./package.json"),
       fileName: wm,
       mimetype: global.doc,
       fileLength: 99999999999999,
       pageCount: 10909143,  
-      caption:  `╭━━━━━━━━┈─◂\n│≡ *${perintah}*\n├━━━━━━━━┈─◂\n│\n│${global.pmenus}${daftarHelp}\n╰━━━━━━━━┈─◂\n\n*Total Item:${tagHelpMapping[perintah].length}*`, contextInfo: { externalAdReply: { title: wm, body: author, mediaType: 1, thumbnail: fs.readFileSync('./tumnil/1.jpg'), sourceUrl: 'https://Javanese', renderLargerThumbnail: true } } }, { quoted: m, ephemeralExpiration: global.ephemeral });
+      caption:  `\nDaftar Perintah Dengan Tag: *${perintah}*\n\n╭────「 *For User* 」\n├• ${daftarHelp}\n╰─────────────────⎔\n\nTotal Perintah: *${tagHelpMapping[perintah].length}*`, contextInfo: { externalAdReply: { title: wm, body: author, mediaType: 1, thumbnail: fs.readFileSync('./tumnil/1.jpg'), sourceUrl: 'https://bit.ly/49PsIf8', renderLargerThumbnail: true } } }, { quoted: m, ephemeralExpiration: global.ephemeral });
           } else if (perintah === 'all') { // Menampilkan semua tag dan bantuan
     let name = m.pushName || conn.getName(m.sender)
     const more = String.fromCharCode(8206)
@@ -126,7 +116,7 @@ ${readMore}\n╭━━━━━━━━┈─◂\n│≡ *TAG LIST*\n┴\n│${
         const premiumSign = help[index].premium ? '🅟' : '';
         const limitSign = help[index].limit ? 'Ⓛ' : '';
         return `.${helpItem} ${premiumSign}${limitSign}`;
-      }).join('\n│' + pmenus + ' ');
+      }).join('\n' + pmenus + ' ');
       return `╭━━━━━━━━┈─◂\n│≡ ${tag}\n├━━━━━━━━┈─◂\n│\n│${daftarHelp}\n╰━━━━━━━━┈─◂`;
     }).join('\n');
     conn.sendMessage(m.chat, { document: fs.readFileSync("./package.json"),
@@ -171,19 +161,19 @@ function clockString(ms) {
 
 function ucapan() {
   const hour_now = moment.tz('Asia/Jakarta').format('HH')
-  var ucapanWaktu = 'Ohayou...'
+  var ucapanWaktu = 'Selamat Pagi...'
   if (hour_now >= '03' && hour_now <= '10') {
-    ucapanWaktu = 'Ohayou...'
+    ucapanWaktu = 'Selamat Pagi...'
   } else if (hour_now >= '10' && hour_now <= '15') {
-    ucapanWaktu = 'Konnichiwa...'
+    ucapanWaktu = 'Selanat Siang...'
   } else if (hour_now >= '15' && hour_now <= '17') {
-    ucapanWaktu = 'Konnichiwa...'
+    ucapanWaktu = 'Selamat Sore...'
   } else if (hour_now >= '17' && hour_now <= '18') {
-    ucapanWaktu = 'Konbanwa...'
+    ucapanWaktu = 'Selamat Petang...'
   } else if (hour_now >= '18' && hour_now <= '23') {
-    ucapanWaktu = 'Konbanwa...'
+    ucapanWaktu = 'Selamat Malam...'
   } else {
-    ucapanWaktu = 'Konbanwa'
+    ucapanWaktu = 'Selamaf Malam...'
   }	
   return ucapanWaktu
 }

@@ -34,11 +34,11 @@ async function wikipedia(querry) {
 }
 
 let handler = async (m, { conn, text }) => {
-if (!text) return m.reply('Query??')
+if (!text) return m.reply('Format: *.wikipedia Kata Kunci*')
 await apivisit
 wikipedia(`${text}`).then(res => {
-    conn.sendFile(m.chat, res.result.thumb, 'wiki.png',`*Judul:* ${res.result.judul}\n\n*Penjelasan:*\n${res.result.isi}\n\n*© Wikipedia*`, m)
-  }).catch(() => { m.reply('Maaf server tidak dapat menemukannya :(') })
+    conn.sendFile(m.chat, res.result.thumb, 'wiki.png',`Judul: *${res.result.judul}*\n\nPenjelasan:\n*${res.result.isi}*\n\n*© Wikipedia*`, m)
+  }).catch(() => { m.reply('*Tidak Ditemukan Di Wikipedia*') })
 }
 
 handler.help = ['wikipedia'].map(v => v + ' <query>')

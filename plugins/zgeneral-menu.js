@@ -41,30 +41,23 @@ let _mpt
     }
      let mpt = clockString(_mpt)
 let defaultMenu = {
-  before: `ʜɪ sɪs %name 👋.
-ɪ ᴀᴍ ᴀɴ ᴀᴜᴛᴏᴍᴀᴛᴇᴅ ꜱʏꜱᴛᴇᴍ (ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ) ᴛʜᴀᴛ ᴄᴀɴ ʜᴇʟᴘ ᴛᴏ ᴅᴏ ꜱᴏᴍᴇᴛʜɪɴɢ, ꜱᴇᴀʀᴄʜ ᴀɴᴅ ɢᴇᴛ ᴅᴀᴛᴀ / ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ ᴏɴʟʏ ᴛʜʀᴏᴜɢʜ ᴡʜᴀᴛꜱᴀᴘᴘ.
+  before: `Hai *%name* ${ucapan()}
   
-┌ ◦ ${ucapan()} : %name
-│ ◦ ʀᴜɴᴛɪᴍᴇ : %uptime
-│ ◦ ᴘʀᴇғɪx : [ %p ]
-│ ◦ ᴍᴏᴅᴇ : ${global.opts['self'] ? 'Private' : 'ᴘᴜʙʟɪᴄ'}
-│ ◦ ᴅᴀᴛᴀʙᴀsᴇ : *${Object.keys(global.db.data.users).length}* ᴘᴇɴɢɢᴜɴᴀ 
-│ ◦ ᴄʜᴀᴛ ʙᴀɴɴᴇᴅ : *${Object.entries(global.db.data.chats).filter(chat => chat[1].isBanned).length}* ᴄʜᴀᴛ ᴛᴇʀʙᴀɴɴᴇᴅ 
-└ ◦ ᴜsᴇʀ ʙᴀɴɴᴇᴅ *${Object.entries(global.db.data.users).filter(user => user[1].banned).length}* 
+— Nama Bot: *Felicia*
+— Versi: *52.2611.23*
+— Server: *Railway.app*
+— Pengembang: *Keizha*
+— Total Pengguna: *${Object.keys(global.db.data.users).length}*
 
-ɪꜰ ʏᴏᴜ ꜰɪɴᴅ ᴀɴ ᴇʀʀᴏʀ ᴏʀ ᴡᴀɴᴛ ᴛᴏ ᴜᴘɢʀᴀᴅᴇ ᴘʀᴇᴍɪᴜᴍ ᴘʟᴀɴ ᴄᴏɴᴛᴀᴄᴛ ᴛʜᴇ ᴏᴡɴᴇʀ.
-%readmore
-—————————
-(Ⓟ) = ᴘʀᴇᴍɪᴜᴍ
-(Ⓛ) = ʟ ɪ ᴍ ɪ ᴛ
------  -----  ---  -----  -----
+*Keterangan:*
+🅟 = Premium
+Ⓛ = Limit
 
-  ≡ *ʟ ɪ s ᴛ  ᴍ ᴇ ɴ ᴜ*
 `,
-header: `┌ 「 *%category* 」`,
-  body: '│ ◦  %cmd %islimit %isPremium ',
-  footer: `╰──  –`,
-  after: '\n*ꜱɪᴍᴘʟᴇ ʙᴏᴛ ʙʏ ʀᴇʏᴢ ʜᴀʏᴀɴᴀsɪ*\n   ┖─｟ *ᴋᴏɴᴇᴋᴏ ᴋɪʟʟs* ｠─┚',
+header: `╭────「 *%category* 」`,
+  body: '├• %cmd %islimit %isPremium ',
+  footer: `╰─────────────────⎔\n`,
+  after: '\n*Thank You For Using Felicia*',
 }
 //┎── ¤ ¤ *%category* ¤ ¤ ──┒
 //┠──────────────
@@ -165,7 +158,7 @@ let _text = [
         return menu.help.map(help => {
           return body.replace(/%cmd/g, menu.prefix ? help : '%p' + help)
             .replace(/%islimit/g, menu.limit ? '(Ⓛ)' : ' ')
-            .replace(/%isPremium/g, menu.premium ? '(Ⓟ)' : '')
+            .replace(/%isPremium/g, menu.premium ? '(🅟)' : '')
             .trim()
         }).join('\n');
       }),
@@ -270,7 +263,7 @@ const rm = mt[ri];
         text: '🕒',
         key: m.key }});
         
-await conn.reply(m.chat, '☝😹L O A D I N G...', m)
+await conn.reply(m.chat, '...', m)
 await conn.sendMessage(m.chat, {
 	        video: fs.readFileSync('./media/thumb3.mp4'),
             mimetype: 'video/mp4',
@@ -282,9 +275,9 @@ await conn.sendMessage(m.chat, {
                 externalAdReply: {
                     showAdAttribution: true,
                     forwardingScore: 2023,
-                    title: 'ᴋ ᴏ ɴ ᴇ ᴋ ᴏ  ᴋ ɪ ʟ ʟ s',
-                    thumbnailUrl: 'https://telegra.ph/file/340aab9142ada4c828987.jpg',
-                    sourceUrl: 'https://chat.whatsapp.com/Em4vPwiN7151mO3lDpkdrm',
+                    title: 'Felicia-MD',
+                    thumbnailUrl: 'https://telegra.ph/file/dc5c0de9f002705526f82.jpg',
+                    sourceUrl: 'https://bit.ly/49PsIf8',
                     mediaType: 1,
                     renderLargerThumbnail: true,
                     mentionedJid: [m.sender]
@@ -307,7 +300,7 @@ conn.reply(m.chat, 'Maaf, menu sedang error', m)
 throw e
 }
 }
-handler.command = /^(allmenu|help)$/i
+handler.command = /^(allmenu)$/i
 handler.register = false
 
 export default handler
@@ -348,19 +341,19 @@ async function genProfile(conn, m) {
 
 function ucapan() {
         const hour_now = moment.tz('Asia/Jakarta').format('HH')
-        var ucapanWaktu = 'ᴏᴀʜᴀʏᴏᴜ...'
+        var ucapanWaktu = 'Selamat Pagi...'
         if (hour_now >= '03' && hour_now <= '10') {
-          ucapanWaktu = 'ᴏʜᴀʏᴏᴜ...'
+          ucapanWaktu = 'Selamat Pagi...'
         } else if (hour_now >= '10' && hour_now <= '15') {
-          ucapanWaktu = 'ᴋᴏɴɴɪᴄʜɪᴡᴀ...'
+          ucapanWaktu = 'Selamat Siang...'
         } else if (hour_now >= '15' && hour_now <= '17') {
-          ucapanWaktu = 'ᴋᴏɴɴɪᴄʜɪᴡᴀ...'
+          ucapanWaktu = 'Selamar Siang...'
         } else if (hour_now >= '17' && hour_now <= '18') {
-          ucapanWaktu = 'ᴋᴏɴɴɪᴄʜɪᴡᴀ...'
+          ucapanWaktu = 'Selamat Siang...'
         } else if (hour_now >= '18' && hour_now <= '23') {
-          ucapanWaktu = 'ᴋᴏɴʙᴀɴᴡᴀ...'
+          ucapanWaktu = 'Selamat Malam...'
         } else {
-          ucapanWaktu = 'ᴋᴏɴʙᴀɴᴡᴀ...'
+          ucapanWaktu = 'Selamat Malam...'
         }	
         return ucapanWaktu
 }
